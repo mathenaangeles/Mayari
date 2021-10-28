@@ -17,7 +17,7 @@ def create_loan(current_user):
     loan.borrower_id = current_user
     db.session.add(loan)
     db.session.commit()
-    return jsonify(survey.to_dict()), 201
+    return jsonify(loan.to_dict()), 201
 
 
 @loans_api.route('/', methods=('GET',))

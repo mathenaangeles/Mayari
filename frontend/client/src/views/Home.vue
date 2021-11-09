@@ -3,7 +3,7 @@
     <div class="home">
       <Calculator />
     </div>
-    <div class="section-grey">
+    <div class="section section-grey">
       <b-container class="eligibility">
         <b-row class="eligibility-reqs">
           <b-col cols="4">What are the eligibility requirements?</b-col>
@@ -58,6 +58,66 @@
         </b-row>
       </b-container>
     </div>
+    <div class="section">
+      <b-container>
+        <div>
+          <h2>How it works</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="84"
+            height="3"
+            viewBox="0 0 84 3"
+          >
+            <line
+              id="Line_3"
+              data-name="Line 3"
+              x2="84"
+              transform="translate(0 1.5)"
+              fill="none"
+              stroke="#000"
+              stroke-width="3"
+              opacity="0.709"
+            />
+          </svg>
+          <p>
+            Secure your loan in just three easy steps. Start and scale your
+            business today in the most convenient and cost-effective way
+            possible.
+          </p>
+        </div>
+        <div class="card-container">
+          <b-card-group deck> 
+            <b-card
+              title="01. Complete the form"
+              style="max-width: 20 rem;"
+              class="custom-card mb-2">
+            <b-card-text>
+              Register for an account and answer a few questions. 
+              Choose the loan amount and repayment terms according to your needs.
+            </b-card-text>
+            </b-card>
+            <b-card
+              title="02. Get approved"
+              style="max-width: 20 rem;"
+              class="custom-card mb-2">
+            <b-card-text>
+              Our team will verify and process your application. We will notify you 
+              via SMS and email once we have matched you to an appropriate loan plan.
+            </b-card-text>
+            </b-card>
+            <b-card
+              title="03. Receive your money"
+              style="max-width: 20 rem;"
+              class="custom-card mb-2">
+            <b-card-text>
+              Your loan will be disbursed within 24 hours of being approved. 
+              You can make easy monthly payment through your chosen method.
+            </b-card-text>
+            </b-card>
+          </b-card-group>
+        </div>
+      </b-container>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -69,8 +129,20 @@
   font-weight: bold;
 }
 .eligibility .eligibility-reqs {
-  display: flex; 
-  align-items:center;
+  display: flex;
+  align-items: center;
+}
+
+.card-container {
+  text-align: left;
+}
+.card-container .custom-card {
+  border-top: 10px solid #000000;
+  padding-top: 1em;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 250px;
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
 <script>

@@ -1,8 +1,18 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <b-navbar toggleable="lg">
+    <b-navbar-brand href="#">MAYARI</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-nav> 
+        <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item to="#">FAQ</b-nav-item>
+        <b-nav-item to="#">Blog</b-nav-item>
+        <b-nav-item to="/about">About Us</b-nav-item>
+        <b-nav-item to="#">Contact Us</b-nav-item>
+      </b-navbar-nav>
+    </b-navbar>
     </div>
     <router-view />
   </div>
@@ -18,15 +28,16 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 1em;
+  background-color: #F14F8C;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #FFFFFF;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #000000;
 }
 </style>

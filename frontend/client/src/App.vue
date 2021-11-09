@@ -6,11 +6,11 @@
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-navbar-nav> 
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="#">FAQ</b-nav-item>
-        <b-nav-item to="#">Blog</b-nav-item>
-        <b-nav-item to="/about">About Us</b-nav-item>
-        <b-nav-item to="#">Contact Us</b-nav-item>
+        <b-nav-item class="nav-style" to="/">Home</b-nav-item>
+        <b-nav-item class="nav-style" to="#">FAQ</b-nav-item>
+        <b-nav-item class="nav-style" to="#">Blog</b-nav-item>
+        <b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
+        <b-nav-item class="nav-style" to="#">Contact Us</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     </div>
@@ -29,12 +29,12 @@
 
 #nav {
   padding: 1em;
-  background-color: #F14F8C;
+  background-color: #f14f8c;
 }
 
 #nav a {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #nav a.router-link-exact-active {

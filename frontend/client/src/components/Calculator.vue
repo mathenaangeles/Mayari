@@ -56,16 +56,45 @@ label, .label-value {
   font-size: 25px;
   font-weight: bold;
 }
+input[type="range"]:focus {
+  outline: none;
+}
 input[type='range']::-webkit-slider-runnable-track {
   overflow: hidden;
   -webkit-appearance: none;
-  background-color: #e5eef7;
+  background: -moz-linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
+  background: linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
 }
 input[type='range']::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      cursor: ew-resize;
-      background: #b456de;
-      box-shadow: -500px 0 0 500px #b456de;
+    -webkit-appearance: none;
+    cursor: grab;
+    background: white;
+    border: 2px none;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  max-width: 15px;
+  position: relative;
+  }
+input[type='range']::-moz-range-track {
+  overflow: hidden;
+  -moz-appearance: none;
+  background: -moz-linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
+  height: 10px;
+}
+input[type='range']::-moz-range-thumb {
+  -moz-appearance: none;
+  border: 2px none;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  max-width: 15px;
+  position: relative;
+  bottom: 11px;
+  background: white;
+  cursor: -moz-grab;
+  -moz-transition: border 1000ms ease;
+  transition: border 1000ms ease;
 }
 .range-limits {
   color: #707070;

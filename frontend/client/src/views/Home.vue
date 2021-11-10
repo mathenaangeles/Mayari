@@ -122,7 +122,7 @@ a, a:hover {
   border-radius: 10px;
 }
 .card-title {
- font-weight: bold;
+  font-weight: bold;
 }
 .home-hero > .card-title {
   font-size: 40px;
@@ -166,6 +166,15 @@ a, a:hover {
   min-height: 250px;
   font-size: 18px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@supports (-moz-transform: translate(0, 0)) {
+  .transparent-card {
+      text-align:start;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(17px) brightness(75%);
+      border: 0;
+      border-radius: 10px;
+    }
 }
 </style>
 <script>

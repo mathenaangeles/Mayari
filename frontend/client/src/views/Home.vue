@@ -23,64 +23,28 @@
       </div>
     </b-jumbotron>
     <div class="section section-grey">
-      <b-container class="eligibility">
-        <b-row class="eligibility-reqs">
-          <b-col cols="4">What are the eligibility requirements?</b-col>
-          <b-col>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                id="Icon_material-person"
-                data-name="Icon material-person"
-                d="M18,18a6,6,0,1,0-6-6A6,6,0,0,0,18,18Zm0,3c-4.005,0-12,2.01-12,6v3H30V27C30,23.01,22.005,21,18,21Z"
-                transform="translate(-6 -6)"
-              />
-            </svg>
+      <b-container fluid class="eligibility">
+        <b-row class="mx-2 eligibility-requirements">
+          <b-col md="3" class="my-1">What are the eligibility requirements?</b-col>
+          <b-col md="3" class="my-1">
+            <account />
             21-65 years old
           </b-col>
-          <b-col>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="27"
-              height="28.5"
-              viewBox="0 0 27 28.5"
-            >
-              <path
-                id="Icon_material-location-city"
-                data-name="Icon material-location-city"
-                d="M22.5,16.5v-9L18,3,13.5,7.5v3h-9v21h27v-15Zm-12,12h-3v-3h3Zm0-6h-3v-3h3Zm0-6h-3v-3h3Zm9,12h-3v-3h3Zm0-6h-3v-3h3Zm0-6h-3v-3h3Zm0-6h-3v-3h3Zm9,18h-3v-3h3Zm0-6h-3v-3h3Z"
-                transform="translate(-4.5 -3)"
-              />
-            </svg>
+          <b-col md="3" class="my-1">
+            <home-city />
             Filipino citizen
           </b-col>
-          <b-col cols="4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="27"
-              viewBox="0 0 30 27"
-            >
-              <path
-                id="Icon_material-business-center"
-                data-name="Icon material-business-center"
-                d="M15,24V22.5H4.515l-.015,6a2.99,2.99,0,0,0,3,3h21a2.99,2.99,0,0,0,3-3v-6H21V24ZM30,10.5H23.985v-3l-3-3h-6l-3,3v3H6a3.009,3.009,0,0,0-3,3V18a2.99,2.99,0,0,0,3,3h9V18h6v3h9a3.009,3.009,0,0,0,3-3V13.5A3.009,3.009,0,0,0,30,10.5Zm-9,0H15v-3h6Z"
-                transform="translate(-3 -4.5)"
-              />
-            </svg>
+          <b-col md="3" class="my-1">
+            <briefcase-variant />
             Employed or self-employed
           </b-col>
         </b-row>
       </b-container>
     </div>
-    <div class="section">
+    <div class="section mt-4">
       <b-container>
         <div>
-          <h2>How it works</h2>
+          <h2 class="how-to-header">How it works</h2>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="84"
@@ -98,18 +62,18 @@
               opacity="0.709"
             />
           </svg>
-          <p>
+          <p class="how-to-subtitle">
             Secure your loan in just three easy steps. Start and scale your
             business today in the most convenient and cost-effective way
             possible.
           </p>
         </div>
-        <div class="card-container">
+        <div class="card-container my-4">
           <b-card-group deck> 
             <b-card
               title="01. Complete the form"
               style="max-width: 20 rem;"
-              class="custom-card mb-2">
+              class="custom-card mb-2 mt-1">
             <b-card-text>
               Register for an account and answer a few questions. 
               Choose the loan amount and repayment terms according to your needs.
@@ -118,7 +82,7 @@
             <b-card
               title="02. Get approved"
               style="max-width: 20 rem;"
-              class="custom-card mb-2">
+              class="custom-card mb-2 mt-1">
             <b-card-text>
               Our team will verify and process your application. We will notify you 
               via SMS and email once we have matched you to an appropriate loan plan.
@@ -127,7 +91,7 @@
             <b-card
               title="03. Receive your money"
               style="max-width: 20 rem;"
-              class="custom-card mb-2">
+              class="custom-card mb-2 mt-1">
             <b-card-text>
               Your loan will be disbursed within 24 hours of being approved. 
               You can make easy monthly payment through your chosen method.
@@ -158,8 +122,10 @@ a, a:hover {
   border-radius: 10px;
 }
 .card-title {
+ font-weight: bold;
+}
+.home-hero > .card-title {
   font-size: 40px;
-  font-weight: bold;
 }
 .home-card-text {
   font-size: 20px;
@@ -177,30 +143,43 @@ a, a:hover {
 .eligibility {
   padding: 1em;
   font-weight: bold;
+  font-size: 18px;
 }
-.eligibility .eligibility-reqs {
+.eligibility .eligibility-requirements {
   display: flex;
   align-items: center;
 }
-
+.how-to-header{
+  font-weight: 700;
+  font-size: 40px;
+}
+.how-to-subtitle{
+  font-size: 20px;
+}
 .card-container {
   text-align: left;
 }
 .card-container .custom-card {
   border-top: 10px solid #000000;
   padding-top: 1em;
-  font-weight: bold;
   border-radius: 10px;
-  height: 250px;
+  min-height: 250px;
+  font-size: 18px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
 <script>
 import Calculator from "@/components/Calculator.vue";
+import HomeCity from 'vue-material-design-icons/HomeCity.vue';
+import Account from 'vue-material-design-icons/Account.vue';
+import BriefcaseVariant from 'vue-material-design-icons/BriefcaseVariant.vue';
 export default {
   name: "Home",
   components: {
     Calculator,
+    HomeCity,
+    Account,
+    BriefcaseVariant
   },
 };
 </script>

@@ -2,13 +2,18 @@
   <div class="home">
     <b-jumbotron class="m-0 home-hero">
       <div class="home-circles">
-        <b-row>
-          <b-col md="6" class="mt-2">
+        <b-row class="m=0 p-0">
+          <b-col md="8" class="mt-2">
             <b-card title="Change your life one loan at a time" class="transparent-card" text-variant="white">
-              <b-card-text>
+              <b-card-text class="home-card-text">
                 We are here to support your dreams no matter your credit score.  You can get business loans as low as 2% APR.
               </b-card-text>
-              <p>Start your application now</p>
+              <a href=#>
+                <span class="home-card-subtext mr-2">Start your application now</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22.099" height="13.501" viewBox="0 0 22.099 13.501">
+                  <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z" transform="translate(-7.875 -11.252)" fill="#fff"/>
+                </svg>
+              </a>
             </b-card>
           </b-col>
           <b-col md="4" class="mt-2">
@@ -135,19 +140,36 @@
   </div>
 </template>
 <style scoped>
-
+a, a:hover {
+  text-decoration: none;
+  color: white;
+}
 .home-hero {
   background-image: url(~@/assets/hero_circle_3.png), url(~@/assets/hero_circle_2.png), linear-gradient(#F14F8C, #FE7171);
   border-radius: 0;
   background-position: right top, top left;
   background-repeat: no-repeat;
 }
-
 .transparent-card {
   text-align:start;
   background-color: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(17px) brightness(75%);
   border: 0;
+  border-radius: 10px;
+}
+.card-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+.home-card-text {
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-card-subtext {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+  font-size: 20px;
+  font-weight: 500;
 }
 .section-grey {
   background-color: #e5e5e5;
@@ -175,7 +197,6 @@
 </style>
 <script>
 import Calculator from "@/components/Calculator.vue";
-
 export default {
   name: "Home",
   components: {

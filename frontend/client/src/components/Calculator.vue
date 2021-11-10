@@ -64,7 +64,7 @@ input[type='range']::-webkit-slider-runnable-track {
 input[type='range']::-webkit-slider-thumb {
       -webkit-appearance: none;
       cursor: ew-resize;
-      background: #000000;
+      background: #b456de;
       box-shadow: -500px 0 0 500px #b456de;
 }
 .range-limits {

@@ -30,19 +30,19 @@
 						<span>+63 (917) 828 9919</span>
 					</b-col>
 					<b-col xs="6">
-						<h4>BORROW</h4>
+						<h5><b>BORROW</b></h5>
 						<b-link class="footer-link" to="/404">Business Loans</b-link>
 						<b-link class="footer-link" to="/404">Personal Loans (Coming Soon)</b-link>
 						<b-link class="footer-link" to="/404">Finance Loans (Coming Soon)</b-link>
 					</b-col> 
 					<b-col xs="6">
-						<h4>LEARN</h4>
+						<h5><b>LEARN</b></h5>
 						<b-link class="footer-link" to="/404">Home</b-link>
 						<b-link class="footer-link" to="/404">Blog</b-link>
 						<b-link class="footer-link" to="/404">FAQ</b-link>
 					</b-col> 
 					<b-col xs="6">
-						<h4>CONNECT</h4>
+						<h5><b>CONNECT</b></h5>
 						<b-link class="footer-link" to="/404">About Us</b-link>
 						<b-link class="footer-link" to="/404">Contact Us</b-link>
 					</b-col> 
@@ -61,14 +61,12 @@
 	text-align: center;
 	color: #2c3e50;
 }
-
 #nav {
 	padding: 1em;
 	background-color: #f14f8c;
 }
-
 #nav a {
-	font-weight: 400;
+	font-weight: 400s;
 	color: #ffffff;
 }
 #nav a.nav-link:hover {
@@ -78,23 +76,20 @@
 #nav a.router-link-exact-active {
 	font-weight: 700;
 }
-/* FOOTER */
 footer.section-footer {
 	padding: 1em 1em ;
 	color: white;
 	text-align: left;
 	background-color: #000000;
 }
-
 .mayari-footer {
 	display: flex;
  	align-items: center;
 }
-
 .footer-link {
 	display: block;
 	color: white;
-	font-weight: bold;
+	font-weight: 400;
 }
 .footer-link:hover {
 	color: #f14f8c;

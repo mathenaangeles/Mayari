@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <b-card title="Finance your future">
-      <p>Get next-day funding of up to <b>50000 PHP</b> for up to <b>12 month</b> with flexible terms and low interest rates.*</p>
+      <p class="mt-0 mb-1">Get next-day funding of up to <b>50000 PHP</b> for up to <b>12 month</b> with flexible terms and low interest rates.*</p>
       <label for="loan-amount">Loan Amount</label><span class="float-right label-value">{{ loan_amount }} PHP</span>
       <b-form-input id="loan-amount"  v-model="loan_amount" type="range" min="5000" max="50000" step="1000"></b-form-input>
       <div class="range-limits mb-2">
@@ -55,6 +55,7 @@ label, .label-value {
 .card-title {
   font-size: 25px;
   font-weight: bold;
+  margin-bottom: 1px;
 }
 input[type="range"]:focus {
   outline: none;

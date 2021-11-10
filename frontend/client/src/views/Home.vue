@@ -3,7 +3,7 @@
     <b-jumbotron class="m-0 home-hero">
       <div class="home-circles">
         <b-row class="m=0 p-0">
-          <b-col md="8" class="mt-2">
+          <b-col md="6" class="mt-2">
             <b-card title="Change your life one loan at a time" class="transparent-card" text-variant="white">
               <b-card-text class="home-card-text">
                 We are here to support your dreams no matter your credit score.  You can get business loans as low as 2% APR.
@@ -16,7 +16,7 @@
               </a>
             </b-card>
           </b-col>
-          <b-col md="4" class="mt-2">
+          <b-col md="6" class="mt-2">
             <Calculator />
           </b-col>
         </b-row>

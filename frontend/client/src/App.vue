@@ -2,7 +2,7 @@
 	<div id="app" class="d-flex flex-column min-vh-100">
 		<div id="nav">
 		<b-navbar toggleable="lg">
-		<b-navbar-brand href="/404"><img src="img/icons/mayari-white-shadow.png" style="width:50; height:50px"/></b-navbar-brand>
+		<b-navbar-brand href="/404"><img src="img/icons/mayari-white-shadow.png" style="height:40px"/></b-navbar-brand>
 
 		<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 		<b-collapse id="nav-collapse" is-nav>
@@ -22,7 +22,9 @@
 			<b-container>
 				<b-row>
 					<b-col xs="6">
-						<h3>MAYARI</h3>
+						<span class="mayari-footer">
+							<img src="/img/icons/mayari-white-shadow.png" height="30px"/> <h3 style="display: inline-block;">ayari</h3>
+						</span>
 						<span>Quezon City, Metro Manila</span> <br/>
 						<span>Philippines, 1126</span> <br/>
 						<span>support@mayari.com</span> <br/>
@@ -87,6 +89,11 @@ footer.section-footer {
 	color: white;
 	text-align: left;
 	background-color: #000000;
+}
+
+.mayari-footer {
+	display: flex;
+ 	align-items: center;
 }
 
 .footer-link {

@@ -1,19 +1,21 @@
 <template>
   <div class="home">
     <b-jumbotron class="m-0 home-hero">
-      <b-row>
-        <b-col cols="6">
-          <b-card title="Change your life one loan at a time" class="transparent-card" text-variant="white">
-            <b-card-text>
-              We are here to support your dreams no matter your credit score.  You can get business loans as low as 2% APR.
-            </b-card-text>
-            <p>Start your application now</p>
-          </b-card>
-        </b-col>
-        <b-col cols="4">
-          <Calculator />
-        </b-col>
-      </b-row>
+      <div class="home-circles">
+        <b-row>
+          <b-col md="6" class="mt-2">
+            <b-card title="Change your life one loan at a time" class="transparent-card" text-variant="white">
+              <b-card-text>
+                We are here to support your dreams no matter your credit score.  You can get business loans as low as 2% APR.
+              </b-card-text>
+              <p>Start your application now</p>
+            </b-card>
+          </b-col>
+          <b-col md="4" class="mt-2">
+            <Calculator />
+          </b-col>
+        </b-row>
+      </div>
     </b-jumbotron>
     <div class="section section-grey">
       <b-container class="eligibility">
@@ -133,14 +135,18 @@
   </div>
 </template>
 <style scoped>
+
 .home-hero {
-  background-image: linear-gradient(#F14F8C, #FE7171);
+  background-image: url(~@/assets/hero_circle_3.png), url(~@/assets/hero_circle_2.png), linear-gradient(#F14F8C, #FE7171);
   border-radius: 0;
+  background-position: right top, top left;
+  background-repeat: no-repeat;
 }
+
 .transparent-card {
   text-align:start;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(17px) contrast(50%) opacity(5%);
+  background-color: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(17px) brightness(75%);
   border: 0;
 }
 .section-grey {

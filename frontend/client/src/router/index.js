@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+// import About from "../views/About.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 
 Vue.use(VueRouter);
@@ -15,11 +15,26 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: About,
+    component: ErrorPage,
   },
   {
     path: "/404",
     name: "404",
+    component: ErrorPage,
+  },
+  {
+    path: "/blog",
+    name: "blog",
+    component: ErrorPage,
+  },
+  {
+    path: "/faq",
+    name: "faq",
+    component: ErrorPage,
+  },
+  {
+    path: "/contact",
+    name: "contact",
     component: ErrorPage,
   },
 ];

@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <b-card title="Finance your future">
+    <b-card title="Finance your future" class="px-1 py-1">
       <p class="mt-0 mb-1">Get next-day funding of up to <b>50000 PHP</b> for up to <b>12 month</b> with flexible terms and low interest rates.*</p>
       <label for="loan-amount">Loan Amount</label><span class="float-right label-value">{{ loan_amount }} PHP</span>
       <b-form-input id="loan-amount"  v-model="loan_amount" type="range" min="5000" max="50000" step="1000"></b-form-input>
@@ -67,10 +67,10 @@ input[type='range']::-webkit-slider-runnable-track {
   background: linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
 }
 input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    cursor: grab;
-    background: white;
-    border: 2px none;
+  -webkit-appearance: none;
+  cursor: grab;
+  background: white;
+  border: 2px rgba(61, 61, 61, 0.281) solid;
   border-radius: 50%;
   height: 15px;
   width: 15px;
@@ -85,11 +85,11 @@ input[type='range']::-moz-range-track {
 }
 input[type='range']::-moz-range-thumb {
   -moz-appearance: none;
-  border: 2px none;
+  border: 2px rgba(61, 61, 61, 0.281) solid;
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  max-width: 15px;
+  height: 20px;
+  width: 20px;
+  max-width: 20px;
   position: relative;
   bottom: 11px;
   background: white;

@@ -2,7 +2,7 @@
 	<div id="app" class="d-flex flex-column min-vh-100">
 		<div id="nav">
 		<b-navbar toggleable="lg">
-		<b-navbar-brand href="/404"><img src="img/icons/mayari-white-shadow.png" style="height:40px"/></b-navbar-brand>
+		<b-navbar-brand to="/"><img src="img/icons/mayari-white-shadow.png" style="height:40px"/></b-navbar-brand>
 		<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 		<b-collapse id="nav-collapse" is-nav>
 			<b-navbar-nav> 
@@ -14,7 +14,7 @@
 			</b-navbar-nav>
 		</b-collapse>
 		</b-navbar>
-		</div>
+		</div>	
 		<router-view />
 		<!-- FOOTER -->
 		<footer class="section-footer mt-auto">
@@ -26,7 +26,7 @@
 						</span>
 						<span>Quezon City, Metro Manila</span> <br/>
 						<span>Philippines, 1126</span> <br/>
-						<span>support@mayari.com</span> <br/>
+						<span>inquiries@mayari.io</span> <br/>
 						<span>+63 (917) 828 9919</span>
 					</b-col>
 					<b-col xs="6">
@@ -37,14 +37,14 @@
 					</b-col> 
 					<b-col xs="6">
 						<h5><b>LEARN</b></h5>
-						<b-link class="footer-link" to="/404">Home</b-link>
-						<b-link class="footer-link" to="/404">Blog</b-link>
-						<b-link class="footer-link" to="/404">FAQ</b-link>
+						<b-link class="footer-link" to="/">Home</b-link>
+						<b-link class="footer-link" to="/blog">Blog</b-link>
+						<b-link class="footer-link" to="/faq">FAQ</b-link>
 					</b-col> 
 					<b-col xs="6">
 						<h5><b>CONNECT</b></h5>
-						<b-link class="footer-link" to="/404">About Us</b-link>
-						<b-link class="footer-link" to="/404">Contact Us</b-link>
+						<b-link class="footer-link" to="/about">About Us</b-link>
+						<b-link class="footer-link" to="/contact">Contact Us</b-link>
 					</b-col> 
 				</b-row>
 			</b-container>
@@ -84,7 +84,7 @@ footer.section-footer {
 }
 .mayari-footer {
 	display: flex;
- 	align-items: center;
+	align-items: center;
 }
 .footer-link {
 	display: block;

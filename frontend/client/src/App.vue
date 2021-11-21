@@ -10,7 +10,7 @@
 				<b-nav-item class="nav-style" to="/faq">FAQ</b-nav-item>
 				<b-nav-item class="nav-style" to="/blog">Blog</b-nav-item>
 				<b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
-				<b-nav-item class="nav-style" to="/contact">Contact Us</b-nav-item>
+				<b-nav-item class="nav-style" v-on:click="contact()">Contact Us</b-nav-item>
 			</b-navbar-nav>
 		</b-collapse>
 		</b-navbar>
@@ -44,13 +44,24 @@
 					<b-col xs="6">
 						<h5><b>CONNECT</b></h5>
 						<b-link class="footer-link" to="/about">About Us</b-link>
-						<b-link class="footer-link" to="/contact">Contact Us</b-link>
+						<b-link href='#' class="footer-link" v-on:click="contact()">Contact Us</b-link>
 					</b-col> 
 				</b-row>
 			</b-container>
 		</footer>
 	</div>
 </template>
+<script>
+export default {
+	data() {
+		return {
+			contact() {
+				window.location.href = "mailto:inquiries@mayari.io?subject=My%20Question&body=Place%20inquiries%20here";
+			}
+		}		
+	},
+}
+</script>
 
 <style>
 @import url('http://fonts.cdnfonts.com/css/adobe-clean');

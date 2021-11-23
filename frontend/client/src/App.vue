@@ -10,7 +10,6 @@
 				<b-nav-item class="nav-style" to="/faq">FAQ</b-nav-item>
 				<b-nav-item class="nav-style" to="/blog">Blog</b-nav-item>
 				<b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
-				<b-nav-item class="nav-style" v-on:click="contact()">Contact Us</b-nav-item>
 			</b-navbar-nav>
 		</b-collapse>
 		</b-navbar>

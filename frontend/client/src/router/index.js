@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 // import About from "../views/About.vue";
 import ErrorPage from "../views/ErrorPage.vue";
+import FAQ from "../views/FAQ.vue";
 
 Vue.use(VueRouter);
 
@@ -30,7 +31,7 @@ const routes = [
   {
     path: "/faq",
     name: "faq",
-    component: ErrorPage,
+    component: FAQ,
   },
   {
     path: "/contact",

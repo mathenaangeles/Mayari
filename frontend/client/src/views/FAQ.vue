@@ -160,7 +160,7 @@ export default {
       },
       faqOne: [
         {
-          id: 1,
+          id: 'id1',
           question: "Question one",
           answer: 'Answer one'
         },

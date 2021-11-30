@@ -47,25 +47,36 @@
           <h2 class="faq-header">Frequently Asked Questions</h2>
           <b-row>
             <b-col md="6">
-              <h3>Requirements and Application Process</h3>
+              <h3>General</h3>
+            </b-col>
+            <b-col md="6">
+              <h3>Repayment</h3>
               <FAQListItem
-                v-for="faqItem in faqOne"
+                v-for="faqItem in faqRepayment"
                 :key="faqItem.id"
                 :faqItem="faqItem"
               >
               </FAQListItem>
-              <b-row>
-                <b-col cols="11">
-                  <span v-b-toggle.faq-2>How do I apply for a loan?</span>
-                </b-col>
-                <b-col cols="1">
-                  <ChevronDown />
-                </b-col>
-              </b-row>
-              <b-collapse id="faq-2"> Here's the answer </b-collapse>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col md="6">
+              <h3>Application</h3>
+              <FAQListItem
+                v-for="faqItem in faqApplication"
+                :key="faqItem.id"
+                :faqItem="faqItem"
+              >
+              </FAQListItem>
             </b-col>
             <b-col md="6">
-              <h3>Disbursement and Repayment</h3>
+              <h3>Legal</h3>
+              <FAQListItem
+                v-for="faqItem in faqLegal"
+                :key="faqItem.id"
+                :faqItem="faqItem"
+              >
+              </FAQListItem>
             </b-col>
           </b-row>
         </div>
@@ -148,7 +159,6 @@ a:hover {
 <script>
 // import Calculator from "@/components/Calculator.vue";
 import ArrowRight from "vue-material-design-icons/ArrowRight";
-import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
 import FAQListItem from "../components/FAQListItem.vue";
 export default {
   name: "FAQ",
@@ -158,11 +168,55 @@ export default {
         email: "",
         mobile: "",
       },
-      faqOne: [
+      faqApplication: [
         {
-          id: "id1",
-          question: "Question one",
-          answer: "Answer one",
+          id: 'id1',
+          question: "How will I know if my application is approved?",
+          answer: 'A confirmation message will be sent to the applicant’s registered email address within 24 to 48 hours after submitting their application.'
+        },
+        {
+          id: 'id2',
+          question: "Can I get a new loan if I have an ongoing one?",
+          answer: 'No. Applicants may only have one active loan at a time.'
+        },
+        {
+          id: 'id3',
+          question: "Can I get a loan if I have a bad credit history?",
+          answer: 'Mayari extends loans to eligible MSMEs irrespective of their credit history.'
+        },
+        {
+          id: 'id4',
+          question: "Is this available anywhere in the Philippines?",
+          answer: 'Yes. Mayari may be accessed anywhere within the Philippines.'
+        },
+      ],
+      faqLegal: [
+        {
+          id: 'id5',
+          question: "Is there a penalty for late payment of monthly interest?",
+          answer: 'Yes. Late payment will be subject to penalties charged on the next billing statement.'
+        }
+      ],
+      faqRepayment: [
+        {
+          id: 'id6',
+          question: "How will I be billed?",
+          answer: 'Loan billing statements will be sent every 10th of the following month and must be settled before the 25th.'
+        },
+        {
+          id: 'id7',
+          question: "How will I send my monthly payment?",
+          answer: 'Principal payment and interest may be sent through accredited banks and other e-wallets.'
+        },
+        {
+          id: 'id8',
+          question: "How much interest will I pay?",
+          answer: 'Interest will be based on the loan amount and repayment terms.'
+        },
+        {
+          id: 'id9',
+          question: "How long will I have to pay the borrowed amount?",
+          answer: 'Mayari offers payment terms from a minimum of 3 months up to 12 months.'
         },
       ],
     };
@@ -170,8 +224,7 @@ export default {
   components: {
     // Calculator,
     FAQListItem,
-    ArrowRight,
-    ChevronDown,
+    ArrowRight
   },
 };
 </script>

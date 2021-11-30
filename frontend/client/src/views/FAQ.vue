@@ -4,7 +4,7 @@
       <div>
         <b-row class="m-0 p-0">
           <b-col md="8" sm="12" class="mt-2">
-            <Calculator />
+            <!-- <Calculator /> -->
           </b-col>
           <b-col md="4" sm="12" class="mt-2">
             <b-card
@@ -146,7 +146,7 @@ a:hover {
 }
 </style>
 <script>
-import Calculator from "@/components/Calculator.vue";
+// import Calculator from "@/components/Calculator.vue";
 import ArrowRight from "vue-material-design-icons/ArrowRight";
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
 import FAQListItem from "../components/FAQListItem.vue";
@@ -160,15 +160,15 @@ export default {
       },
       faqOne: [
         {
-          id: 'id1',
+          id: "id1",
           question: "Question one",
-          answer: 'Answer one'
+          answer: "Answer one",
         },
       ],
     };
   },
   components: {
-    Calculator,
+    // Calculator,
     FAQListItem,
     ArrowRight,
     ChevronDown,

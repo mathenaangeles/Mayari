@@ -1,32 +1,57 @@
 <template>
   <div class="calculator">
     <b-card title="Finance your future" class="px-1 py-1">
-      <p class="mt-0 mb-1">Get next-day funding of up to <b>50000 PHP</b> for up to <b>12 month</b> with flexible terms and low interest rates.*</p>
-      <label for="loan-amount">Loan Amount</label><span class="float-right label-value">{{ loan_amount }} PHP</span>
-      <b-form-input id="loan-amount"  v-model="loan_amount" type="range" min="5000" max="50000" step="1000"></b-form-input>
+      <p class="mt-0 mb-1">
+        Get next-day funding of up to <b>50000 PHP</b> for up to
+        <b>12 month</b> with flexible terms and low interest rates.*
+      </p>
+      <label for="loan-amount">Loan Amount</label
+      ><span class="float-right label-value">{{ loan_amount }} PHP</span>
+      <b-form-input
+        id="loan-amount"
+        v-model="loan_amount"
+        type="range"
+        min="5000"
+        max="50000"
+        step="1000"
+      ></b-form-input>
       <div class="range-limits mb-2">
         <b>5000PHP</b><b class="float-right">50000PHP</b>
       </div>
-      <label for="loan-amount">Payment Term</label><span class="float-right label-value">{{ payment_term }} <span v-if="payment_term<=1">Month</span><span v-else-if="payment_term>1">Months</span></span>
-      <b-form-input id="payment-terms" v-model="payment_term" type="range" min="1" max="12" step="1"></b-form-input>
+      <label for="loan-amount">Payment Term</label
+      ><span class="float-right label-value"
+        >{{ payment_term }} <span v-if="payment_term <= 1">Month</span
+        ><span v-else-if="payment_term > 1">Months</span></span
+      >
+      <b-form-input
+        id="payment-terms"
+        v-model="payment_term"
+        type="range"
+        min="1"
+        max="12"
+        step="1"
+      ></b-form-input>
       <div class="range-limits mb-2">
         <b>5000PHP</b><b class="float-right">50000PHP</b>
       </div>
       <b-button block variant="dark">Check Your Rate</b-button>
-      <p class="subtext mt-2">* This is the maximum loan amount and repayment term. Your loan can be disbursed in as little as 1 business day.</p>
+      <p class="subtext mt-2">
+        * This is the maximum loan amount and repayment term. Your loan can be
+        disbursed in as little as 1 business day.
+      </p>
     </b-card>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Calculator",
+  name: "FAQCalculator",
   data() {
     return {
-      loan_amount: '5000',
-      payment_term: '1'
-    }
-  }
+      loan_amount: "5000",
+      payment_term: "1",
+    };
+  },
 };
 </script>
 
@@ -36,7 +61,6 @@ export default {
 }
 .calculator {
   text-align: start;
-  
 }
 .btn-dark {
   background-color: #000000;
@@ -48,7 +72,8 @@ export default {
   color: #707070;
   font-size: 15px;
 }
-label, .label-value {
+label,
+.label-value {
   font-size: 18px;
   font-weight: bold;
 }
@@ -60,13 +85,13 @@ label, .label-value {
 input[type="range"]:focus {
   outline: none;
 }
-input[type='range']::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   overflow: hidden;
   -webkit-appearance: none;
-  background: -moz-linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
-  background: linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
+  background: -moz-linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
+  background: linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
 }
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: grab;
   background: white;
@@ -76,14 +101,14 @@ input[type='range']::-webkit-slider-thumb {
   width: 15px;
   max-width: 15px;
   position: relative;
-  }
-input[type='range']::-moz-range-track {
+}
+input[type="range"]::-moz-range-track {
   overflow: hidden;
   -moz-appearance: none;
-  background: -moz-linear-gradient(45deg, #afa3f0 0%,#b456de 100%);
+  background: -moz-linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
   height: 10px;
 }
-input[type='range']::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
   border: 2px rgba(61, 61, 61, 0.281) solid;
   border-radius: 50%;

@@ -82,7 +82,6 @@ input[type="range"]:focus {
   outline: none;
 }
 input[type="range"]::-webkit-slider-runnable-track {
-  overflow: hidden;
   -webkit-appearance: none;
   background: -moz-linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
   background: linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
@@ -91,7 +90,6 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: grab;
   background: white;
-  border: 2px rgba(61, 61, 61, 0.281) solid;
   border-radius: 50%;
   height: 15px;
   width: 15px;

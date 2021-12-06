@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
-    <b-jumbotron class="m-0 home-hero">
+  <div class="faq">
+    <b-jumbotron class="m-0 pt-1 faq-hero">
       <div>
         <b-row class="m-0 p-0">
-          <b-col md="8" sm="12" class="mt-2">
-            <!-- <Calculator /> -->
+          <b-col md="9" sm="12" class="mt-2">
+            <FAQCalculator />
           </b-col>
-          <b-col md="4" sm="12" class="mt-2">
+          <b-col md="3" sm="12" class="mt-2">
             <b-card
               title="We offer the best online lending rates in the country. "
               class="transparent-card"
@@ -90,11 +90,9 @@ a:hover {
   text-decoration: none;
   color: white;
 }
-.home-hero {
-  background-image: linear-gradient(#f14f8c, #fe7171);
+.faq-hero {
+  background-image: linear-gradient(#F14F8C, #CA4DE5);
   border-radius: 0;
-  background-position: right top, top left;
-  background-repeat: no-repeat;
 }
 .transparent-card {
   text-align: start;
@@ -157,7 +155,7 @@ a:hover {
 }
 </style>
 <script>
-// import Calculator from "@/components/Calculator.vue";
+import FAQCalculator from "@/components/FAQCalculator.vue";
 import ArrowRight from "vue-material-design-icons/ArrowRight";
 import FAQListItem from "../components/FAQListItem.vue";
 export default {
@@ -222,7 +220,7 @@ export default {
     };
   },
   components: {
-    // Calculator,
+    FAQCalculator,
     FAQListItem,
     ArrowRight
   },

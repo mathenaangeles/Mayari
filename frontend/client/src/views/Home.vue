@@ -1,44 +1,44 @@
 <template>
   <div class="home">
     <b-jumbotron class="m-0 home-hero">
-        <b-row class="m-0 p-0">
-          <b-col md="6" class="mt-2">
-            <b-card
-              title="Change your life one loan at a time"
-              class="transparent-card"
-              text-variant="white"
-              id="main-card"
-            >
-              <b-card-text class="home-card-text">
-                We are here to support your dreams no matter your credit score.
-                You can get business loans as low as 2% APR disbursed in as 
-                little as 1 business day.
-              </b-card-text>
-              <a href="#">
-                <span class="home-card-subtext mr-2"
-                  >Start your application now</span
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22.099"
-                  height="13.501"
-                  viewBox="0 0 22.099 13.501"
-                >
-                  <path
-                    id="Icon_ionic-ios-arrow-round-forward"
-                    data-name="Icon ionic-ios-arrow-round-forward"
-                    d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
-                    transform="translate(-7.875 -11.252)"
-                    fill="#fff"
-                  />
-                </svg>
-              </a>
-            </b-card>
-          </b-col>
-          <b-col md="6" class="mt-2">
-            <HomeCalculator />
-          </b-col>
-        </b-row>
+      <b-row class="m-0 p-0">
+        <b-col md="6" class="mt-2">
+          <b-card
+            title="Change your life one loan at a time"
+            class="transparent-card"
+            text-variant="white"
+            id="main-card"
+          >
+            <b-card-text class="home-card-text">
+              We are here to support your dreams no matter your credit score.
+              You can get business loans as low as 2% APR disbursed in as little
+              as 1 business day.
+            </b-card-text>
+            <a href="#">
+              <span class="home-card-subtext mr-2"
+                >Start your application now</span
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.099"
+                height="13.501"
+                viewBox="0 0 22.099 13.501"
+              >
+                <path
+                  id="Icon_ionic-ios-arrow-round-forward"
+                  data-name="Icon ionic-ios-arrow-round-forward"
+                  d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
+                  transform="translate(-7.875 -11.252)"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </b-card>
+        </b-col>
+        <b-col md="6" class="mt-2">
+          <HomeCalculator />
+        </b-col>
+      </b-row>
     </b-jumbotron>
     <div class="section section-grey">
       <b-container fluid class="eligibility">
@@ -96,7 +96,7 @@
               class="custom-card mb-2 mt-1"
             >
               <b-card-text>
-                Register for an account and answer a few questions. Choose a 
+                Register for an account and answer a few questions. Choose a
                 loan amount and a repayment term according to your needs.
               </b-card-text>
             </b-card>
@@ -136,7 +136,8 @@ a:hover {
 @media (min-width: 800px) {
   .home-hero {
     background-image: url(~@/assets/hero_circle_3.png),
-      url(~@/assets/hero_circle_2.png), url(~@/assets/hero_circle_1.png), linear-gradient(#f14f8c, #fe7171);
+      url(~@/assets/hero_circle_2.png), url(~@/assets/hero_circle_1.png),
+      linear-gradient(#f14f8c, #fe7171);
     border-radius: 0;
     background-position: 120% -50%, 50% 0%, -20% 500%;
     background-repeat: no-repeat;

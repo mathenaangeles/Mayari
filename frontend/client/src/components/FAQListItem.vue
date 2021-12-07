@@ -9,7 +9,7 @@
       </b-col>
     </b-row>
     <b-collapse v-bind:id="faqItem.id"> {{ faqItem.answer }} </b-collapse>
-    <hr/>
+    <hr />
   </div>
 </template>
 <script>

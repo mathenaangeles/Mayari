@@ -29,7 +29,7 @@ const routes = [
     component: ErrorPage,
   },
   {
-    path: "/faq",
+    path: "/faq/:amount?/:term?",
     name: "faq",
     component: FAQ,
   },

@@ -1,16 +1,10 @@
 <template>
-  <div class="about">
-    
-  </div>
+  <div class="about"></div>
 </template>
-<style scoped>
-
-</style>
+<style scoped></style>
 <script>
 export default {
   name: "About",
-  components: {
-
-  },
+  components: {},
 };
 </script>

@@ -5,12 +5,15 @@
         <b-col md="8">
           <p class="my-0">
             Get next-day funding of up to <b>50000 PHP</b> for up to
-            <b>12 month</b> with flexible terms and low interest rates.*
+            <b>12 month</b> with flexible terms and low interest rates.
           </p>
-          <p class="subtitle mt-0 mb-1"><i>
-            The amounts listed are only an estimate and do not represent a formal offer from Mayari.**
-          </i></p>
-          <label for="loan-amount">Loan Amount</label
+          <p class="subtitle mt-0 mb-1">
+            <i>
+              The amounts listed are only an estimate and do not represent a
+              formal offer from Mayari.*
+            </i>
+          </p>
+          <label for="loan-amount" class="range-label">Loan Amount</label
           ><span class="float-right label-value">{{ loan_amount }} PHP</span>
           <b-form-input
             id="loan-amount"
@@ -23,7 +26,7 @@
           <div class="range-limits mb-2">
             <b>5000PHP</b><b class="float-right">50000PHP</b>
           </div>
-          <label for="loan-amount">Payment Term</label
+          <label for="loan-amount" class="range-label">Payment Term</label
           ><span class="float-right label-value"
             >{{ payment_term }} <span v-if="payment_term <= 1">Month</span
             ><span v-else-if="payment_term > 1">Months</span></span
@@ -39,32 +42,50 @@
           <div class="range-limits mb-2">
             <b>1 Month</b><b class="float-right">12 Months</b>
           </div>
-          <b-button block variant="dark" v-on:click="calculate">Check Your Rate</b-button>
+          <div class="mt-2">
+            <input type="checkbox" id="checkbox" v-model="is_secured" />
+            <label for="checkbox"
+              >&nbsp;Do you want to secure your loan with collateral?</label
+            >
+          </div>
+          <b-button block variant="dark" v-on:click="calculate"
+            >Check Your Rate</b-button
+          >
           <p class="subtext mt-2 mb-0">
-            * This is the maximum loan amount and repayment term. Your loan can be
-            disbursed in as little as 1 business day.
+            * For example, a loan of PHP 10000 PHP over a period of 2 weeks will
+            have an interest rate of 0.01% per day — that is 100PHP per day. You
+            will need to repay a total of 11400PHP.
           </p>
           <p class="subtext my-0">
-            ** For example, a loan of PHP 10000 PHP over a period of 2 weeks will have an interest rate of 0.01% per day — 
-            that is 100PHP per day. You will need to repay a total of  11400PHP.
+            ** Securing your loans with collaterals can significantly decrease
+            your interest rate.
           </p>
         </b-col>
         <b-col md="4">
           <h4><b>Loan Estimate</b></h4>
           <p class="pink-text mt-0 mb-1">
-            Checking your rate will not affect your credit score or your final loan plan.
+            Checking your rate will not affect your credit score or your final
+            loan plan.
           </p>
           <h5><b>Monthly Installments</b></h5>
-          <h5 class="purple-text"><b>{{result_weekly_installment}} PHP</b></h5>
-          <hr/>
+          <h5 class="purple-text">
+            <b>{{ result_weekly_installment }} PHP</b>
+          </h5>
+          <hr />
           <h5><b>Interest Rate</b></h5>
-          <h5 class="purple-text"><b>{{result_interest_rate}}%</b></h5>
-          <hr/>
+          <h5 class="purple-text">
+            <b>{{ result_interest_rate }}%</b>
+          </h5>
+          <hr />
           <h5><b>Payment Term</b></h5>
-          <h5 class="purple-text"><b>{{result_payment_term}} Months</b></h5>
-          <hr/>
+          <h5 class="purple-text">
+            <b>{{ result_payment_term }} Months</b>
+          </h5>
+          <hr />
           <h5><b>Loan Amount</b></h5>
-          <h5 class="purple-text"><b>{{result_loan_amount}} PHP</b></h5>
+          <h5 class="purple-text">
+            <b>{{ result_loan_amount }} PHP</b>
+          </h5>
         </b-col>
       </b-row>
     </b-card>
@@ -76,61 +97,111 @@ export default {
   name: "FAQCalculator",
   data() {
     return {
-      loan_amount: 5000,
-      payment_term: 1,
+      loan_amount: this.$route.params.amount ?? 5000,
+      payment_term: this.$route.params.term ?? 1,
       result_weekly_installment: 0,
       result_interest_rate: 0,
       result_payment_term: 0,
       result_loan_amount: 0,
+      is_secured: false,
     };
   },
   methods: {
-    installments: function(loan_amount,interest,payment_term){
-      return loan_amount*((interest*Math.pow((1+interest),payment_term))/(Math.pow((1+interest),payment_term)-1));
+    installments: function (loan_amount, interest, payment_term) {
+      return (
+        loan_amount *
+        ((interest * Math.pow(1 + interest, payment_term)) /
+          (Math.pow(1 + interest, payment_term) - 1))
+      );
     },
-    calculate: function() {
-      this.result_loan_amount = this.loan_amount
-      this.result_payment_term = this.payment_term
-      if (1<=this.payment_term && this.payment_term<=3){
-        if (5000<=this.loan_amount && this.loan_amount<=30000) {
-          this.result_interest_rate=3
-        } else if (30001<=this.loan_amount && this.loan_amount<=50000) {
-          this.result_interest_rate=4
+    calculate: function () {
+      this.result_loan_amount = this.loan_amount;
+      this.result_payment_term = this.payment_term;
+      if (this.is_secured) {
+        if (1 <= this.payment_term && this.payment_term <= 3) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 15000) {
+            this.result_interest_rate = 2;
+          } else if (15001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 3;
+          }
+        } else if (4 <= this.payment_term && this.payment_term <= 6) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 10000) {
+            this.result_interest_rate = 2;
+          } else if (10001 <= this.loan_amount && this.loan_amount <= 30000) {
+            this.result_interest_rate = 3;
+          } else if (30001 <= this.loan_amount && this.loan_amount <= 40000) {
+            this.result_interest_rate = 4;
+          } else if (40001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 5;
+          }
+        } else if (7 <= this.payment_term && this.payment_term <= 9) {
+          if (5000 == this.loan_amount) {
+            this.result_interest_rate = 2;
+          } else if (5001 <= this.loan_amount && this.loan_amount <= 20000) {
+            this.result_interest_rate = 3;
+          } else if (20001 <= this.loan_amount && this.loan_amount <= 35000) {
+            this.result_interest_rate = 4;
+          } else if (35001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 5;
+          }
+        } else if (10 <= this.payment_term && this.payment_term <= 12) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 10000) {
+            this.result_interest_rate = 3;
+          } else if (10001 <= this.loan_amount && this.loan_amount <= 25000) {
+            this.result_interest_rate = 4;
+          } else if (25001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 5;
+          }
         }
-      } else if (4<=this.payment_term && this.payment_term<=6) {
-        if (5000<=this.loan_amount && this.loan_amount<=20000) {
-          this.result_interest_rate=3
-        } else if (20001<=this.loan_amount && this.loan_amount<=40000) {
-          this.result_interest_rate=4
-        } else if (40001<=this.loan_amount && this.loan_amount<=50000) {
-          this.result_interest_rate=5
-        }
-      } else if (7<=this.payment_term && this.payment_term<=9) {
-        if (5000<=this.loan_amount && this.loan_amount<=15000) {
-          this.result_interest_rate=3
-        } else if (15001<=this.loan_amount && this.loan_amount<=30000) {
-          this.result_interest_rate=4
-        } else if (30001<=this.loan_amount && this.loan_amount<=45000) {
-          this.result_interest_rate=5
-        } else if (45001<=this.loan_amount && this.loan_amount<=50000) {
-          this.result_interest_rate=6
-        }
-      } else if (10<=this.payment_term && this.payment_term<=12) {
-        if (5000==this.loan_amount) {
-          this.result_interest_rate=3
-        } else if (5001<=this.loan_amount && this.loan_amount<=20000) {
-          this.result_interest_rate=4
-        } else if (20001<=this.loan_amount && this.loan_amount<=30000) {
-          this.result_interest_rate=5
-        } else if (30001<=this.loan_amount && this.loan_amount<=40000) {
-          this.result_interest_rate=6
-        } else if (40001<=this.loan_amount && this.loan_amount<=50000) {
-          this.result_interest_rate=7
+      } else {
+        if (1 <= this.payment_term && this.payment_term <= 3) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 30000) {
+            this.result_interest_rate = 3;
+          } else if (30001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 4;
+          }
+        } else if (4 <= this.payment_term && this.payment_term <= 6) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 20000) {
+            this.result_interest_rate = 3;
+          } else if (20001 <= this.loan_amount && this.loan_amount <= 40000) {
+            this.result_interest_rate = 4;
+          } else if (40001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 5;
+          }
+        } else if (7 <= this.payment_term && this.payment_term <= 9) {
+          if (5000 <= this.loan_amount && this.loan_amount <= 15000) {
+            this.result_interest_rate = 3;
+          } else if (15001 <= this.loan_amount && this.loan_amount <= 30000) {
+            this.result_interest_rate = 4;
+          } else if (30001 <= this.loan_amount && this.loan_amount <= 45000) {
+            this.result_interest_rate = 5;
+          } else if (45001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 6;
+          }
+        } else if (10 <= this.payment_term && this.payment_term <= 12) {
+          if (5000 == this.loan_amount) {
+            this.result_interest_rate = 3;
+          } else if (5001 <= this.loan_amount && this.loan_amount <= 20000) {
+            this.result_interest_rate = 4;
+          } else if (20001 <= this.loan_amount && this.loan_amount <= 30000) {
+            this.result_interest_rate = 5;
+          } else if (30001 <= this.loan_amount && this.loan_amount <= 40000) {
+            this.result_interest_rate = 6;
+          } else if (40001 <= this.loan_amount && this.loan_amount <= 50000) {
+            this.result_interest_rate = 7;
+          }
         }
       }
-      this.result_weekly_installment = this.installments(this.result_loan_amount,this.result_interest_rate,this.result_payment_term).toFixed(2);
-      console.log(this.result_weekly_installment);
+
+      this.result_weekly_installment = this.installments(
+        this.result_loan_amount,
+        this.result_interest_rate,
+        this.result_payment_term
+      ).toFixed(2);
     },
+  },
+  beforeMount() {
+    this.calculate();
   },
 };
 </script>
@@ -148,25 +219,27 @@ export default {
   font-size: 20px;
   border-radius: 10px;
 }
-.subtitle, .subtext, .pink-text {
+.subtitle,
+.subtext,
+.pink-text {
   font-size: 15px;
 }
 .subtext {
   color: #707070;
 }
 .pink-text {
-  color: #F14F8C;
+  color: #f14f8c;
 }
-.purple-text{
-  color: #CA4DE5;
+.purple-text {
+  color: #ca4de5;
 }
-label,
+.range-label,
 .label-value {
   font-size: 18px;
   font-weight: bold;
 }
 .card-title {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 1px;
 }

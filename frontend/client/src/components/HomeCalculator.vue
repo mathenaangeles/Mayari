@@ -34,7 +34,9 @@
       <div class="range-limits mb-2">
         <b>1 Month</b><b class="float-right">12 Months</b>
       </div>
-      <b-button block variant="dark">Check Your Rate</b-button>
+      <b-button block variant="dark" v-on:click="goToFAQ"
+        >Check Your Rate</b-button
+      >
     </b-card>
   </div>
 </template>
@@ -47,6 +49,15 @@ export default {
       loan_amount: "5000",
       payment_term: "1",
     };
+  },
+  methods: {
+    goToFAQ: function () {
+      console.log("GET");
+      this.$router.push({
+        name: "faq",
+        params: { amount: this.loan_amount, term: this.payment_term },
+      });
+    },
   },
 };
 </script>

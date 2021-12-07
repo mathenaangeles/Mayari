@@ -11,8 +11,12 @@
           Our goal is to make financial services more accessible to all
           borrowers regardless of their socio-economic background.
         </span>
-        <br/>
-        <b-link href="#" class="contact-link py-1 px-1 mt-5" v-on:click="contact()">
+        <br />
+        <b-link
+          href="#"
+          class="contact-link py-1 px-1 mt-5"
+          v-on:click="contact()"
+        >
           Send us a message
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +96,9 @@
     </section>
     <section id="leadership" class="p-5 m-5">
       <h2>LEADERSHIP</h2>
-      <span class="leadership-main-text"> We believe that financial inclusion is a human right. </span>
+      <span class="leadership-main-text">
+        We believe that financial inclusion is a human right.
+      </span>
       <b-row class="pt-4">
         <b-col md="3">
           <div id="ceo-image" class="leaders-profile"></div>
@@ -167,10 +173,10 @@ section#leadership {
 .values-item-text {
   line-height: 100%;
 }
-.leadership-main-text{
+.leadership-main-text {
   font-size: 30pt;
 }
-.leaders-profile{
+.leaders-profile {
   background-image: url(~@/assets/leaders-sample-img.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -186,9 +192,6 @@ import Domain from "vue-material-design-icons/Domain.vue";
 import TooltipAccount from "vue-material-design-icons/TooltipAccount.vue";
 export default {
   name: "About",
-<<<<<<< HEAD
-  components: {},
-=======
   components: {
     ChartDonut,
     Domain,
@@ -202,6 +205,5 @@ export default {
       },
     };
   },
->>>>>>> 3fe529de128e87ae5e8917235b3523ec10a17e67
 };
 </script>

@@ -81,7 +81,6 @@
             </b-col>
           </b-row>
           <b-row>
-            
             <b-col md="6">
               <h3>Legal</h3>
               <FAQListItem

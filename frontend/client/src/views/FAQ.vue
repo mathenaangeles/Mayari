@@ -47,7 +47,13 @@
           <h2 class="faq-header">Frequently Asked Questions</h2>
           <b-row>
             <b-col md="6">
-              <h3>General</h3>
+              <h3>Application</h3>
+              <FAQListItem
+                v-for="faqItem in faqApplication"
+                :key="faqItem.id"
+                :faqItem="faqItem"
+              >
+              </FAQListItem>
             </b-col>
             <b-col md="6">
               <h3>Repayment</h3>
@@ -60,15 +66,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col md="6">
-              <h3>Application</h3>
-              <FAQListItem
-                v-for="faqItem in faqApplication"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
-            </b-col>
+            
             <b-col md="6">
               <h3>Legal</h3>
               <FAQListItem

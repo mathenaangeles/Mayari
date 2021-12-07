@@ -80,6 +80,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height:100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 #nav {
   padding: 1em;
@@ -101,6 +105,8 @@ footer.section-footer {
   color: white;
   text-align: left;
   background-color: #000000;
+  min-height: 150px;
+  margin-top: auto;
 }
 .mayari-footer {
   display: flex;

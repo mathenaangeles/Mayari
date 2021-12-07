@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <b-jumbotron class="m-0 pt-1 about-hero">
-      <div class="mx-1">
+      <div class="p-4">
         <h1>We are financing the Filipino future</h1>
         <span>
           Mayari is a solution devised by one of the winning teams of the Youth
@@ -32,14 +32,14 @@
       </div>
     </b-jumbotron>
     <section id="our-values">
-      <div class="px-5 pb-2">
+      <div class="px-5 p-2">
         <h2 class="d-block">OUR VALUES</h2>
         <span class="d-block"
           >We redesigned the 3C’s of credit to work for underserved communities
           rather than against them.
         </span>
       </div>
-      <b-row>
+      <b-row class="mt-2">
         <b-col md="4">
           <div class="values-item">
             <b-row>
@@ -90,15 +90,36 @@
         </b-col>
       </b-row>
     </section>
-    <section id="leadership">
+    <section id="leadership" class="p-5 m-5">
       <h2>LEADERSHIP</h2>
-      <span> We believe that financial inclusion is a human right. </span>
-      <b-row>
+      <span class="leadership-main-text"> We believe that financial inclusion is a human right. </span>
+      <b-row class="pt-4">
         <b-col md="3">
           <div id="ceo-image" class="leaders-profile"></div>
           <div class="leaders-text">
             <span class="d-block">Mathena Angeles</span>
             <span class="d-block">Chief Executive Officer</span>
+          </div>
+        </b-col>
+        <b-col md="3">
+          <div id="coo-image" class="leaders-profile"></div>
+          <div class="leaders-text">
+            <span class="d-block">Annysia Dupaya</span>
+            <span class="d-block">Chief Operations Officer</span>
+          </div>
+        </b-col>
+        <b-col md="3">
+          <div id="cco-image" class="leaders-profile"></div>
+          <div class="leaders-text">
+            <span class="d-block">Jannah Abellanosa</span>
+            <span class="d-block">Chief Compliance Officer</span>
+          </div>
+        </b-col>
+        <b-col md="3">
+          <div id="cfo-image" class="leaders-profile"></div>
+          <div class="leaders-text">
+            <span class="d-block">Andrea Combate</span>
+            <span class="d-block">Chief Finance Officer</span>
           </div>
         </b-col>
       </b-row>
@@ -140,8 +161,23 @@ section h2 {
   font-size: 1em;
   font-weight: bolder;
 }
+section#leadership {
+  font-weight: bolder;
+}
 .values-item-text {
   line-height: 100%;
+}
+.leadership-main-text{
+  font-size: 30pt;
+}
+.leaders-profile{
+  background-image: url(~@/assets/leaders-sample-img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15rem;
+  width: 12rem;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 </style>
 <script>

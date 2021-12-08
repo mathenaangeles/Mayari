@@ -62,6 +62,26 @@
           <h2 class="faq-header">Frequently Asked Questions</h2>
           <b-row>
             <b-col md="6">
+              <h3>General</h3>
+              <FAQListItem
+                v-for="faqItem in faqGeneral"
+                :key="faqItem.id"
+                :faqItem="faqItem"
+              >
+              </FAQListItem>
+            </b-col>
+            <b-col md="6">
+              <h3>Legal</h3>
+              <FAQListItem
+                v-for="faqItem in faqLegal"
+                :key="faqItem.id"
+                :faqItem="faqItem"
+              >
+              </FAQListItem>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col md="6">
               <h3>Application</h3>
               <FAQListItem
                 v-for="faqItem in faqApplication"
@@ -74,17 +94,6 @@
               <h3>Repayment</h3>
               <FAQListItem
                 v-for="faqItem in faqRepayment"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col md="6">
-              <h3>Legal</h3>
-              <FAQListItem
-                v-for="faqItem in faqLegal"
                 :key="faqItem.id"
                 :faqItem="faqItem"
               >
@@ -166,6 +175,20 @@ export default {
         email: "",
         mobile: "",
       },
+      faqGeneral: [
+        {
+          id: "id13",
+          question: "What is Mayari?",
+          answer:
+            "Mayari is an easy way to get loans and get started on your future with the help of a community. Skip the long lines and the hours of looking for what's right for you with an easy application process and assessment. Get the chance to post your story online and have others help you achieve your goals. All in the comfort of your own home.",
+        },
+        {
+          id: "id14",
+          question: "Is Mayari a government institution or a bank?",
+          answer:
+            "We are neither a government institution nor a bank. Mayari is a private lending company registered with the Philippine Securities and Exchange Commission. ",
+        },
+      ],
       faqApplication: [
         {
           id: "id1",
@@ -175,17 +198,35 @@ export default {
         },
         {
           id: "id2",
+          question: "What are examples of valid proof of income?",
+          answer:
+            "Examples for valid proof of income are salary slips, bank statements, and Annual Income Tax Returns.",
+        },
+        {
+          id: "id3",
+          question: "What are examples of valid personal identification?",
+          answer:
+            "Any government-issued ID counts as valid personal identification. Examples are passport, driver's license, or national ID.",
+        },
+        {
+          id: "id4",
+          question: "What are the eligibility requirements for a loan?",
+          answer:
+            "Applicant must be 21-65 years of age, a Filipino citizen, and employed or self-employed.",
+        },
+        {
+          id: "id5",
           question: "Can I get a new loan if I have an ongoing one?",
           answer: "No. Applicants may only have one active loan at a time.",
         },
         {
-          id: "id3",
+          id: "id6",
           question: "Can I get a loan if I have a bad credit history?",
           answer:
             "Mayari extends loans to eligible MSMEs irrespective of their credit history.",
         },
         {
-          id: "id4",
+          id: "id7",
           question: "Is this available anywhere in the Philippines?",
           answer:
             "Yes. Mayari may be accessed anywhere within the Philippines.",
@@ -193,7 +234,7 @@ export default {
       ],
       faqLegal: [
         {
-          id: "id5",
+          id: "id8",
           question: "Is there a penalty for late payment of monthly interest?",
           answer:
             "Yes. Late payment will be subject to penalties charged on the next billing statement.",
@@ -201,25 +242,25 @@ export default {
       ],
       faqRepayment: [
         {
-          id: "id6",
+          id: "id9",
           question: "How will I be billed?",
           answer:
             "Loan billing statements will be sent every 10th of the following month and must be settled before the 25th.",
         },
         {
-          id: "id7",
+          id: "id10",
           question: "How will I send my monthly payment?",
           answer:
             "Principal payment and interest may be sent through accredited banks and other e-wallets.",
         },
         {
-          id: "id8",
+          id: "id11",
           question: "How much interest will I pay?",
           answer:
             "Interest will be based on the loan amount and repayment terms.",
         },
         {
-          id: "id9",
+          id: "id12",
           question: "How long will I have to pay the borrowed amount?",
           answer:
             "Mayari offers payment terms from a minimum of 3 months up to 12 months.",

@@ -180,7 +180,7 @@ export default {
           id: "id13",
           question: "What is Mayari?",
           answer:
-            "Mayari is an easy way to get loans and get started on your future with the help of a community. Skip the long lines and the hours of looking for what's right for you with an easy application process and assessment. Get the chance to post your story online and have others help you achieve your goals. All in the comfort of your own home.",
+            "Mayari is an online lending company that enables local businesses to achieve financial success. We make it possible for borrowers to secure low-interest loans from the comfort of their own homes.",
         },
         {
           id: "id14",
@@ -194,50 +194,51 @@ export default {
           id: "id1",
           question: "How will I know if my application is approved?",
           answer:
-            "A confirmation message will be sent to the applicant’s registered email address within 24 to 48 hours after submitting their application.",
+            "A confirmation message will be sent to your registered email address within 24 to 48 hours after submitting your application.",
         },
         {
           id: "id2",
-          question: "What are examples of valid proof of income?",
+          question: "What are examples of a valid proof of income?",
           answer:
-            "Examples for valid proof of income are salary slips, bank statements, and Annual Income Tax Returns.",
+            "Examples of a valid proof of income are salary slips, bank statements, and Annual Income Tax Returns.",
         },
         {
           id: "id3",
-          question: "What are examples of valid personal identification?",
+          question: "What are examples of a valid personal identification?",
           answer:
-            "Any government-issued ID counts as valid personal identification. Examples are passport, driver's license, or national ID.",
+            "Any government-issued ID counts as valid personal identification. Examples are passports, driver's licenses, or national IDs.",
         },
         {
           id: "id4",
-          question: "What are the eligibility requirements for a loan?",
+          question:
+            "What are the eligibility requirements to apply for a loan?",
           answer:
-            "Applicant must be 21-65 years of age, a Filipino citizen, and employed or self-employed.",
+            "The applicant must be 21-65 years of age, a Filipino citizen, and either employed or self-employed.",
         },
         {
           id: "id5",
           question: "Can I get a new loan if I have an ongoing one?",
-          answer: "No. Applicants may only have one active loan at a time.",
+          answer: "No, applicants may only have one active loan at a time.",
         },
         {
           id: "id6",
           question: "Can I get a loan if I have a bad credit history?",
           answer:
-            "Mayari extends loans to eligible MSMEs irrespective of their credit history.",
+            "Mayari extends loans to eligible applicants irrespective of their credit history.",
         },
         {
           id: "id7",
           question: "Is this available anywhere in the Philippines?",
           answer:
-            "Yes. Mayari may be accessed anywhere within the Philippines.",
+            "Yes, Mayari can be accessed anywhere within the Philippines.",
         },
       ],
       faqLegal: [
         {
           id: "id8",
-          question: "Is there a penalty for late payment of monthly interest?",
+          question: "Is there a penalty for late payments?",
           answer:
-            "Yes. Late payment will be subject to penalties charged on the next billing statement.",
+            "Yes, late payments will be subject to penalties charged in the next billing statement.",
         },
       ],
       faqRepayment: [
@@ -251,19 +252,19 @@ export default {
           id: "id10",
           question: "How will I send my monthly payment?",
           answer:
-            "Principal payment and interest may be sent through accredited banks and other e-wallets.",
+            "Principal and interest payments may be sent through any accredited bank and other e-wallet.",
         },
         {
           id: "id11",
           question: "How much interest will I pay?",
           answer:
-            "Interest will be based on the loan amount and repayment terms.",
+            "The interest rate will be based on the loan amount and the repayment term.",
         },
         {
           id: "id12",
           question: "How long will I have to pay the borrowed amount?",
           answer:
-            "Mayari offers payment terms from a minimum of 3 months up to 12 months.",
+            "Mayari offers flexible payment terms within a minimum of 1 month up to 12 months.",
         },
       ],
     };

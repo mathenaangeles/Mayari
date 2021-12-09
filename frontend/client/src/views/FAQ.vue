@@ -3,10 +3,10 @@
     <b-jumbotron class="m-0 pt-1 faq-hero">
       <div>
         <b-row class="m-0 p-0">
-          <b-col md="9" sm="12" class="mt-2">
+          <b-col md="9" sm="12" class="my-2">
             <FAQCalculator />
           </b-col>
-          <b-col md="3" sm="12" class="mt-2" align="start" align-self="center">
+          <b-col md="3" sm="12" class="my-2" align="start" align-self="center">
             <h2 class="ctv-header">
               We offer the best online lending rates in the country.
             </h2>
@@ -58,8 +58,8 @@
     </b-jumbotron>
     <div class="faq-section mt-4">
       <b-container>
-        <div>
-          <h2 class="faq-header">Frequently Asked Questions</h2>
+        <h2 class="faq-header">Frequently Asked Questions</h2>
+        <div class="my-3">
           <b-row>
             <b-col md="6">
               <h3>General</h3>

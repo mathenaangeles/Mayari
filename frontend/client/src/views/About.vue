@@ -1,23 +1,23 @@
 <template>
   <div class="about">
-    <b-jumbotron class="m-0 pt-1 about-hero">
+    <b-jumbotron class="m-0 pt-1 pb-4 about-hero">
       <div class="p-4">
         <h1>We are financing the Filipino future</h1>
-        <span>
+        <p class="mt-2">
           Mayari is a solution devised by one of the winning teams of the Youth
           Power Hacks 2021 organized by Restless Development and Unilever. It
           was founded in 2021 by a group of female entrepreneurs from the
           Philippines. We provide online lending services to local businesses.
           Our goal is to make financial services more accessible to all
           borrowers regardless of their socio-economic background.
-        </span>
-        <br />
+        </p>
         <b-link
           href="#"
-          class="contact-link py-1 px-1 mt-5"
+          class="contact-link py-2"
           v-on:click="contact()"
         >
-          Send us a message
+          <span class="contact-message">Send us a message </span>
+          &nbsp;
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22.099"
@@ -36,23 +36,23 @@
       </div>
     </b-jumbotron>
     <section id="our-values">
-      <div class="px-5 p-2">
+      <div class="px-5 mb-4">
         <h2 class="d-block">OUR VALUES</h2>
         <span class="d-block"
           >We redesigned the 3C’s of credit to work for underserved communities
           rather than against them.
         </span>
       </div>
-      <b-row class="mt-2">
+      <b-row class="px-5">
         <b-col md="4">
           <div class="values-item">
-            <b-row>
-              <b-col md="4" align="right" class="px-0">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0">
                 <ChartDonut size="70" />
               </b-col>
-              <b-col md="8" class="px-1 values-item-text">
-                <span class="d-block">CAPACITY</span>
-                <span class="d-block pt-1">
+              <b-col md="8" class="px-0 values-item-text">
+                <h2 class="d-block mb-1">CAPACITY</h2>
+                <span class="d-block">
                   All our product decisions are informed by customer data and
                   analytics.
                 </span>
@@ -62,13 +62,13 @@
         </b-col>
         <b-col md="4">
           <div class="values-item">
-            <b-row>
-              <b-col md="4" align="right" class="px-0">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0">
                 <Domain size="70" />
               </b-col>
               <b-col md="8" class="px-1 values-item-text">
-                <span class="d-block">CAPITAL</span>
-                <span class="d-block pt-1">
+                <h2 class="d-block mb-1">CAPITAL</h2>
+                <span class="d-block">
                   We provide borrowers with the capital they need to grow their
                   business.
                 </span>
@@ -78,13 +78,13 @@
         </b-col>
         <b-col md="4">
           <div class="values-item">
-            <b-row>
-              <b-col md="4" align="right" class="px-0">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0">
                 <TooltipAccount size="70" />
               </b-col>
               <b-col md="8" class="px-1 values-item-text">
-                <span class="d-block">CHARACTER</span>
-                <span class="d-block pt-1">
+                <h2 class="d-block mb-1">CHARACTER</h2>
+                <span class="d-block">
                   We take a holistic approach to our assessments and look beyond
                   the credit score.
                 </span>
@@ -95,36 +95,36 @@
       </b-row>
     </section>
     <section id="leadership" class="p-5 m-5">
-      <h2>LEADERSHIP</h2>
+      <h2 class="mb-1">LEADERSHIP</h2>
       <span class="leadership-main-text">
         We believe that financial inclusion is a human right.
       </span>
-      <b-row class="pt-4">
+      <b-row class="mt-4">
         <b-col md="3">
           <div id="ceo-image" class="leaders-profile"></div>
-          <div class="leaders-text">
-            <span class="d-block">Mathena Angeles</span>
+          <div>
+            <span class="d-block leader-name">Mathena Angeles</span>
             <span class="d-block">Chief Executive Officer</span>
           </div>
         </b-col>
         <b-col md="3">
           <div id="coo-image" class="leaders-profile"></div>
-          <div class="leaders-text">
-            <span class="d-block">Annysia Dupaya</span>
+          <div>
+            <span class="d-block leader-name">Annysia Dupaya</span>
             <span class="d-block">Chief Operations Officer</span>
           </div>
         </b-col>
         <b-col md="3">
           <div id="cco-image" class="leaders-profile"></div>
-          <div class="leaders-text">
-            <span class="d-block">Jannah Abellanosa</span>
+          <div>
+            <span class="d-block leader-name">Jannah Abellanosa</span>
             <span class="d-block">Chief Compliance Officer</span>
           </div>
         </b-col>
         <b-col md="3">
           <div id="cfo-image" class="leaders-profile"></div>
-          <div class="leaders-text">
-            <span class="d-block">Andrea Combate</span>
+          <div>
+            <span class="d-block leader-name">Andrea Combate</span>
             <span class="d-block">Chief Finance Officer</span>
           </div>
         </b-col>
@@ -135,6 +135,7 @@
 <style scoped>
 .about {
   text-align: left;
+  font-size: 20px;
 }
 .about-hero {
   background-image: linear-gradient(#f14f8c, #ca4de5);
@@ -145,8 +146,11 @@
 .about-hero h1 {
   font-weight: bolder;
 }
+.contact-message {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+}
 .contact-link {
-  text-decoration: underline;
   color: white;
 }
 .contact-link:hover {
@@ -161,20 +165,19 @@ section#our-values {
   background-position: 50% 40%;
   color: white;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.568);
-  font-weight: bolder;
+}
+.values-item-text {
+  line-height: 100%;
 }
 section h2 {
   font-size: 1em;
   font-weight: bolder;
 }
-section#leadership {
-  font-weight: bolder;
-}
-.values-item-text {
-  line-height: 100%;
-}
 .leadership-main-text {
   font-size: 30pt;
+}
+.leader-name {
+  font-weight: bolder;
 }
 .leaders-profile {
   background-image: url(~@/assets/leaders-sample-img.jpg);

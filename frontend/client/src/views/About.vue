@@ -11,11 +11,7 @@
           Our goal is to make financial services more accessible to all
           borrowers regardless of their socio-economic background.
         </p>
-        <b-link
-          href="#"
-          class="contact-link py-2"
-          v-on:click="contact()"
-        >
+        <b-link href="#" class="contact-link py-2" v-on:click="contact()">
           <span class="contact-message">Send us a message </span>
           &nbsp;
           <svg
@@ -47,8 +43,8 @@
         <b-col md="4">
           <div class="values-item">
             <b-row align-v="center">
-              <b-col md="4" class="px-0">
-                <ChartDonut size="70" />
+              <b-col md="4" class="px-0 mt-3">
+                <ChartDonut size="70" class="value-icon mr-3" />
               </b-col>
               <b-col md="8" class="px-0 values-item-text">
                 <h2 class="d-block mb-1">CAPACITY</h2>
@@ -63,8 +59,8 @@
         <b-col md="4">
           <div class="values-item">
             <b-row align-v="center">
-              <b-col md="4" class="px-0">
-                <Domain size="70" />
+              <b-col md="4" class="px-0 mt-3">
+                <Domain size="70" class="value-icon mr-3" />
               </b-col>
               <b-col md="8" class="px-1 values-item-text">
                 <h2 class="d-block mb-1">CAPITAL</h2>
@@ -79,8 +75,8 @@
         <b-col md="4">
           <div class="values-item">
             <b-row align-v="center">
-              <b-col md="4" class="px-0">
-                <TooltipAccount size="70" />
+              <b-col md="4" class="px-0 mt-3">
+                <TooltipAccount size="70" class="value-icon mr-3" />
               </b-col>
               <b-col md="8" class="px-1 values-item-text">
                 <h2 class="d-block mb-1">CHARACTER</h2>
@@ -94,34 +90,34 @@
         </b-col>
       </b-row>
     </section>
-    <section id="leadership" class="p-5 m-5">
+    <section id="leadership" class="p-5 mt-4">
       <h2 class="mb-1">LEADERSHIP</h2>
       <span class="leadership-main-text">
         We believe that financial inclusion is a human right.
       </span>
       <b-row class="mt-4">
-        <b-col md="3">
+        <b-col md="3" class="mb-3">
           <div id="ceo-image" class="leaders-profile"></div>
           <div>
             <span class="d-block leader-name">Mathena Angeles</span>
             <span class="d-block">Chief Executive Officer</span>
           </div>
         </b-col>
-        <b-col md="3">
+        <b-col md="3" class="mb-3">
           <div id="coo-image" class="leaders-profile"></div>
           <div>
             <span class="d-block leader-name">Annysia Dupaya</span>
             <span class="d-block">Chief Operations Officer</span>
           </div>
         </b-col>
-        <b-col md="3">
+        <b-col md="3" class="mb-3">
           <div id="cco-image" class="leaders-profile"></div>
           <div>
             <span class="d-block leader-name">Jannah Abellanosa</span>
             <span class="d-block">Chief Compliance Officer</span>
           </div>
         </b-col>
-        <b-col md="3">
+        <b-col md="3" class="mb-3">
           <div id="cfo-image" class="leaders-profile"></div>
           <div>
             <span class="d-block leader-name">Andrea Combate</span>
@@ -165,6 +161,11 @@ section#our-values {
   background-position: 50% 40%;
   color: white;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.568);
+}
+@media (min-width: 768px) {
+  .value-icon {
+    float: right;
+  }
 }
 .values-item-text {
   line-height: 100%;

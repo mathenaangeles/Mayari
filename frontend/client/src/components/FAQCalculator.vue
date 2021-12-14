@@ -42,9 +42,14 @@
           <div class="range-limits mb-2">
             <b>1 Month</b><b class="float-right">12 Months</b>
           </div>
-          <div class="mt-2">
-            <input type="checkbox" id="checkbox" v-model="is_secured" />
-            <label for="checkbox"
+          <div class="custom-checkbox">
+            <input
+              type="checkbox"
+              id="checkbox"
+              class="custom-control-input"
+              v-model="is_secured"
+            />
+            <label class="custom-control-label" for="checkbox"
               >&nbsp;Do you want to secure your loan with collateral?</label
             >
           </div>
@@ -56,7 +61,7 @@
             have an interest rate of 0.01% per day — that is 100PHP per day. You
             will need to repay a total of 11400PHP.
           </p>
-          <p class="subtext my-0">
+          <p class="subtext mt-0 mb-2">
             ** Securing your loans with collaterals can significantly decrease
             your interest rate.
           </p>
@@ -108,10 +113,10 @@ export default {
   },
   methods: {
     installments: function (loan_amount, interest, payment_term) {
+      console.log(loan_amount, interest, payment_term);
       return (
-        loan_amount *
-        ((interest * Math.pow(1 + interest, payment_term)) /
-          (Math.pow(1 + interest, payment_term) - 1))
+        (loan_amount * (interest * Math.pow(1 + interest, payment_term))) /
+        (Math.pow(1 + interest, payment_term) - 1)
       );
     },
     calculate: function () {
@@ -286,5 +291,24 @@ input[type="range"]::-moz-range-thumb {
   color: #707070;
   font-size: 16px;
   margin-top: -10px;
+}
+.custom-control-label {
+  margin-left: 1.6rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: black !important;
+}
+.custom-checkbox
+  .custom-control-input:checked:focus
+  ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem #e5eef7;
+}
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem #e5eef7;
+}
+.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+  background-color: black;
 }
 </style>

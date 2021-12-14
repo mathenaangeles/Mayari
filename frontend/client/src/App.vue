@@ -105,7 +105,6 @@ footer.section-footer {
   color: white;
   text-align: left;
   background-color: #000000;
-  min-height: 150px;
   margin-top: auto;
 }
 .mayari-footer {
@@ -120,5 +119,11 @@ footer.section-footer {
 .footer-link:hover {
   color: #f14f8c;
   text-decoration: none;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !important;
+}
+.navbar-toggler {
+  border: 0px !important;
 }
 </style>

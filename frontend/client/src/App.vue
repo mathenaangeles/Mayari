@@ -16,7 +16,9 @@
         </b-collapse>
       </b-navbar>
     </div>
-    <router-view />
+    <vue-page-transition name="fade">
+      <router-view />
+    </vue-page-transition>
     <!-- FOOTER -->
     <footer class="section-footer mt-auto">
       <b-container>

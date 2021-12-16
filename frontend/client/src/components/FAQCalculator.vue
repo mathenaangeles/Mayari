@@ -256,11 +256,19 @@ input[type="range"]::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   background: -moz-linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
   background: linear-gradient(45deg, #afa3f0 0%, #b456de 100%);
+  /* background: #e5eef7; */
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: grab;
   background: white;
+  border: 1px solid #afa3f0;
+  /* box-shadow: -500px 0 0 500px #e5eef7; */
+}
+.range-limits {
+  color: #707070;
+  font-size: 16px;
+  margin-top: -10px;
 }
 .range-limits {
   color: #707070;

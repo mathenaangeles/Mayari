@@ -63,41 +63,49 @@
           <b-row>
             <b-col md="6">
               <h3>General</h3>
-              <FAQListItem
-                v-for="faqItem in faqGeneral"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
+              <transition-group name="fade" tag="div" appear>
+                <FAQListItem
+                  v-for="faqItem in faqGeneral"
+                  :key="faqItem.id"
+                  :faqItem="faqItem"
+                >
+                </FAQListItem>
+            </transition-group>
             </b-col>
             <b-col md="6">
               <h3>Legal</h3>
-              <FAQListItem
-                v-for="faqItem in faqLegal"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
+              <transition-group name="fade" tag="div" appear>
+                <FAQListItem
+                  v-for="faqItem in faqLegal"
+                  :key="faqItem.id"
+                  :faqItem="faqItem"
+                >
+                </FAQListItem>
+              </transition-group>
             </b-col>
           </b-row>
           <b-row>
             <b-col md="6">
               <h3>Application</h3>
-              <FAQListItem
-                v-for="faqItem in faqApplication"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
+              <transition-group name="fade" tag="div" appear>
+                <FAQListItem
+                  v-for="faqItem in faqApplication"
+                  :key="faqItem.id"
+                  :faqItem="faqItem"
+                >
+                </FAQListItem>
+              </transition-group>
             </b-col>
             <b-col md="6">
               <h3>Repayment</h3>
-              <FAQListItem
-                v-for="faqItem in faqRepayment"
-                :key="faqItem.id"
-                :faqItem="faqItem"
-              >
-              </FAQListItem>
+              <transition-group name="fade" tag="div" appear>
+                <FAQListItem
+                  v-for="faqItem in faqRepayment"
+                  :key="faqItem.id"
+                  :faqItem="faqItem"
+                >
+                </FAQListItem>
+              </transition-group>
             </b-col>
           </b-row>
         </div>
@@ -175,6 +183,7 @@ export default {
         email: "",
         mobile: "",
       },
+      show: true,
       faqGeneral: [
         {
           id: "id13",

@@ -2,15 +2,19 @@
   <div class="about">
     <b-jumbotron class="m-0 pt-1 pb-4 about-hero">
       <div class="p-4">
-        <h1>We are financing the Filipino future</h1>
-        <p class="mt-2">
-          Mayari is a solution devised by one of the winning teams of the Youth
-          Power Hacks 2021 organized by Restless Development and Unilever. It
-          was founded in 2021 by a group of female entrepreneurs from the
-          Philippines. We provide online lending services to local businesses.
-          Our goal is to make financial services more accessible to all
-          borrowers regardless of their socio-economic background.
-        </p>
+        <transition name="fade" appear>
+          <h1 style="animation-duration: 1s">We are financing the Filipino future</h1>
+        </transition>
+        <transition name="fadeUp" appear>
+          <p class="mt-2" style="animation-duration: 3s">
+            Mayari is a solution devised by one of the winning teams of the Youth
+            Power Hacks 2021 organized by Restless Development and Unilever. It
+            was founded in 2021 by a group of female entrepreneurs from the
+            Philippines. We provide online lending services to local businesses.
+            Our goal is to make financial services more accessible to all
+            borrowers regardless of their socio-economic background.
+          </p>
+        </transition>
         <b-link href="#" class="contact-link py-2" v-on:click="contact()">
           <span class="contact-message">Send us a message </span>
           &nbsp;
@@ -31,101 +35,105 @@
         </b-link>
       </div>
     </b-jumbotron>
-    <section id="our-values">
-      <div class="px-5 mb-4">
-        <h2 class="d-block">OUR VALUES</h2>
-        <span class="d-block"
-          >We redesigned the 3C’s of credit to work for underserved communities
-          rather than against them.
+    <transition name="fadeUp" appear>
+      <section id="our-values" style="animation-duration: 4s">
+        <div class="px-5 mb-4">
+          <h2 class="d-block">OUR VALUES</h2>
+          <span class="d-block"
+            >We redesigned the 3C’s of credit to work for underserved communities
+            rather than against them.
+          </span>
+        </div>
+        <b-row class="px-5">
+          <b-col md="4">
+            <div class="values-item">
+              <b-row align-v="center">
+                <b-col md="4" class="px-0 mt-3">
+                  <ChartDonut size="70" class="value-icon mr-3" />
+                </b-col>
+                <b-col md="8" class="px-0 values-item-text">
+                  <h2 class="d-block mb-1">CAPACITY</h2>
+                  <span class="d-block">
+                    All our product decisions are informed by customer data and
+                    analytics.
+                  </span>
+                </b-col>
+              </b-row>
+            </div>
+          </b-col>
+          <b-col md="4">
+            <div class="values-item">
+              <b-row align-v="center">
+                <b-col md="4" class="px-0 mt-3">
+                  <Domain size="70" class="value-icon mr-3" />
+                </b-col>
+                <b-col md="8" class="px-1 values-item-text">
+                  <h2 class="d-block mb-1">CAPITAL</h2>
+                  <span class="d-block">
+                    We provide borrowers with the capital they need to grow their
+                    business.
+                  </span>
+                </b-col>
+              </b-row>
+            </div>
+          </b-col>
+          <b-col md="4">
+            <div class="values-item">
+              <b-row align-v="center">
+                <b-col md="4" class="px-0 mt-3">
+                  <TooltipAccount size="70" class="value-icon mr-3" />
+                </b-col>
+                <b-col md="8" class="px-1 values-item-text">
+                  <h2 class="d-block mb-1">CHARACTER</h2>
+                  <span class="d-block">
+                    We take a holistic approach to our assessments and look beyond
+                    the credit score.
+                  </span>
+                </b-col>
+              </b-row>
+            </div>
+          </b-col>
+        </b-row>
+      </section>
+    </transition>
+    <transition name="fadeUp" appear>
+      <section id="leadership" class="p-5 mt-4" style="animation-duration: 4s">
+        <h2 class="mb-1">LEADERSHIP</h2>
+        <span class="leadership-main-text">
+          We believe that financial inclusion is a human right.
         </span>
-      </div>
-      <b-row class="px-5">
-        <b-col md="4">
-          <div class="values-item">
-            <b-row align-v="center">
-              <b-col md="4" class="px-0 mt-3">
-                <ChartDonut size="70" class="value-icon mr-3" />
-              </b-col>
-              <b-col md="8" class="px-0 values-item-text">
-                <h2 class="d-block mb-1">CAPACITY</h2>
-                <span class="d-block">
-                  All our product decisions are informed by customer data and
-                  analytics.
-                </span>
-              </b-col>
-            </b-row>
-          </div>
-        </b-col>
-        <b-col md="4">
-          <div class="values-item">
-            <b-row align-v="center">
-              <b-col md="4" class="px-0 mt-3">
-                <Domain size="70" class="value-icon mr-3" />
-              </b-col>
-              <b-col md="8" class="px-1 values-item-text">
-                <h2 class="d-block mb-1">CAPITAL</h2>
-                <span class="d-block">
-                  We provide borrowers with the capital they need to grow their
-                  business.
-                </span>
-              </b-col>
-            </b-row>
-          </div>
-        </b-col>
-        <b-col md="4">
-          <div class="values-item">
-            <b-row align-v="center">
-              <b-col md="4" class="px-0 mt-3">
-                <TooltipAccount size="70" class="value-icon mr-3" />
-              </b-col>
-              <b-col md="8" class="px-1 values-item-text">
-                <h2 class="d-block mb-1">CHARACTER</h2>
-                <span class="d-block">
-                  We take a holistic approach to our assessments and look beyond
-                  the credit score.
-                </span>
-              </b-col>
-            </b-row>
-          </div>
-        </b-col>
-      </b-row>
-    </section>
-    <section id="leadership" class="p-5 mt-4">
-      <h2 class="mb-1">LEADERSHIP</h2>
-      <span class="leadership-main-text">
-        We believe that financial inclusion is a human right.
-      </span>
-      <b-row class="mt-4">
-        <b-col md="3" class="mb-3">
-          <div id="ceo-image" class="leaders-profile"></div>
-          <div>
-            <span class="d-block leader-name">Mathena Angeles</span>
-            <span class="d-block">Chief Executive Officer</span>
-          </div>
-        </b-col>
-        <b-col md="3" class="mb-3">
-          <div id="coo-image" class="leaders-profile"></div>
-          <div>
-            <span class="d-block leader-name">Annysia Dupaya</span>
-            <span class="d-block">Chief Operations Officer</span>
-          </div>
-        </b-col>
-        <b-col md="3" class="mb-3">
-          <div id="cco-image" class="leaders-profile"></div>
-          <div>
-            <span class="d-block leader-name">Jannah Abellanosa</span>
-            <span class="d-block">Chief Compliance Officer</span>
-          </div>
-        </b-col>
-        <b-col md="3" class="mb-3">
-          <div id="cfo-image" class="leaders-profile"></div>
-          <div>
-            <span class="d-block leader-name">Andrea Combate</span>
-            <span class="d-block">Chief Finance Officer</span>
-          </div>
-        </b-col>
-      </b-row>
-    </section>
+        <b-row class="mt-4">
+          <b-col md="3" class="mb-3">
+            <div id="ceo-image" class="leaders-profile"></div>
+            <div>
+              <span class="d-block leader-name">Mathena Angeles</span>
+              <span class="d-block">Chief Executive Officer</span>
+            </div>
+          </b-col>
+          <b-col md="3" class="mb-3">
+            <div id="coo-image" class="leaders-profile"></div>
+            <div>
+              <span class="d-block leader-name">Annysia Dupaya</span>
+              <span class="d-block">Chief Operations Officer</span>
+            </div>
+          </b-col>
+          <b-col md="3" class="mb-3">
+            <div id="cco-image" class="leaders-profile"></div>
+            <div>
+              <span class="d-block leader-name">Jannah Abellanosa</span>
+              <span class="d-block">Chief Compliance Officer</span>
+            </div>
+          </b-col>
+          <b-col md="3" class="mb-3">
+            <div id="cfo-image" class="leaders-profile"></div>
+            <div>
+              <span class="d-block leader-name">Andrea Combate</span>
+              <span class="d-block">Chief Finance Officer</span>
+            </div>
+          </b-col>
+        </b-row>
+      </section>
+    </transition>
   </div>
 </template>
 <style scoped>
@@ -152,6 +160,7 @@
 .contact-link:hover {
   background-color: #7070701c;
   border-radius: 10px;
+  text-decoration: none;
 }
 section#our-values {
   padding: 2.5em;

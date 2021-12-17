@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-// import About from "../views/About.vue";
+import About from "../views/About.vue";
 import ErrorPage from "../views/ErrorPage.vue";
+import FAQ from "../views/FAQ.vue";
 
 Vue.use(VueRouter);
 
@@ -15,7 +16,7 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: ErrorPage,
+    component: About,
   },
   {
     path: "/404",
@@ -28,9 +29,9 @@ const routes = [
     component: ErrorPage,
   },
   {
-    path: "/faq",
+    path: "/faq/:amount?/:term?",
     name: "faq",
-    component: ErrorPage,
+    component: FAQ,
   },
   {
     path: "/contact",

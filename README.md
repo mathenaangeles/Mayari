@@ -1,24 +1,21 @@
-# client
+# Mayari
 
-## Project setup
-```
-npm install
-```
+## Get Started
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Backend
+1. Navigate to the backend directory.
+2. Run `source venv/bin/activate` to activate the virtual environment.
+3. Run `pip3 install -r requirements.txt`.
+4. Run `python3 server.py`.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Frontend
+1. Navigate to the client folder inside the frontend directory.
+2. Run `npm install`.
+3. Run `npm run serve` to compile and enable hot-reloads for development.
 
-### Lints and fixes files
-```
-npm run lint
-```
+4. To compile and minify to production, run `npm run build`.
+5. To lint and fix files, run `npm run lint`.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#### Customize Configuration
+Please read the [Configuration Reference](https://cli.vuejs.org/config/).

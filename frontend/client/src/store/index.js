@@ -3,21 +3,13 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-const state = {
+const state = {};
 
-}
+const mutations = {};
 
-const mutations = {
+const actions = {};
 
-}
-
-const actions = {
-
-}
-
-const getters = {
-
-}
+const getters = {};
 
 export default new Vuex.Store({
   state,

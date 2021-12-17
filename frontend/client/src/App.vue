@@ -17,7 +17,7 @@
       </b-navbar>
     </div>
     <!-- <vue-page-transition name="fade" style="animation-duration: 0.5s"> -->
-      <router-view />
+    <router-view />
     <!-- </vue-page-transition> -->
     <!-- FOOTER -->
     <footer class="section-footer mt-auto">

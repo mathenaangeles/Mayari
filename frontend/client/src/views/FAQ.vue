@@ -70,7 +70,7 @@
                   :faqItem="faqItem"
                 >
                 </FAQListItem>
-            </transition-group>
+              </transition-group>
             </b-col>
             <b-col md="6">
               <h3>Legal</h3>

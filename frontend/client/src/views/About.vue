@@ -3,16 +3,18 @@
     <b-jumbotron class="m-0 pt-1 pb-4 about-hero">
       <div class="p-4">
         <transition name="fade" appear>
-          <h1 style="animation-duration: 1s">We are financing the Filipino future</h1>
+          <h1 style="animation-duration: 1s">
+            We are financing the Filipino future
+          </h1>
         </transition>
-        <transition name="fadeUp" appear>
-          <p class="mt-2" style="animation-duration: 3s">
-            Mayari is a solution devised by one of the winning teams of the Youth
-            Power Hacks 2021 organized by Restless Development and Unilever. It
-            was founded in 2021 by a group of female entrepreneurs from the
-            Philippines. We provide online lending services to local businesses.
-            Our goal is to make financial services more accessible to all
-            borrowers regardless of their socio-economic background.
+        <transition name="fade" appear>
+          <p class="mt-2" style="animation-duration: 1s">
+            Mayari is a solution devised by one of the winning teams of the
+            Youth Power Hacks 2021 organized by Restless Development and
+            Unilever. It was founded in 2021 by a group of female entrepreneurs
+            from the Philippines. We provide online lending services to local
+            businesses. Our goal is to make financial services more accessible
+            to all borrowers regardless of their socio-economic background.
           </p>
         </transition>
         <b-link href="#" class="contact-link py-2" v-on:click="contact()">
@@ -35,67 +37,65 @@
         </b-link>
       </div>
     </b-jumbotron>
-    <transition name="fadeUp" appear>
-      <section id="our-values" style="animation-duration: 4s">
-        <div class="px-5 mb-4">
-          <h2 class="d-block">OUR VALUES</h2>
-          <span class="d-block"
-            >We redesigned the 3C’s of credit to work for underserved communities
-            rather than against them.
-          </span>
-        </div>
-        <b-row class="px-5">
-          <b-col md="4">
-            <div class="values-item">
-              <b-row align-v="center">
-                <b-col md="4" class="px-0 mt-3">
-                  <ChartDonut size="70" class="value-icon mr-3" />
-                </b-col>
-                <b-col md="8" class="px-0 values-item-text">
-                  <h2 class="d-block mb-1">CAPACITY</h2>
-                  <span class="d-block">
-                    All our product decisions are informed by customer data and
-                    analytics.
-                  </span>
-                </b-col>
-              </b-row>
-            </div>
-          </b-col>
-          <b-col md="4">
-            <div class="values-item">
-              <b-row align-v="center">
-                <b-col md="4" class="px-0 mt-3">
-                  <Domain size="70" class="value-icon mr-3" />
-                </b-col>
-                <b-col md="8" class="px-1 values-item-text">
-                  <h2 class="d-block mb-1">CAPITAL</h2>
-                  <span class="d-block">
-                    We provide borrowers with the capital they need to grow their
-                    business.
-                  </span>
-                </b-col>
-              </b-row>
-            </div>
-          </b-col>
-          <b-col md="4">
-            <div class="values-item">
-              <b-row align-v="center">
-                <b-col md="4" class="px-0 mt-3">
-                  <TooltipAccount size="70" class="value-icon mr-3" />
-                </b-col>
-                <b-col md="8" class="px-1 values-item-text">
-                  <h2 class="d-block mb-1">CHARACTER</h2>
-                  <span class="d-block">
-                    We take a holistic approach to our assessments and look beyond
-                    the credit score.
-                  </span>
-                </b-col>
-              </b-row>
-            </div>
-          </b-col>
-        </b-row>
-      </section>
-    </transition>
+    <section id="our-values">
+      <div class="px-5 mb-4">
+        <h2 class="d-block">OUR VALUES</h2>
+        <span class="d-block"
+          >We redesigned the 3C’s of credit to work for underserved communities
+          rather than against them.
+        </span>
+      </div>
+      <b-row class="px-5">
+        <b-col md="4">
+          <div class="values-item">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0 mt-3">
+                <ChartDonut size="70" class="value-icon mr-3" />
+              </b-col>
+              <b-col md="8" class="px-0 values-item-text">
+                <h2 class="d-block mb-1">CAPACITY</h2>
+                <span class="d-block">
+                  All our product decisions are informed by customer data and
+                  analytics.
+                </span>
+              </b-col>
+            </b-row>
+          </div>
+        </b-col>
+        <b-col md="4">
+          <div class="values-item">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0 mt-3">
+                <Domain size="70" class="value-icon mr-3" />
+              </b-col>
+              <b-col md="8" class="px-1 values-item-text">
+                <h2 class="d-block mb-1">CAPITAL</h2>
+                <span class="d-block">
+                  We provide borrowers with the capital they need to grow their
+                  business.
+                </span>
+              </b-col>
+            </b-row>
+          </div>
+        </b-col>
+        <b-col md="4">
+          <div class="values-item">
+            <b-row align-v="center">
+              <b-col md="4" class="px-0 mt-3">
+                <TooltipAccount size="70" class="value-icon mr-3" />
+              </b-col>
+              <b-col md="8" class="px-1 values-item-text">
+                <h2 class="d-block mb-1">CHARACTER</h2>
+                <span class="d-block">
+                  We take a holistic approach to our assessments and look beyond
+                  the credit score.
+                </span>
+              </b-col>
+            </b-row>
+          </div>
+        </b-col>
+      </b-row>
+    </section>
     <transition name="fadeUp" appear>
       <section id="leadership" class="p-5 mt-4" style="animation-duration: 4s">
         <h2 class="mb-1">LEADERSHIP</h2>

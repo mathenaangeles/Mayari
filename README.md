@@ -12,7 +12,6 @@
 1. Navigate to the client folder inside the frontend directory.
 2. Run `npm install`.
 3. Run `npm run serve` to compile and enable hot-reloads for development.
-
 4. To compile and minify to production, run `npm run build`.
 5. To lint and fix files, run `npm run lint`.
 

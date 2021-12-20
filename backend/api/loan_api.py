@@ -19,13 +19,13 @@ def create_loan(current_user):
     db.session.commit()
     return jsonify(loan.to_dict()), 201
 
-
+@token_required
 @loans_api.route('/', methods=('GET',))
 def fetch_loans():
     loans = Loan.query.all()
     return jsonify([loan.to_dict() for loan in loans])
 
-
+@token_required
 @loans_api.route('/<int:id>/', methods=('GET','PUT'))
 def fetch_loan(id):
     if request.method == 'GET':

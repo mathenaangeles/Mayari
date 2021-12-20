@@ -5,10 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy-static": "aws --region ap-southeast-1 --profile mayari-yseali s3 sync ./dist s3://mayari-yseali-seeds --delete"
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "axios": "^0.24.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",

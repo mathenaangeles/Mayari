@@ -197,7 +197,6 @@ export default {
           }
         }
       }
-
       this.result_weekly_installment = this.installments(
         this.result_loan_amount,
         this.result_interest_rate * 0.01,

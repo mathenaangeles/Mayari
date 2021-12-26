@@ -6,6 +6,7 @@ import ErrorPage from "../views/ErrorPage.vue";
 import FAQ from "../views/FAQ.vue";
 import Register from "../views/auth/Register.vue";
 import Login from "../views/auth/Login.vue";
+import UserDashboard from "../views/auth/UserDashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -49,6 +50,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: UserDashboard,
   },
 ];
 

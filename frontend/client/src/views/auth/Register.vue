@@ -67,6 +67,9 @@
             <b-button type="submit" variant="primary"
               >Create an account</b-button
             >
+            <span>
+              Already have an account? <b-link href="/login">Login.</b-link>
+            </span>
           </b-form>
         </b-col>
       </b-row>

@@ -35,7 +35,7 @@
                     required
                   ></b-form-input>
                 </b-input-group>
-                <p type="submit" class="ctv-button">
+                <b-link href="/register" type="submit" class="ctv-button">
                   Start your application now &nbsp;
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
                       fill="#fff"
                     />
                   </svg>
-                </p>
+                </b-link>
               </b-form>
             </b-col>
           </b-row>

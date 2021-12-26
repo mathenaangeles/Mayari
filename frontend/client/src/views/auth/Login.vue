@@ -28,9 +28,12 @@
                 required
               ></b-form-input>
             </b-form-group>
-            <b-button type="submit" variant="primary"
+            <b-button @click="onSubmit()" type="submit" variant="primary"
               >Login to your account</b-button
             >
+            <span>
+              No account yet? <b-link href="/register">Register.</b-link>
+            </span>
           </b-form>
         </b-col>
       </b-row>
@@ -53,6 +56,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
+      this.$router.push('/dashboard'); 
     },
   },
 };

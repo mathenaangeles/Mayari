@@ -15,7 +15,7 @@
                 You can get business loans as low as 2% APR disbursed in as little
                 as 1 business day.
               </b-card-text>
-              <a href="#">
+              <a href="/register">
                 <span class="home-card-subtext mr-2"
                   >Start your application now</span
                 >

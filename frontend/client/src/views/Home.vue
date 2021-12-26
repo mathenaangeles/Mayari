@@ -3,63 +3,70 @@
     <b-jumbotron class="m-0 home-hero">
       <b-row class="m-0 p-0">
         <b-col md="6" class="mt-2">
-          <b-card
-            title="Change your life one loan at a time"
-            class="transparent-card"
-            text-variant="white"
-            id="main-card"
-          >
-            <b-card-text class="home-card-text">
-              We are here to support your dreams no matter your credit score.
-              You can get business loans as low as 2% APR disbursed in as little
-              as 1 business day.
-            </b-card-text>
-            <a href="#">
-              <span class="home-card-subtext mr-2"
-                >Start your application now</span
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22.099"
-                height="13.501"
-                viewBox="0 0 22.099 13.501"
-              >
-                <path
-                  id="Icon_ionic-ios-arrow-round-forward"
-                  data-name="Icon ionic-ios-arrow-round-forward"
-                  d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
-                  transform="translate(-7.875 -11.252)"
-                  fill="#fff"
-                />
-              </svg>
-            </a>
-          </b-card>
+          <transition name="fade" appear>
+            <b-card
+              title="Change your life one loan at a time"
+              class="transparent-card"
+              text-variant="white"
+              id="main-card"
+            >
+              <b-card-text class="home-card-text">
+                We are here to support your dreams no matter your credit score.
+                You can get business loans as low as 2% APR disbursed in as little
+                as 1 business day.
+              </b-card-text>
+              <a href="#">
+                <span class="home-card-subtext mr-2"
+                  >Start your application now</span
+                >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22.099"
+                  height="13.501"
+                  viewBox="0 0 22.099 13.501"
+                >
+                  <path
+                    id="Icon_ionic-ios-arrow-round-forward"
+                    data-name="Icon ionic-ios-arrow-round-forward"
+                    d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
+                    transform="translate(-7.875 -11.252)"
+                    fill="#fff"
+                  />
+                </svg>
+              </a>
+            </b-card>
+          </transition>
         </b-col>
         <b-col md="6" class="mt-2">
-          <HomeCalculator />
+          <transition name="fade" appear>
+            <HomeCalculator />
+          </transition>
         </b-col>
       </b-row>
     </b-jumbotron>
     <div class="section section-grey">
-      <b-container fluid class="eligibility">
-        <b-row class="mx-2 eligibility-requirements">
-          <b-col md="3" class="my-1"
-            >What are the eligibility requirements?</b-col
-          >
-          <b-col md="3" class="my-1">
-            <account />
-            21-65 years old
-          </b-col>
-          <b-col md="3" class="my-1">
-            <home-city />
-            Filipino citizen
-          </b-col>
-          <b-col md="3" class="my-1">
-            <briefcase-variant />
-            Employed or self-employed
-          </b-col>
-        </b-row>
-      </b-container>
+      <transition name="fade" appear>
+        <b-container fluid class="eligibility">
+          <b-row class="mx-2 eligibility-requirements"
+          style="animation-duration: 2s">
+            <b-col md="3" class="my-1"
+              >What are the eligibility requirements?</b-col
+            >
+            <b-col md="3" class="my-1">
+              <account />
+              21-65 years old
+            </b-col>
+            <b-col md="3" class="my-1">
+              <home-city />
+              Filipino citizen
+            </b-col>
+            <b-col md="3" class="my-1">
+              <briefcase-variant />
+              Employed or self-employed
+            </b-col>
+          </b-row>
+        </b-container>
+      </transition>
     </div>
     <div class="section mt-4">
       <b-container>
@@ -88,7 +95,7 @@
             possible.
           </p>
         </div>
-        <div class="card-container my-4">
+        <div class="card-container my-4" data-aos="fade">
           <b-card-group deck>
             <b-card
               title="01. Complete the form"

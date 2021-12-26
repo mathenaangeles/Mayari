@@ -2,58 +2,60 @@
   <div class="faq">
     <b-jumbotron class="m-0 pt-1 faq-hero">
       <div>
-        <b-row class="m-0 p-0">
-          <b-col md="9" sm="12" class="my-2">
-            <FAQCalculator />
-          </b-col>
-          <b-col md="3" sm="12" class="my-2" align="start" align-self="center">
-            <h2 class="ctv-header">
-              We offer the best online lending rates in the country.
-            </h2>
-            <b-form>
-              <b-input-group class="mt-3 mb-2">
-                <b-input-group-prepend>
-                  <span class="icon-prepend mt-1"><Email /></span>
-                </b-input-group-prepend>
-                <b-form-input
-                  id="ctv-email"
-                  v-model="form.email"
-                  type="email"
-                  placeholder="Enter your email"
-                  required
-                ></b-form-input>
-              </b-input-group>
-              <b-input-group class="mt-2 mb-3">
-                <b-input-group-prepend>
-                  <span class="icon-prepend mt-1"><Phone /></span>
-                </b-input-group-prepend>
-                <b-form-input
-                  id="ctv-mobile"
-                  v-model="form.mobile"
-                  placeholder="Enter your mobile number"
-                  required
-                ></b-form-input>
-              </b-input-group>
-              <p type="submit" class="ctv-button">
-                Start your application now &nbsp;
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22.099"
-                  height="13.501"
-                  viewBox="0 0 22.099 13.501"
-                >
-                  <path
-                    id="Icon_ionic-ios-arrow-round-forward"
-                    data-name="Icon ionic-ios-arrow-round-forward"
-                    d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
-                    transform="translate(-7.875 -11.252)"
-                    fill="#fff"
-                  />
-                </svg>
-              </p>
-            </b-form>
-          </b-col>
-        </b-row>
+        <transition name="fade" appear>
+          <b-row class="m-0 p-0">
+            <b-col md="9" sm="12" class="my-2">
+                <FAQCalculator />
+            </b-col>
+            <b-col md="3" sm="12" class="my-2" align="start" align-self="center">
+              <h2 class="ctv-header">
+                We offer the best online lending rates in the country.
+              </h2>
+              <b-form>
+                <b-input-group class="mt-3 mb-2">
+                  <b-input-group-prepend>
+                    <span class="icon-prepend mt-1"><Email /></span>
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="ctv-email"
+                    v-model="form.email"
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                  ></b-form-input>
+                </b-input-group>
+                <b-input-group class="mt-2 mb-3">
+                  <b-input-group-prepend>
+                    <span class="icon-prepend mt-1"><Phone /></span>
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="ctv-mobile"
+                    v-model="form.mobile"
+                    placeholder="Enter your mobile number"
+                    required
+                  ></b-form-input>
+                </b-input-group>
+                <p type="submit" class="ctv-button">
+                  Start your application now &nbsp;
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22.099"
+                    height="13.501"
+                    viewBox="0 0 22.099 13.501"
+                  >
+                    <path
+                      id="Icon_ionic-ios-arrow-round-forward"
+                      data-name="Icon ionic-ios-arrow-round-forward"
+                      d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
+                      transform="translate(-7.875 -11.252)"
+                      fill="#fff"
+                    />
+                  </svg>
+                </p>
+              </b-form>
+            </b-col>
+          </b-row>
+        </transition>
       </div>
     </b-jumbotron>
     <div class="faq-section mt-4">
@@ -61,7 +63,7 @@
         <h2 class="faq-header">Frequently Asked Questions</h2>
         <div class="my-3">
           <b-row>
-            <b-col md="6">
+            <b-col md="6" data-aos="fade">
               <h3>General</h3>
               <transition-group name="fade" tag="div" appear>
                 <FAQListItem
@@ -72,7 +74,7 @@
                 </FAQListItem>
               </transition-group>
             </b-col>
-            <b-col md="6">
+            <b-col md="6" data-aos="fade">
               <h3>Legal</h3>
               <transition-group name="fade" tag="div" appear>
                 <FAQListItem
@@ -85,7 +87,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col md="6">
+            <b-col md="6" data-aos="fade">
               <h3>Application</h3>
               <transition-group name="fade" tag="div" appear>
                 <FAQListItem
@@ -96,7 +98,7 @@
                 </FAQListItem>
               </transition-group>
             </b-col>
-            <b-col md="6">
+            <b-col md="6" data-aos="fade">
               <h3>Repayment</h3>
               <transition-group name="fade" tag="div" appear>
                 <FAQListItem

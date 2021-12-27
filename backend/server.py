@@ -7,6 +7,8 @@ CORS(app, resources={r"/*":{"origins":"*"}})
 
 from models import db
 db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 from api import loan_api, user_api
 app.register_blueprint(loan_api.loans_api, url_prefix="/loans")

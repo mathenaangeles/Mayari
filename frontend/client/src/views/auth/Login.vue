@@ -42,6 +42,7 @@
 </template>
 <style scoped></style>
 <script>
+import { EventBus } from "@/utils";
 export default {
   name: "Login",
   components: {},
@@ -50,14 +51,25 @@ export default {
       form: {
         email: "",
         password: "",
+        error: "",
       },
     };
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      this.$router.push('/dashboard'); 
+      this.$store
+        .dispatch("login", { email: this.email, password: this.password })
+        .then(() => this.$router.push("/dashboard"));
     },
+  },
+  mounted() {
+    EventBus.$on("failedLogin", (msg) => {
+      this.error = msg;
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off("failedLogin");
   },
 };
 </script>

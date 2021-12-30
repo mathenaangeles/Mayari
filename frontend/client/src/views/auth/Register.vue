@@ -78,6 +78,7 @@
 </template>
 <style scoped></style>
 <script>
+import { EventBus } from "@/utils";
 export default {
   name: "Register",
   components: {},
@@ -89,13 +90,32 @@ export default {
         last_name: "",
         mobile_number: "",
         password: "",
+        error: "",
       },
     };
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
+      this.$store
+        .dispatch("register", {
+          email: this.email,
+          first_name: this.first_name,
+          last_name: this.last_name,
+          mobile_number: this.mobile_number,
+          password: this.password,
+        })
+        .then(() => this.$router.push("/dashboard"))
+        .catch(() => console.log(this.error));
     },
+  },
+  mounted() {
+    EventBus.$on("failedRegister", (msg) => {
+      this.error = msg;
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off("failedRegister");
   },
 };
 </script>

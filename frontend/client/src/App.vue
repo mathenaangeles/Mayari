@@ -13,6 +13,17 @@
             <b-nav-item class="nav-style" to="/blog">Blog</b-nav-item>
             <b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
           </b-navbar-nav>
+          <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
+            <b-button>Logout</b-button>
+          </b-navbar-nav>
+          <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
+            <router-link to="/register">
+              <b-button>Register</b-button>
+            </router-link>
+            <router-link to="/login">
+              <b-button>Login</b-button>
+            </router-link>
+          </b-navbar-nav>
         </b-collapse>
       </b-navbar>
     </div>
@@ -70,6 +81,11 @@ export default {
           "mailto:inquiries@mayari.io?subject=My%20Question&body=Place%20inquiries%20here";
       },
     };
+  },
+  computed: {
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
+    }
   },
 };
 </script>

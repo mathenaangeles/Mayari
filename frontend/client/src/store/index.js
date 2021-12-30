@@ -13,9 +13,9 @@ const state = {
 };
 
 const mutations = {
-  setUserData(state, payload) {
-    console.log("setUserData payload = ", payload);
-    state.userData = payload.userData;
+  setUser(state, payload) {
+    console.log("setUser payload = ", payload);
+    state.user = payload.user;
   },
   setJwtToken(state, payload) {
     console.log("setJWTToken payload = ", payload);
@@ -25,22 +25,22 @@ const mutations = {
 };
 
 const actions = {
-  login(context, userData) {
-    context.commit("setUserData", { userData });
-    return login(userData)
+  login(context, user) {
+    context.commit("setUser", { user });
+    return login(user)
       .then((response) => context.commit("setJwtToken", { jwt: response.data }))
       .catch((error) => {
-        console.log("Error Authenticating: ", error);
-        EventBus.$emit("failedAuthentication", error);
+        console.log("Authentication Error: ", error);
+        EventBus.$emit("failedLogin", error);
       });
   },
-  register(context, userData) {
-    context.commit("setUserData", { userData });
-    return register(userData)
-      .then(context.dispatch("login", userData))
+  register(context, user) {
+    context.commit("setUser", { user });
+    return register(user)
+      .then(context.dispatch("login", user))
       .catch((error) => {
-        console.log("Error Registering: ", error);
-        EventBus.$emit("failedRegistering: ", error);
+        console.log("Registration Error: ", error);
+        EventBus.$emit("failedRegister: ", error);
       });
   },
 };

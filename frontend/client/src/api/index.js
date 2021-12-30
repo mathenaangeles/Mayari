@@ -6,10 +6,10 @@ const API_URL = "http://127.0.0.1:5000";
 //   return axios.get(`${API_URL}/loans/`, {headers:{ Authorization: `Bearer: ${jwt}`}})
 // }
 
-export function login(userData) {
-  return axios.post(`${API_URL}/login/`, userData);
+export function login(user) {
+  return axios.post(`${API_URL}/users/login/`, user);
 }
 
-export function register(userData) {
-  return axios.post(`${API_URL}/register/`, userData);
+export function register(user) {
+  return axios.post(`${API_URL}/users/register/`, user);
 }

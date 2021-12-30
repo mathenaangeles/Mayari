@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object("config.BaseConfig")
-CORS(app, resources={r"/*":{"origins":"*"}})
+CORS(app)
 
 from models import db
 db.init_app(app)

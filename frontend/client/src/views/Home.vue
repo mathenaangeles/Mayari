@@ -12,8 +12,8 @@
             >
               <b-card-text class="home-card-text">
                 We are here to support your dreams no matter your credit score.
-                You can get business loans as low as 2% APR disbursed in as little
-                as 1 business day.
+                You can get business loans as low as 2% APR disbursed in as
+                little as 1 business day.
               </b-card-text>
               <a href="/register">
                 <span class="home-card-subtext mr-2"
@@ -47,8 +47,10 @@
     <div class="section section-grey">
       <transition name="fade" appear>
         <b-container fluid class="eligibility">
-          <b-row class="mx-2 eligibility-requirements"
-          style="animation-duration: 2s">
+          <b-row
+            class="mx-2 eligibility-requirements"
+            style="animation-duration: 2s"
+          >
             <b-col md="3" class="my-1"
               >What are the eligibility requirements?</b-col
             >

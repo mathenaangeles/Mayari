@@ -6,22 +6,27 @@ import { isValidJwt, EventBus } from "@/utils";
 
 Vue.use(Vuex);
 
-const state = {
-  loans: [],
-  user: {},
-  jwt: "",
-};
+const initialState = () => {
+  return {
+    loans: [],
+    user: {},
+    jwt: "",
+  }
+}
+
+const state = initialState()
 
 const mutations = {
   setUser(state, payload) {
-    console.log("setUser payload = ", payload);
     state.user = payload.user;
   },
   setJwtToken(state, payload) {
-    console.log("setJWTToken payload = ", payload);
     localStorage.token = payload.jwt.token;
     state.jwt = payload.jwt;
   },
+  resetState (state) {
+    Object.assign(state, initialState())
+  }
 };
 
 const actions = {
@@ -43,6 +48,9 @@ const actions = {
         EventBus.$emit("failedRegister: ", error);
       });
   },
+  logout(context) {
+    context.commit("resetState");
+  }
 };
 
 const getters = {

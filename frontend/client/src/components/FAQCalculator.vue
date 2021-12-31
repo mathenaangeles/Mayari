@@ -113,7 +113,6 @@ export default {
   },
   methods: {
     installments: function (loan_amount, interest, payment_term) {
-      console.log(loan_amount, interest, payment_term);
       return (
         (loan_amount * (interest * Math.pow(1 + interest, payment_term))) /
         (Math.pow(1 + interest, payment_term) - 1)

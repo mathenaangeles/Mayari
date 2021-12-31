@@ -14,14 +14,16 @@
             <b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
-            <b-button>Logout</b-button>
+            <b-button class="white-outline-button mt-1" @click="logout">Logout</b-button>
           </b-navbar-nav>
           <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
             <router-link to="/register">
-              <b-button>Register</b-button>
+              <b-button class="white-outline-button mt-1 mr-2"
+                >Register</b-button
+              >
             </router-link>
             <router-link to="/login">
-              <b-button>Login</b-button>
+              <b-button class="white-outline-button mt-1">Login</b-button>
             </router-link>
           </b-navbar-nav>
         </b-collapse>
@@ -83,8 +85,14 @@ export default {
     };
   },
   computed: {
-    isAuthenticated () {
-      return this.$store.getters.isAuthenticated
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+  methods: {
+    logout: function () {
+      this.$store.dispatch("logout")
+      .then(() => {this.$router.push('/login')});
     }
   },
 };
@@ -143,5 +151,10 @@ footer.section-footer {
 }
 .navbar-toggler {
   border: 0px !important;
+}
+.white-outline-button {
+  background: transparent !important;
+  border: 1px solid white !important;
+  border-radius: 10px;
 }
 </style>

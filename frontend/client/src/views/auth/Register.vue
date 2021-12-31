@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="6"></b-col>
         <b-col md="6">
-          <h1>Sign In</h1>
+          <h1>Sign Up</h1>
           <b-form @submit="onSubmit">
             <b-form-group id="email" label="Email" label-for="email-input">
               <b-form-input
@@ -99,19 +99,18 @@ export default {
       event.preventDefault();
       this.$store
         .dispatch("register", {
-          email: this.email,
-          first_name: this.first_name,
-          last_name: this.last_name,
-          mobile_number: this.mobile_number,
-          password: this.password,
+          email: this.form.email,
+          first_name: this.form.first_name,
+          last_name: this.form.last_name,
+          mobile_number: this.form.mobile_number,
+          password: this.form.password,
         })
-        .then(() => this.$router.push("/dashboard"))
-        .catch(() => console.log(this.error));
+        .then(() => this.$router.push("/dashboard"));
     },
   },
   mounted() {
     EventBus.$on("failedRegister", (msg) => {
-      this.error = msg;
+      this.form.error = msg;
     });
   },
   beforeDestroy() {

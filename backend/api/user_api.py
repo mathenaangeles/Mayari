@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from flask import Blueprint, jsonify, request, current_app
 
 import sys
+import jwt
 sys.path.append("..") 
 
 from models import db, User
@@ -11,6 +12,7 @@ users_api = Blueprint('users', __name__)
 @users_api.route('/register/', methods=('POST',))
 def register():
     data = request.get_json()
+    # print(data, file=sys.stdout)
     user = User(**data)
     db.session.add(user)
     db.session.commit()
@@ -28,4 +30,4 @@ def login():
         'iat':datetime.utcnow(),
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
-    return jsonify({ 'token': token.decode('UTF-8') })
+    return jsonify({ 'token': token })

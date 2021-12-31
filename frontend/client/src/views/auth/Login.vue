@@ -28,7 +28,7 @@
                 required
               ></b-form-input>
             </b-form-group>
-            <b-button @click="onSubmit()" type="submit" variant="primary"
+            <b-button type="submit" variant="primary"
               >Login to your account</b-button
             >
             <span>
@@ -59,13 +59,16 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       this.$store
-        .dispatch("login", { email: this.email, password: this.password })
+        .dispatch("login", {
+          email: this.form.email,
+          password: this.form.password,
+        })
         .then(() => this.$router.push("/dashboard"));
     },
   },
   mounted() {
     EventBus.$on("failedLogin", (msg) => {
-      this.error = msg;
+      this.form.error = msg;
     });
   },
   beforeDestroy() {

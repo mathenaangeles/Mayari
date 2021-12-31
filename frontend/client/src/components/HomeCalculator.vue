@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     goToFAQ: function () {
-      console.log("GET");
       this.$router.push({
         name: "faq",
         params: { amount: this.loan_amount, term: this.payment_term },

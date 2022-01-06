@@ -138,6 +138,8 @@ a:hover {
 }
 .ctv-button {
   font-size: 20px;
+  background: transparent;
+  border: 0px;
 }
 input::placeholder,
 input {

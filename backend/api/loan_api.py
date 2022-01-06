@@ -9,8 +9,8 @@ from utils import token_required
 
 loans_api = Blueprint('loans', __name__)
 
-@loans_api.route('/', methods=('POST',))
 @token_required
+@loans_api.route('/', methods=('POST',))
 def create_loan(current_user):
     data = request.get_json()
     loan = Loan(amount=data['amount'])

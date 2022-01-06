@@ -11,7 +11,7 @@
             <b-nav-item class="nav-style" to="/">Home</b-nav-item>
             <b-nav-item class="nav-style" to="/faq">FAQ</b-nav-item>
             <b-nav-item class="nav-style" to="/blog">Blog</b-nav-item>
-            <b-nav-item class="nav-style" to="/about">About Us</b-nav-item>
+            <b-nav-item class="nav-style" to="/about">About</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
             <b-button class="white-outline-button mt-1" @click="logout">Logout</b-button>

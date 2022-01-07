@@ -28,7 +28,7 @@ class User(db.Model):
     gender = db.Column(db.String(255), nullable=True)
     marital_status = db.Column(db.String(255), nullable=True)
     loans = db.relationship("Loan", backref="borrower", lazy=False)
-
+    
     def __init__(self, email, first_name, last_name, mobile_number, password):
         self.email = email
         self.first_name = first_name
@@ -54,18 +54,30 @@ class User(db.Model):
 
 
 class Loan(db.Model):
-    LOAN_TYPES = [
+    COLLATERAL_TYPES = [
         (u'with_collateral', u'with collateral'),
         (u'without_collateral', u'without collateral'),
+    ]
+    STATUS = [
+        (u'pending', u'pending'),
+        (u'approved', u'approved'),
+        (u'rejected', u'rejected'),
     ]
     __tablename__ = 'loans'
     id = db.Column(db.Integer, primary_key=True)
     borrower_id =  db.Column(db.Integer, db.ForeignKey('users.id'))
+    business = db.relationship("Business",  backref="loan", uselist=False)
     amount = db.Column(db.Integer, nullable=False)
-    loan_type = db.Column(ChoiceType(LOAN_TYPES), nullable=False)
+    collateral_type = db.Column(ChoiceType(COLLATERAL_TYPES), nullable=False)
     payment_term = db.Column(db.String(255), nullable=False)
     interest_rate = db.Column(db.Float, nullable=True)
+    status = db.Column(ChoiceType(STATUS),  default=u'pending')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, amount, collateral_type, payment_term):
+        self.amount = amount
+        self.collateral_type = collateral_type
+        self.payment_term = payment_term
 
     def to_dict(self):
       return dict(id=self.id,
@@ -73,3 +85,21 @@ class Loan(db.Model):
                   amount=self.amount,
                   interest_rate=self.interest_rate,
                   created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
+
+class Business(db.Model):
+    __tablename__ = 'business'
+    id = db.Column(db.Integer, primary_key=True)
+    loan_id = db.Column(db.Integer, db.ForeignKey('loans.id'))
+    name = db.Column(db.String(255), nullable=False)
+    street_address = db.Column(db.String(255), nullable=True)
+    city = db.Column(db.String(255), nullable=True)
+    zip_code = db.Column(db.String(10), nullable=True)
+    industry = db.Column(db.String(255), nullable=False)
+    monthly_income = db.Column(db.Integer, nullable=False)
+    monthly_expenses= db.Column(db.Integer, nullable=False)
+    years = db.Column(db.Integer, nullable=False)
+
+    def to_dict(self):
+      return dict(id=self.id,
+                  loan_id=self.loan_id,
+                  name=self.name)

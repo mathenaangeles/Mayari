@@ -67,23 +67,30 @@ class Loan(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     borrower_id =  db.Column(db.Integer, db.ForeignKey('users.id'))
     business = db.relationship("Business",  backref="loan", uselist=False)
-    amount = db.Column(db.Integer, nullable=False)
+    requested_amount = db.Column(db.Float, nullable=False)
     collateral_type = db.Column(ChoiceType(COLLATERAL_TYPES), nullable=False)
     payment_term = db.Column(db.String(255), nullable=False)
     interest_rate = db.Column(db.Float, nullable=True)
+    principal = db.Column(db.Float, nullable=True)
+    total_amount = db.Column(db.Float, nullable=True)
+    outstanding_balance =  db.Column(db.Float, nullable=True)
     status = db.Column(ChoiceType(STATUS),  default=u'pending')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, amount, collateral_type, payment_term):
-        self.amount = amount
+    def __init__(self, requested_amount, collateral_type, payment_term):
+        self.requested_amount = requested_amount
         self.collateral_type = collateral_type
         self.payment_term = payment_term
 
     def to_dict(self):
       return dict(id=self.id,
                   borrower_id=self.borrower_id,
-                  amount=self.amount,
-                  interest_rate=self.interest_rate,
+                  total_amount=self.total_amount,
+                  principal = self.principal,
+                  interest_rate = self.interest_rate,
+                  payment_term = self.payment_term,
+                  outstanding_balance = self.outstanding_balance,
+                  status = self.status,
                   created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
 
 class Business(db.Model):

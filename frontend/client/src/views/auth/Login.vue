@@ -65,7 +65,7 @@ import { EventBus } from "@/utils";
 export default {
   name: "Login",
   components: {
-    AuthSideContainer
+    AuthSideContainer,
   },
   data() {
     return {

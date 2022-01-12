@@ -1,7 +1,9 @@
 <template>
   <div class="not-found">
     <h1 class="not-found-header">404</h1>
-    <p class="not-found-subtitle mb-5">Oops! We're still working on this page.</p>
+    <p class="not-found-subtitle mb-5">
+      Oops! We're still working on this page.
+    </p>
   </div>
 </template>
 <style scoped>

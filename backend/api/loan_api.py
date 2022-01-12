@@ -36,9 +36,10 @@ def fetch_loan(id):
     elif request.method == 'PUT':
         data = request.get_json()
         loan = Loan.query.get(data['id'])
-        loan.amount = data['amount'] 
         loan.interest_rate = data['interest_rate']
         loan.payment_term = data['payment_term'] 
+        loan.principal = data['principal']
+        loan.total_amount = data['total_amount']
         loan.status = data['status']
         db.session.commit()
         return jsonify(loan.to_dict()), 201

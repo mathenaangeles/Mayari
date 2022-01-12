@@ -29,7 +29,9 @@
       </div>
       <div class="link-container">
         {{ authContent.message }} <br />
-        <b-link class="custom-link" :to="authContent.linkRoute">{{ authContent.linkText }}</b-link>
+        <b-link class="custom-link" :to="authContent.linkRoute">{{
+          authContent.linkText
+        }}</b-link>
       </div>
     </div>
   </div>
@@ -92,9 +94,9 @@ export default {
     },
   },
   methods: {
-      goTo(key) {
-          this.$router.push({ name: key });
-      }
+    goTo(key) {
+      this.$router.push({ name: key });
+    },
   },
   components: {},
 };

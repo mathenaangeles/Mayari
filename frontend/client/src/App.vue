@@ -14,7 +14,9 @@
             <b-nav-item class="nav-style" to="/about">About</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
-            <b-button class="white-outline-button mt-1" @click="logout">Logout</b-button>
+            <b-button class="white-outline-button mt-1" @click="logout"
+              >Logout</b-button
+            >
           </b-navbar-nav>
           <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
             <router-link to="/register">
@@ -91,9 +93,10 @@ export default {
   },
   methods: {
     logout: function () {
-      this.$store.dispatch("logout")
-      .then(() => {this.$router.push('/login')});
-    }
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/login");
+      });
+    },
   },
 };
 </script>

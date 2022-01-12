@@ -1,10 +1,10 @@
 <template>
-  <div class="dashboard"></div>
+  <div class="loan-form"></div>
 </template>
 <style scoped></style>
 <script>
 export default {
-  name: "Dashboard",
+  name: "LoanForm",
   components: {},
   computed: {
     isAuthenticated() {

@@ -8,7 +8,7 @@ import Register from "../views/auth/Register.vue";
 import Login from "../views/auth/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 
-import store from '../store/index.js'
+import store from "../store/index.js";
 
 Vue.use(VueRouter);
 
@@ -43,24 +43,24 @@ const routes = [
     name: "register",
     component: Register,
     meta: {
-      hideForAuthenticated: true
-    }
+      hideForAuthenticated: true,
+    },
   },
   {
     path: "/login",
     name: "login",
     component: Login,
     meta: {
-      hideForAuthenticated: true
-    }
+      hideForAuthenticated: true,
+    },
   },
   {
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard,
     meta: {
-      requiresAuthentication: true
-    }
+      requiresAuthentication: true,
+    },
   },
 ];
 
@@ -71,7 +71,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuthentication)) {
+  if (to.matched.some((record) => record.meta.requiresAuthentication)) {
     if (!store.getters.isAuthenticated) {
       next({ name: "login" });
     } else {
@@ -80,14 +80,14 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  if (to.matched.some(record => record.meta.hideForAuthenticated)) {
-      if (store.getters.isAuthenticated) {
-          next({ name: "dashboard" });
-      } else {
-          next();
-      }
-  } else {
+  if (to.matched.some((record) => record.meta.hideForAuthenticated)) {
+    if (store.getters.isAuthenticated) {
+      next({ name: "dashboard" });
+    } else {
       next();
+    }
+  } else {
+    next();
   }
 });
 

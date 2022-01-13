@@ -7,6 +7,7 @@ import FAQ from "../views/FAQ.vue";
 import Register from "../views/auth/Register.vue";
 import Login from "../views/auth/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import LoanForm from "../views/LoanForm.vue";
 
 import store from "../store/index.js";
 
@@ -61,6 +62,14 @@ const routes = [
     meta: {
       requiresAuthentication: true,
     },
+  },
+  {
+    path: "/apply",
+    name: "apply",
+    component: LoanForm,
+    // meta: {
+    //   requiresAuthentication: true,
+    // },
   },
 ];
 

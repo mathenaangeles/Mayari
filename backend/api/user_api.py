@@ -12,7 +12,6 @@ users_api = Blueprint('users', __name__)
 @users_api.route('/register/', methods=('POST',))
 def register():
     data = request.get_json()
-    # print(data, file=sys.stdout)
     user = User(**data)
     db.session.add(user)
     db.session.commit()

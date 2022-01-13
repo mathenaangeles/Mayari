@@ -35,8 +35,8 @@ const mutations = {
     state.user = payload.user;
   },
   setJwtToken(state, payload) {
-    localStorage.token = payload.jwt.token;
     state.jwt = payload.jwt;
+    localStorage.token = payload.jwt.token;
   },
   resetState(state) {
     Object.assign(state, initialState());

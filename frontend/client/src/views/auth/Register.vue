@@ -5,7 +5,7 @@
         <b-col md="6" sm="12" class="px-0 custom-column">
           <AuthSideContainer :authContent="authContent"></AuthSideContainer>
         </b-col>
-        <b-col md="6" sm="12" class="custom-column">
+        <b-col md="6" sm="12">
           <div class="form-container">
             <b-form class="sign-up-form" @submit="onSubmit">
               <h1 class="my-2">Sign Up</h1>

@@ -15,8 +15,12 @@
                   v-model="form.email"
                   type="email"
                   placeholder="Enter your email"
-                  required
+                  :state="validateState('email')"
+                  aria-describedby="email-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="email-feedback">
+                  Invalid email.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
                 id="first-name"
@@ -27,8 +31,12 @@
                   id="first-name-input"
                   v-model="form.first_name"
                   placeholder="Enter your first name"
-                  required
+                  :state="validateState('first_name')"
+                  aria-describedby="first-name-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="first-name-feedback">
+                  This is a required field.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
                 id="last-name"
@@ -39,8 +47,12 @@
                   id="last-name-input"
                   v-model="form.last_name"
                   placeholder="Enter your last name"
-                  required
+                  :state="validateState('last_name')"
+                  aria-describedby="last-name-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="last-name-feedback">
+                  This is a required field.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
                 id="mobile-number"
@@ -51,8 +63,14 @@
                   id="mobile-number-input"
                   v-model="form.mobile_number"
                   placeholder="Enter your mobile number"
-                  required
+                  :state="validateState('mobile_number')"
+                  aria-describedby="mobile-number-feedback"
+                  masked="false"
+                  v-mask="'09##-###-####'"
                 ></b-form-input>
+                <b-form-invalid-feedback id="mobile-number-feedback">
+                  This is a required field. Should contain 11 numbers.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
                 id="password"
@@ -64,8 +82,12 @@
                   v-model="form.password"
                   type="password"
                   placeholder="Enter your password"
-                  required
+                  :state="validateState('password')"
+                  aria-describedby="password-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="password-feedback">
+                  This is a required field.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-button type="submit" variant="primary"
                 >Create an account</b-button
@@ -98,6 +120,8 @@
 <script>
 import AuthSideContainer from "@/components/AuthSideContainer.vue";
 import { EventBus } from "@/utils";
+import { email, required, minLength } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
   name: "Register",
   data() {
@@ -117,15 +141,37 @@ export default {
       },
     };
   },
+  setup: () => ({ v$: useVuelidate() }),
+  validations() {
+    return {
+      form: {
+        first_name: { required },
+        last_name: { required },
+        mobile_number: { required, minLength: minLength(13) },
+        password: { required },
+        email: { required, email },
+      },
+    };
+  },
   methods: {
+    validateState(name) {
+      const { $dirty, $error } = this.v$.form[name];
+      return $dirty ? !$error : null;
+    },
     onSubmit(event) {
       event.preventDefault();
+      this.v$.form.$touch();
+      if (this.v$.form.$invalid) {
+        return;
+      }
+      // convert mobile_number to unmasked form
+      const rawMobileNumber = this.form.mobile_number.replaceAll('-', '');
       this.$store
         .dispatch("register", {
           email: this.form.email,
           first_name: this.form.first_name,
           last_name: this.form.last_name,
-          mobile_number: this.form.mobile_number,
+          mobile_number: rawMobileNumber,
           password: this.form.password,
         })
         .then(() => this.$router.push("/dashboard"));

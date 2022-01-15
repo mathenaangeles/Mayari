@@ -12,7 +12,7 @@
               <b-form-group id="email" label="Email" label-for="email-input">
                 <b-form-input
                   id="email-input"
-                  v-model="form.email"
+                  v-model="v$.form.email.$model"
                   type="email"
                   placeholder="Enter your email"
                   :state="validateState('email')"
@@ -29,7 +29,7 @@
               >
                 <b-form-input
                   id="first-name-input"
-                  v-model="form.first_name"
+                  v-model="v$.form.first_name.$model"
                   placeholder="Enter your first name"
                   :state="validateState('first_name')"
                   aria-describedby="first-name-feedback"
@@ -45,7 +45,7 @@
               >
                 <b-form-input
                   id="last-name-input"
-                  v-model="form.last_name"
+                  v-model="v$.form.last_name.$model"
                   placeholder="Enter your last name"
                   :state="validateState('last_name')"
                   aria-describedby="last-name-feedback"
@@ -61,7 +61,7 @@
               >
                 <b-form-input
                   id="mobile-number-input"
-                  v-model="form.mobile_number"
+                  v-model="v$.form.mobile_number.$model"
                   placeholder="Enter your mobile number"
                   :state="validateState('mobile_number')"
                   aria-describedby="mobile-number-feedback"
@@ -79,14 +79,14 @@
               >
                 <b-form-input
                   id="password-input"
-                  v-model="form.password"
+                  v-model="v$.form.password.$model"
                   type="password"
                   placeholder="Enter your password"
                   :state="validateState('password')"
                   aria-describedby="password-feedback"
                 ></b-form-input>
                 <b-form-invalid-feedback id="password-feedback">
-                  This is a required field.
+                  This is a required field. Should have a minimum 5 characters.
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-button type="submit" variant="primary"
@@ -145,10 +145,10 @@ export default {
   validations() {
     return {
       form: {
-        first_name: { required },
-        last_name: { required },
+        first_name: { required, minLength: minLength(2) },
+        last_name: { required, minLength: minLength(2) },
         mobile_number: { required, minLength: minLength(13) },
-        password: { required },
+        password: { required, minLength: minLength(5) },
         email: { required, email },
       },
     };
@@ -165,7 +165,7 @@ export default {
         return;
       }
       // convert mobile_number to unmasked form
-      const rawMobileNumber = this.form.mobile_number.replaceAll('-', '');
+      const rawMobileNumber = this.form.mobile_number.replaceAll("-", "");
       this.$store
         .dispatch("register", {
           email: this.form.email,

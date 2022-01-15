@@ -12,11 +12,15 @@
               <b-form-group id="email" label="Email" label-for="email-input">
                 <b-form-input
                   id="email-input"
-                  v-model="form.email"
+                  v-model="v$.form.email.$model"
                   type="email"
                   placeholder="Enter your email"
-                  required
+                  :state="validateState('email')"
+                  aria-describedby="email-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="email-feedback">
+                  Invalid email.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
                 id="password"
@@ -25,11 +29,15 @@
               >
                 <b-form-input
                   id="password-input"
-                  v-model="form.password"
+                  v-model="v$.form.password.$model"
                   type="password"
                   placeholder="Enter your password"
-                  required
+                  :state="validateState('password')"
+                  aria-describedby="password-feedback"
                 ></b-form-input>
+                <b-form-invalid-feedback id="password-feedback">
+                  This is a required field.
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-button type="submit" variant="primary"
                 >Login to your account</b-button
@@ -62,6 +70,8 @@
 <script>
 import AuthSideContainer from "@/components/AuthSideContainer.vue";
 import { EventBus } from "@/utils";
+import { email, required } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
   name: "Login",
   components: {
@@ -81,9 +91,26 @@ export default {
       },
     };
   },
+  setup: () => ({ v$: useVuelidate() }),
+  validations() {
+    return {
+      form: {
+        email: { required, email },
+        password: { required },
+      },
+    };
+  },
   methods: {
+    validateState(name) {
+      const { $dirty, $error } = this.v$.form[name];
+      return $dirty ? !$error : null;
+    },
     onSubmit(event) {
       event.preventDefault();
+      this.v$.form.$touch();
+      if (this.v$.form.$invalid) {
+        return;
+      }
       this.$store
         .dispatch("login", {
           email: this.form.email,

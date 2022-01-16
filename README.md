@@ -2,6 +2,20 @@
 
 ## Get Started
 
+### Running on Docker
+Prerequisites: Have docker installed in system
+Recommended: Have Docker VSCode extension
+
+1. In the root of the folder, ```docker-compose up``` on terminal
+- Stop the containers from either the terminal or extension.
+Build/Rebuild images 
+- ```docker-compose build```
+
+Rebuild in the following scenarios:
+- adding of new libraries
+- changes to any of the Dockerfiles
+- changes to docker-compose.yml
+
 ### Backend
 1. Navigate to the backend directory.
 2. Run `source venv/bin/activate` to activate the virtual environment.

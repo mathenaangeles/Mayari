@@ -1,0 +1,21 @@
+version: "3"
+ 
+services:
+  web_client:
+    build:
+      context: ./frontend/client
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend/client:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  flask_app:
+    build: 
+      context: ./backend
+    ports:
+        - 5000:5000
+    volumes:
+        - ./sample-app/:/app

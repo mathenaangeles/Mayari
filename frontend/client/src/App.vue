@@ -2,22 +2,19 @@
   <div id="app" class="d-flex flex-column">
     <div id="nav">
       <b-navbar toggleable="lg">
-        <b-navbar-brand to="/"
+        <b-navbar-brand v-if="!isAuthenticated" to="/"
+          ><img src="img/icons/mayari-white-shadow.png" style="height: 40px"
+        /></b-navbar-brand>
+        <b-navbar-brand v-if="isAuthenticated" to="/dashboard"
           ><img src="img/icons/mayari-white-shadow.png" style="height: 40px"
         /></b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
+          <b-navbar-nav v-if="!isAuthenticated">
             <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/faq">FAQ</b-nav-item>
             <b-nav-item to="/blog">Blog</b-nav-item>
             <b-nav-item to="/about">About</b-nav-item>
-          </b-navbar-nav>
-          <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
-            <b-nav-item to="/dashboard" class="mr-2">Dashboard</b-nav-item>
-            <b-button class="white-outline-button mt-1" @click="logout"
-              >Logout</b-button
-            >
           </b-navbar-nav>
           <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
             <router-link to="/register">
@@ -28,6 +25,15 @@
             <router-link to="/login">
               <b-button class="white-outline-button mt-1">Login</b-button>
             </router-link>
+          </b-navbar-nav>
+          <b-navbar-nav v-if="isAuthenticated">
+            <b-nav-item to="/dashboard" class="mr-2">Dashboard</b-nav-item>
+            <b-nav-item to="/404" class="mr-2">Profile</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
+            <b-button class="white-outline-button mt-1" @click="logout"
+              >Logout</b-button
+            >
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>

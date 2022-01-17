@@ -28,8 +28,14 @@ def fetch_loans(user_id):
     return jsonify([loan.to_dict() for loan in loans])
 
 @token_required
-@loans_api.route('/<int:id>/', methods=('GET','PUT'))
+@loans_api.route('/<int:id>/', methods=('GET',))
 def fetch_loan(id):
+    loan = Loan.query.get(id)
+    return jsonify(loan.to_dict())
+ 
+@token_required
+@loans_api.route('/edit/<int:id>/', methods=('GET','PUT'))
+def update_loan(id):
     if request.method == 'GET':
         loan = Loan.query.get(id)
         return jsonify(loan.to_dict())
@@ -43,4 +49,3 @@ def fetch_loan(id):
         loan.status = data['status']
         db.session.commit()
         return jsonify(loan.to_dict()), 201
- 

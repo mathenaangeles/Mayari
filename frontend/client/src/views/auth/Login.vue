@@ -116,7 +116,7 @@ export default {
           email: this.form.email,
           password: this.form.password,
         })
-        .then(() => this.$router.push("/dashboard"));
+        .then(() => window.location.reload());
     },
   },
   mounted() {

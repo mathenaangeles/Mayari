@@ -54,27 +54,18 @@ class User(db.Model):
 
 
 class Loan(db.Model):
-    COLLATERAL_TYPES = [
-        (u'with_collateral', u'with collateral'),
-        (u'without_collateral', u'without collateral'),
-    ]
-    STATUS = [
-        (u'pending', u'pending'),
-        (u'approved', u'approved'),
-        (u'rejected', u'rejected'),
-    ]
     __tablename__ = 'loans'
     id = db.Column(db.Integer, primary_key=True)
     borrower_id =  db.Column(db.Integer, db.ForeignKey('users.id'))
     business = db.relationship("Business",  backref="loan", uselist=False)
     requested_amount = db.Column(db.Float, nullable=False)
-    collateral_type = db.Column(ChoiceType(COLLATERAL_TYPES), nullable=False)
-    payment_term = db.Column(db.String(255), nullable=False)
+    collateral_type = db.Column(db.String(255), nullable=False)
+    payment_term = db.Column(db.Integer, nullable=False)
     interest_rate = db.Column(db.Float, nullable=True)
     principal = db.Column(db.Float, nullable=True)
     total_amount = db.Column(db.Float, nullable=True)
     outstanding_balance =  db.Column(db.Float, nullable=True)
-    status = db.Column(ChoiceType(STATUS),  default=u'pending')
+    status = db.Column(db.String(255),  default=u'pending')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, requested_amount, collateral_type, payment_term):
@@ -102,8 +93,8 @@ class Business(db.Model):
     city = db.Column(db.String(255), nullable=True)
     zip_code = db.Column(db.String(10), nullable=True)
     industry = db.Column(db.String(255), nullable=False)
-    monthly_income = db.Column(db.Integer, nullable=False)
-    monthly_expenses= db.Column(db.Integer, nullable=False)
+    monthly_income = db.Column(db.Float, nullable=False)
+    monthly_expenses= db.Column(db.Float, nullable=False)
     years = db.Column(db.Integer, nullable=False)
 
     def to_dict(self):

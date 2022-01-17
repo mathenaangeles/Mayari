@@ -79,13 +79,14 @@ const actions = {
       });
   },
   logout(context) {
+    localStorage.removeItem("token");
     context.commit("resetState");
   },
 };
 
 const getters = {
-  isAuthenticated(state) {
-    return isValidJwt(state.jwt.token);
+  isAuthenticated() {
+    return isValidJwt(localStorage.getItem("token"));
   },
 };
 

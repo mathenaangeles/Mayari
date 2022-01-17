@@ -174,7 +174,7 @@ export default {
           mobile_number: rawMobileNumber,
           password: this.form.password,
         })
-        .then(() => this.$router.push("/dashboard"));
+        .then(() => window.location.reload());
     },
   },
   mounted() {

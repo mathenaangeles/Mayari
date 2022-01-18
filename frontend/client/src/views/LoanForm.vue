@@ -1,19 +1,27 @@
 <template>
   <div class="loan-form">
-    <b-form @submit="onSubmit">
+    <b-form @submit="onSubmitUser">
       <b-form-group label="Birthdate">
-        <b-form-input
+        <b-form-datepicker
           v-model="form.birthdate"
-          placeholder="Enter birthdate"
           required
-        ></b-form-input>
+        ></b-form-datepicker>
+      </b-form-group>
+      <b-form-group label="Street Address">
+        <b-form-input v-model="form.street_address" required></b-form-input>
+      </b-form-group>
+      <b-form-group label="City">
+        <b-form-input v-model="form.city" required></b-form-input>
+      </b-form-group>
+      <b-form-group label="Zip Code">
+        <b-form-input v-model="form.zip_code" required></b-form-input>
       </b-form-group>
       <b-form-group label="Country">
-        <b-form-input
+        <b-form-select
           v-model="form.country"
-          placeholder="Enter country"
+          :options="countries"
           required
-        ></b-form-input>
+        ></b-form-select>
       </b-form-group>
       <b-form-group label="Region">
         <b-form-select
@@ -22,11 +30,28 @@
           required
         ></b-form-select>
       </b-form-group>
-      <b-form-group>
-        <b-form-checkbox-group v-model="form.business.isHomeAddress">
-          <b-form-checkbox>Is your business address the same as your home address?</b-form-checkbox>
-        </b-form-checkbox-group>
+      <b-form-group label="Gender">
+        <b-form-select
+          v-model="form.gender" 
+          :options="genders"
+          required>
+          </b-form-select>
       </b-form-group>
+      <b-form-group label="Marital Status">
+        <b-form-select
+          v-model="form.marital_status"
+          :options="marital_statuses"
+          required
+        ></b-form-select>
+      </b-form-group>
+      <!-- <b-form-group>
+        <b-form-checkbox-group v-model="form.business.isHomeAddress">
+          <b-form-checkbox
+            >Is your business address the same as your home
+            address?</b-form-checkbox
+          >
+        </b-form-checkbox-group>
+      </b-form-group> -->
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
@@ -41,45 +66,75 @@ export default {
       step: 0,
       form: {
         birthdate: new Date(),
-        street_address: '',
-        city: '',
-        zip_code: '',
+        street_address: "",
+        city: "",
+        zip_code: "",
         region: null,
-        country: '',
-        gender: '',
-        marital_status: '',
+        country: "",
+        gender: "",
+        marital_status: "",
         business: {
           isHomeAddress: false,
-          name: '',
-          street_address: '',
-          city: '',
-          zip_code: '',
-          industry: '',
+          name: "",
+          street_address: "",
+          city: "",
+          zip_code: "",
+          industry: "",
           monthly_income: 0,
           monthly_expenses: 0,
           years: 0,
         },
         requested_amount: 0,
         payment_term: 0,
-        collateral_type: '',
+        collateral_type: "",
       },
-      regions: [{ text: 'Select a region', value: null }, 'Region I', 'Region II'],
+      regions: [
+        { text: "Select a region", value: null },
+        "Region I",
+        "Region II",
+      ],
+      countries: [{ text: "Select a country", value: null }, "Philippines"],
+      genders: [{ text: "Select a gender", value: null }, "Male", "Female", "Non-binary"],
+      marital_statuses: [
+        { text: "Select a marital status", value: null },
+        "Single",
+        "Married",
+      ],
     };
   },
   methods: {
-    onSubmit (event) {
+    onSubmitLoan(event) {
       event.preventDefault();
-      this.$store.dispatch('postLoan', {
-        requested_amount: this.form.requested_amount,
-        payment_term: this.form.payment_term,
-        collateral_type: this.form.collateral_type,
-        business: this.form.business,
-      })
-      .then(() => this.$router.push('/dashboard'))
-      .catch((error) => {
-        console.log('ERROR: Loan could not be created.', error)
-      })
-  },
+      this.$store
+        .dispatch("postLoan", {
+          requested_amount: this.form.requested_amount,
+          payment_term: this.form.payment_term,
+          collateral_type: this.form.collateral_type,
+          business: this.form.business,
+        })
+        .then(() => this.$router.push("/dashboard"))
+        .catch((error) => {
+          console.log("ERROR: Loan could not be created.", error);
+        });
+    },
+    onSubmitUser(event) {
+      event.preventDefault();
+      this.$store
+        .dispatch("updateUser", {
+          birthdate: this.form.birthdate,
+          street_address: this.form.street_address,
+          city: this.form.city,
+          zip_code: this.form.zip_code,
+          region: this.form.region,
+          country: this.form.country,
+          gender: this.form.gender,
+          marital_status: this.form.marital_status,
+        })
+        .then(() => (this.step = 1))
+        .catch((error) => {
+          console.log("ERROR: User could not be updated.", error);
+        });
+    },
   },
   computed: {
     isAuthenticated() {

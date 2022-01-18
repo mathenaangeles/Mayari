@@ -101,7 +101,7 @@ export default {
   methods: {
     logout: function () {
       this.$store.dispatch("logout").then(() => {
-        window.location.reload()
+        window.location.reload();
         this.$router.push("/login");
       });
     },

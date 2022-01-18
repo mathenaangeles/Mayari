@@ -26,6 +26,13 @@ export function postLoan(loan, jwt) {
   });
 }
 
+export function updateUser(user, jwt) {
+  console.log(user.id)
+  return axios.put(`${API_URL}/users/${user.id}/`, user, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
 export function login(user) {
   return axios.post(`${API_URL}/users/login/`, user);
 }

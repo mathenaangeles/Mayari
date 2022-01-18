@@ -4,6 +4,7 @@ import Vuex from "vuex";
 import {
   login,
   register,
+  updateUser,
   fetchLoans,
   fetchLoan,
   updateLoan,
@@ -59,6 +60,9 @@ const actions = {
   },
   postLoan(context, loan) {
     return postLoan(loan, context.state.jwt.token);
+  },
+  updateUser(context) {
+    return updateUser(context.state.user, context.state.jwt.token);
   },
   login(context, user) {
     context.commit("setUser", { user });

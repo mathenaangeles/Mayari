@@ -5,7 +5,7 @@ module.exports = {
       // https://github.com/vuejs-templates/webpack/issues/378
       watchOptions: {
         poll: 1000,
-        aggregateTimeout: 300
+        aggregateTimeout: 300,
       },
     },
   },

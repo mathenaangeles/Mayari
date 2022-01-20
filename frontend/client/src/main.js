@@ -18,6 +18,9 @@ Vue.use(BootstrapVue);
 new Vue({
   router,
   store,
+  beforeCreate() {
+		this.$store.commit('initializeStore');
+	},
   created() {
     AOS.init();
   },

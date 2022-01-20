@@ -20,15 +20,14 @@ export function updateLoan(loan, jwt) {
   });
 }
 
-export function postLoan(loan, jwt) {
+export function postLoan(loan, userId, jwt) {
   return axios.post(`${API_URL}/loans/`, loan, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }
 
-export function updateUser(user, jwt) {
-  console.log(user.id)
-  return axios.put(`${API_URL}/users/${user.id}/`, user, {
+export function updateUser(user, userId, jwt) {
+  return axios.put(`${API_URL}/users/${userId}/`, user, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }

@@ -1,20 +1,20 @@
-from datetime import datetime, timedelta
 from flask import Blueprint, jsonify, request
 
 import sys
 sys.path.append("..") 
 
-from models import db, Loan, Business
+from models import db, Loan, Business, User
 from utils import token_required
 
 loans_api = Blueprint('loans', __name__)
 
 @token_required
 @loans_api.route('/', methods=('POST',))
-def create_loan(user):
+def create_loan():
     data = request.get_json()
-    loan = Loan(**data)
-    loan.borrower = user
+    loan = Loan(data['requested_amount'],data['collateral_type'],data['payment_term'])
+    # print(current_user(), file=sys.stderr)
+    loan.borrower = current_user
     business = Business(**data['business'])
     loan.business = business
     db.session.add(loan)

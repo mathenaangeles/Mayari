@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import Blueprint, jsonify, request, current_app
+from flask import jsonify, request, current_app
 import jwt
 
 import sys
@@ -26,7 +26,7 @@ def token_required(f):
             data = jwt.decode(token, current_app.config['SECRET_KEY'])
             user = User.query.filter_by(email=data['sub']).first()
             if not user:
-                raise RuntimeError('User could not be found...')
+                raise RuntimeError('User could not be found.')
             return f(user, *args, **kwargs)
         except jwt.ExpiredSignatureError:
             return jsonify(expired_msg), 401 

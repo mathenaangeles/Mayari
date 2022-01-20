@@ -18,7 +18,6 @@ def register():
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
-
 @users_api.route('/login/', methods=('POST',))
 def login():
     data = request.get_json()
@@ -30,7 +29,7 @@ def login():
         'iat':datetime.utcnow(),
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
-    return jsonify({ 'token': token })
+    return jsonify({ 'token': token, 'user': user.to_dict() }), 201
 
 @token_required
 @users_api.route('/<int:id>/', methods=('GET','PUT'))
@@ -40,8 +39,9 @@ def update_user(id):
         return jsonify(user.to_dict())
     elif request.method == 'PUT':
         data = request.get_json()
-        user = User.query.get(data['id'])
-        user.birthdate = data['birthdate']
+        # print(data, file=sys.stderr)
+        user = User.query.get(id)
+        user.birthdate = parse_date(data['birthdate']) 
         user.street_address = data['street_address'] 
         user.city = data['city']
         user.zip_code = data['zip_code']
@@ -51,3 +51,11 @@ def update_user(id):
         user.marital_status = data['marital_status']
         db.session.commit()
         return jsonify(user.to_dict()), 201
+
+def parse_date(text):
+    for fmt in ('%Y-%m-%dT%H:%M:%S.%f%z', '%Y-%m-%d'):
+        try:
+            return datetime.strptime(text, fmt)
+        except ValueError:
+            pass
+    raise ValueError('ERROR: No valid date format found.')

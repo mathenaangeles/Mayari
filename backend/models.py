@@ -50,7 +50,16 @@ class User(db.Model):
     def to_dict(self):
         return dict(id=self.id, 
                     email=self.email, 
-                    name=self.first_name + self.last_name)
+                    name=self.first_name + self.last_name,
+                    mobile_number=self.mobile_number,
+                    birthdate=self.birthdate,
+                    street_address=self.street_address,
+                    city=self.city,
+                    zip_code=self.zip_code,
+                    region=self.region,
+                    country=self.country,
+                    gender=self.gender,
+                    marital_status=self.marital_status)
 
 
 class Loan(db.Model):

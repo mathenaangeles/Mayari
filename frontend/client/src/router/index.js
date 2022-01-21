@@ -8,6 +8,7 @@ import Register from "../views/auth/Register.vue";
 import Login from "../views/auth/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import LoanForm from "../views/LoanForm.vue";
+import Loan from "../views/Loan.vue";
 
 import store from "../store/index.js";
 
@@ -67,9 +68,17 @@ const routes = [
     path: "/apply",
     name: "apply",
     component: LoanForm,
-    // meta: {
-    //   requiresAuthentication: true,
-    // },
+    meta: {
+      requiresAuthentication: true,
+    },
+  },
+  {
+    path: "/loan/:id",
+    name: "loan",
+    component: Loan,
+    meta: {
+      requiresAuthentication: true,
+    },
   },
 ];
 

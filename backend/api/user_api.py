@@ -28,18 +28,20 @@ def login():
         'sub': user.email,
         'iat':datetime.utcnow(),
         'exp': datetime.utcnow() + timedelta(minutes=30)},
-        current_app.config['SECRET_KEY'])
+        current_app.config['SECRET_KEY'],
+        algorithm="HS256")
     return jsonify({ 'token': token, 'user': user.to_dict() }), 201
 
-@token_required
+
 @users_api.route('/<int:id>/', methods=('GET','PUT'))
-def update_user(id):
+@token_required
+def update_user(user, id=id):
+    # print(locals(), file=sys.stderr)
     if request.method == 'GET':
         user = User.query.get(id)
         return jsonify(user.to_dict())
     elif request.method == 'PUT':
         data = request.get_json()
-        # print(data, file=sys.stderr)
         user = User.query.get(id)
         user.birthdate = parse_date(data['birthdate']) 
         user.street_address = data['street_address'] 

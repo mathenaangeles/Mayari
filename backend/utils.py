@@ -23,7 +23,7 @@ def token_required(f):
             return jsonify(invalid_msg), 401
         try:
             token = auth_headers[1]
-            data = jwt.decode(token, current_app.config['SECRET_KEY'])
+            data = jwt.decode(token, current_app.config['SECRET_KEY'],  algorithms=['HS256'])
             user = User.query.filter_by(email=data['sub']).first()
             if not user:
                 raise RuntimeError('User could not be found.')

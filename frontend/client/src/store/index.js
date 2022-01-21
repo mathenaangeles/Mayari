@@ -51,24 +51,25 @@ const store = new Vuex.Store({
 		}
   },
   actions: {
-    fetchLoans(context, userId) {
-      return fetchLoans(userId, context.state.jwt.token).then((response) => {
-        context.commit("setLoans", { loans: response.data });
-      });
+    updateLoan(context) {
+      return updateLoan(context.state.loan, context.state.jwt);
     },
-    fetchLoan(context, { loanId }) {
-      return fetchLoan(loanId, context.state.jwt.token).then((response) => {
+    fetchLoan(context, {loanId}) {
+      console.log(loanId);
+      return fetchLoan(loanId, context.state.jwt).then((response) => {
         context.commit("setLoan", { loan: response.data });
       });
     },
-    updateLoan(context) {
-      return updateLoan(context.state.loan, context.state.jwt.token);
+    fetchLoans(context) {
+      return fetchLoans(context.state.user.id, context.state.jwt).then((response) => {
+        context.commit("setLoans", { loans: response.data });
+      });
     },
     postLoan(context, loan) {
-      return postLoan(loan, context.state.user.id, context.state.jwt.token);
+      return postLoan(loan, context.state.jwt);
     },
     updateUser(context, user) {
-      return updateUser(user, context.state.user.id, context.state.jwt.token);
+      return updateUser(user, context.state.user.id, context.state.jwt);
     },
     login(context, user) {
       return login(user)

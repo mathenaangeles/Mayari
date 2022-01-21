@@ -2,8 +2,8 @@ import axios from "axios";
 
 const API_URL = "http://127.0.0.1:5000";
 
-export function fetchLoans(userId, jwt) {
-  return axios.get(`${API_URL}/loans/${userId}`, {
+export function updateLoan(loan, jwt) {
+  return axios.put(`${API_URL}/loans/${loan.id}/`, loan, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }
@@ -14,13 +14,13 @@ export function fetchLoan(loanId, jwt) {
   });
 }
 
-export function updateLoan(loan, jwt) {
-  return axios.put(`${API_URL}/loans/${loan.id}/`, loan, {
+export function fetchLoans(userId, jwt) {
+  return axios.get(`${API_URL}/loans/user/${userId}/`, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }
 
-export function postLoan(loan, userId, jwt) {
+export function postLoan(loan, jwt) {
   return axios.post(`${API_URL}/loans/`, loan, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });

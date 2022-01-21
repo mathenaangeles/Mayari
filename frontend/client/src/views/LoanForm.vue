@@ -52,12 +52,9 @@
     <div v-if="step==2">
       <b-form>
        <b-form-group>
-          <b-form-checkbox-group v-model="form.isHomeAddress" @change="onCheck">
-            <b-form-checkbox
-              >Is your business address the same as your home
-              address?</b-form-checkbox
-            >
-          </b-form-checkbox-group>
+          <b-form-checkbox v-model="form.isHomeAddress" @change="onCheck">
+            Is your business address the same as your home address?
+          </b-form-checkbox>
         </b-form-group>
         <b-form-group label="Name">
           <b-form-input v-model="form.business.name" required></b-form-input>
@@ -99,6 +96,7 @@
           ></b-form-input>
         </b-form-group>
         <b-button variant="primary" @click="onNext">Next</b-button>
+        <b-button variant="secondary" @click="onPrevious">Previous</b-button>
       </b-form>
     </div>
     <div v-if="step==3">
@@ -123,6 +121,7 @@
             ></b-form-select>
           </b-form-group>
           <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button variant="secondary" @click="onPrevious">Previous</b-button>
        </b-form>
     </div>
   </div>
@@ -181,6 +180,9 @@ export default {
     onNext() {
       this.step++;
     },
+    onPrevious() {
+      this.step--;
+    },
     onSubmitUser(event) {
       event.preventDefault();
       this.$store
@@ -202,7 +204,7 @@ export default {
         });
     },
     onCheck(){
-      if (this.form.business.isHomeAddress) {
+      if (this.form.isHomeAddress) {
         this.form.business.street_address = this.form.street_address
         this.form.business.city = this.form.city
         this.form.business.zip_code = this.form.zip_code
@@ -223,14 +225,8 @@ export default {
         });
     },
   },
-  computed: {
-    isAuthenticated() {
-      return this.$store.getters.isAuthenticated;
-    },
-  },
   created:  function(){
     let user = this.$store.state.user
-    console.log(this.$store.state.user);
     if (user) {
       try {
         this.form.birthdate = new Date(user.birthdate)?? new Date()

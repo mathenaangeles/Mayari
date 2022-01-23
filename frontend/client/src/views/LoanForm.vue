@@ -1,6 +1,6 @@
 <template>
   <div class="loan-form">
-    <div v-if="step==1">
+    <div v-if="step == 1">
       <b-form @submit="onSubmitUser">
         <b-form-group label="Birthdate">
           <b-form-datepicker
@@ -33,11 +33,8 @@
           ></b-form-select>
         </b-form-group>
         <b-form-group label="Gender">
-          <b-form-select
-            v-model="form.gender" 
-            :options="genders"
-            required>
-            </b-form-select>
+          <b-form-select v-model="form.gender" :options="genders" required>
+          </b-form-select>
         </b-form-group>
         <b-form-group label="Marital Status">
           <b-form-select
@@ -49,9 +46,9 @@
         <b-button type="submit" variant="primary">Next</b-button>
       </b-form>
     </div>
-    <div v-if="step==2">
+    <div v-if="step == 2">
       <b-form>
-       <b-form-group>
+        <b-form-group>
           <b-form-checkbox v-model="form.isHomeAddress" @change="onCheck">
             Is your business address the same as your home address?
           </b-form-checkbox>
@@ -60,13 +57,19 @@
           <b-form-input v-model="form.business.name" required></b-form-input>
         </b-form-group>
         <b-form-group label="Street Address">
-          <b-form-input v-model="form.business.street_address" required></b-form-input>
+          <b-form-input
+            v-model="form.business.street_address"
+            required
+          ></b-form-input>
         </b-form-group>
         <b-form-group label="City">
           <b-form-input v-model="form.business.city" required></b-form-input>
         </b-form-group>
         <b-form-group label="Zip Code">
-          <b-form-input v-model="form.business.zip_code" required></b-form-input>
+          <b-form-input
+            v-model="form.business.zip_code"
+            required
+          ></b-form-input>
         </b-form-group>
         <b-form-group label="Industry">
           <b-form-input
@@ -99,30 +102,24 @@
         <b-button variant="secondary" @click="onPrevious">Previous</b-button>
       </b-form>
     </div>
-    <div v-if="step==3">
-       <b-form @submit="onSubmitLoan">
-          <b-form-group label="Requested Amount">
-            <b-form-input
-              v-model="form.requested_amount"
-              required
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group label="Payment Term">
-            <b-form-input
-              v-model="form.payment_term"
-              required
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group label="Collateral Type">
-            <b-form-select
-              v-model="form.collateral_type"
-              :options="collateral_types"
-              required
-            ></b-form-select>
-          </b-form-group>
-          <b-button type="submit" variant="primary">Submit</b-button>
-          <b-button variant="secondary" @click="onPrevious">Previous</b-button>
-       </b-form>
+    <div v-if="step == 3">
+      <b-form @submit="onSubmitLoan">
+        <b-form-group label="Requested Amount">
+          <b-form-input v-model="form.requested_amount" required></b-form-input>
+        </b-form-group>
+        <b-form-group label="Payment Term">
+          <b-form-input v-model="form.payment_term" required></b-form-input>
+        </b-form-group>
+        <b-form-group label="Collateral Type">
+          <b-form-select
+            v-model="form.collateral_type"
+            :options="collateral_types"
+            required
+          ></b-form-select>
+        </b-form-group>
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button variant="secondary" @click="onPrevious">Previous</b-button>
+      </b-form>
     </div>
   </div>
 </template>
@@ -142,7 +139,7 @@ export default {
         region: null,
         country: null,
         gender: null,
-        marital_status:null,
+        marital_status: null,
         isHomeAddress: false,
         business: {
           name: "",
@@ -164,7 +161,12 @@ export default {
         "Region II",
       ],
       countries: [{ text: "Select a country", value: null }, "Philippines"],
-      genders: [{ text: "Select a gender", value: null }, "Male", "Female", "Non-binary"],
+      genders: [
+        { text: "Select a gender", value: null },
+        "Male",
+        "Female",
+        "Non-binary",
+      ],
       marital_statuses: [
         { text: "Select a marital status", value: null },
         "Single",
@@ -173,7 +175,8 @@ export default {
       collateral_types: [
         { text: "Select a collateral type", value: null },
         "with collateral",
-        "no collateral",]
+        "no collateral",
+      ],
     };
   },
   methods: {
@@ -203,11 +206,11 @@ export default {
           console.log("ERROR: User could not be updated.", error);
         });
     },
-    onCheck(){
+    onCheck() {
       if (this.form.isHomeAddress) {
-        this.form.business.street_address = this.form.street_address
-        this.form.business.city = this.form.city
-        this.form.business.zip_code = this.form.zip_code
+        this.form.business.street_address = this.form.street_address;
+        this.form.business.city = this.form.city;
+        this.form.business.zip_code = this.form.zip_code;
       }
     },
     onSubmitLoan(event) {
@@ -225,18 +228,18 @@ export default {
         });
     },
   },
-  created:  function(){
-    let user = this.$store.state.user
+  created: function () {
+    let user = this.$store.state.user;
     if (user) {
       try {
-        this.form.birthdate = new Date(user.birthdate)?? new Date()
-        this.form.street_address = user.street_address?? ""
-         this.form.city = user.city?? ""
-        this.form.zip_code = user.zip_code?? ""
-        this.form.region = user.region
-        this.form.country = user.country
-        this.form.gender = user.gender
-        this.form.marital_status = user.marital_status
+        this.form.birthdate = new Date(user.birthdate) ?? new Date();
+        this.form.street_address = user.street_address ?? "";
+        this.form.city = user.city ?? "";
+        this.form.zip_code = user.zip_code ?? "";
+        this.form.region = user.region;
+        this.form.country = user.country;
+        this.form.gender = user.gender;
+        this.form.marital_status = user.marital_status;
       } catch (error) {
         console.log("ERROR: User could not be found.", error);
       }

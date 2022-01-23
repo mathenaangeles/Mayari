@@ -4,7 +4,7 @@ import sys
 sys.path.append("..") 
 
 from models import db, Loan, Business, User
-from utils import token_required
+from utils import token_required, admin_token_required
 
 loans_api = Blueprint('loans', __name__)
 
@@ -32,19 +32,21 @@ def fetch_loan(user, id=id):
     loan = Loan.query.get(id)
     return jsonify(loan.to_dict()), 201
  
-@loans_api.route('/edit/<int:id>/', methods=('GET','PUT'))
-@token_required
-def update_loan(id):
-    if request.method == 'GET':
-        loan = Loan.query.get(id)
-        return jsonify(loan.to_dict())
-    elif request.method == 'PUT':
-        data = request.get_json()
-        loan = Loan.query.get(data['id'])
-        loan.interest_rate = data['interest_rate']
-        loan.payment_term = data['payment_term'] 
-        loan.principal = data['principal']
-        loan.total_amount = data['total_amount']
-        loan.status = data['status']
-        db.session.commit()
-        return jsonify(loan.to_dict()), 201
+@loans_api.route('/edit/<int:id>/', methods=('GET',))
+@admin_token_required
+def update_loan(user, id=id):
+    data = request.get_json()
+    loan = Loan.query.get(data['id'])
+    loan.interest_rate = data['interest_rate']
+    loan.payment_term = data['payment_term'] 
+    loan.principal = data['principal']
+    loan.total_amount = data['total_amount']
+    loan.status = data['status']
+    db.session.commit()
+    return jsonify(loan.to_dict()), 201
+
+@loans_api.route('/', methods=('GET',))
+@admin_token_required
+def fetch_all_loans(user):
+    loans = Loan.query.all()
+    return jsonify([loan.to_dict() for loan in loans]), 201

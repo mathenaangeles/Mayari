@@ -7,6 +7,8 @@ import FAQ from "../views/FAQ.vue";
 import Register from "../views/auth/Register.vue";
 import Login from "../views/auth/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import AdminDashboard from "../views/admin/AdminDashboard.vue";
+import AdminLoanForm from "../views/admin/AdminLoanForm";
 import LoanForm from "../views/LoanForm.vue";
 import Loan from "../views/Loan.vue";
 
@@ -65,11 +67,27 @@ const routes = [
     },
   },
   {
+    path: "admin/dashboard",
+    name: "admin_dashboard",
+    component: AdminDashboard,
+    meta: {
+      requiresAdminAuthentication: true,
+    },
+  },
+  {
     path: "/apply",
     name: "apply",
     component: LoanForm,
     meta: {
       requiresAuthentication: true,
+    },
+  },
+  {
+    path: "/edit/:id",
+    name: "edit",
+    component: AdminLoanForm,
+    meta: {
+      requiresAdminAuthentication: true,
     },
   },
   {
@@ -101,6 +119,15 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.hideForAuthenticated)) {
     if (store.getters.isAuthenticated) {
       next({ name: "dashboard" });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+  if (to.matched.some((record) => record.meta.requiresAdminAuthentication)) {
+    if (!store.getters.isAdminAuthenticated) {
+      next({ name: "home" });
     } else {
       next();
     }

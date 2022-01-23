@@ -43,27 +43,34 @@ const store = new Vuex.Store({
       Object.assign(state, initialState());
     },
     initializeStore(state) {
-			if(localStorage.getItem('store')) {
-				this.replaceState(
-					Object.assign(state, JSON.parse(localStorage.getItem('store')))
-				);
-			}
-		}
+      if (localStorage.getItem("store")) {
+        this.replaceState(
+          Object.assign(state, JSON.parse(localStorage.getItem("store")))
+        );
+      }
+    },
   },
   actions: {
     updateLoan(context) {
       return updateLoan(context.state.loan, context.state.jwt);
     },
-    fetchLoan(context, {loanId}) {
+    fetchAllLoans(context) {
+      return fetchLoans(context.state.jwt).then((response) => {
+        context.commit("setLoans", { loans: response.data });
+      });
+    },
+    fetchLoan(context, { loanId }) {
       console.log(loanId);
       return fetchLoan(loanId, context.state.jwt).then((response) => {
         context.commit("setLoan", { loan: response.data });
       });
     },
     fetchLoans(context) {
-      return fetchLoans(context.state.user.id, context.state.jwt).then((response) => {
-        context.commit("setLoans", { loans: response.data });
-      });
+      return fetchLoans(context.state.user.id, context.state.jwt).then(
+        (response) => {
+          context.commit("setLoans", { loans: response.data });
+        }
+      );
     },
     postLoan(context, loan) {
       return postLoan(loan, context.state.jwt);
@@ -99,11 +106,17 @@ const store = new Vuex.Store({
     isAuthenticated() {
       return isValidJwt(localStorage.getItem("token"));
     },
+    isAdminAuthenticated(context) {
+      return (
+        isValidJwt(localStorage.getItem("token")) &&
+        context.state.user.role == "admin"
+      );
+    },
   },
 });
 
 store.subscribe((mutation, state) => {
-	localStorage.setItem('store', JSON.stringify(state));
+  localStorage.setItem("store", JSON.stringify(state));
 });
 
 export default store;

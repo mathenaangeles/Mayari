@@ -19,8 +19,8 @@ new Vue({
   router,
   store,
   beforeCreate() {
-		this.$store.commit('initializeStore');
-	},
+    this.$store.commit("initializeStore");
+  },
   created() {
     AOS.init();
   },

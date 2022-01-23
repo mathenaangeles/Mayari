@@ -1,7 +1,7 @@
 <template>
-  <div class="dashboard">
+  <div class="admin-dashboard">
     <div v-for="loan in loans" v-bind:key="loan.id">
-      <p>{{ loan.status }}</p>
+      <p>{{ loan.id }}</p>
       <router-link :to="`loan/${loan.id}`">See Loan</router-link>
     </div>
   </div>
@@ -10,13 +10,13 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "Dashboard",
+  name: "AdminDashboard",
   components: {},
   computed: mapState({
     loans: (state) => state.loans,
   }),
   beforeMount() {
-    this.$store.dispatch("fetchLoans");
+    this.$store.dispatch("fetchAllLoans");
   },
 };
 </script>

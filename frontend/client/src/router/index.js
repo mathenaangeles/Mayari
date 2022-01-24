@@ -67,7 +67,7 @@ const routes = [
     },
   },
   {
-    path: "admin/dashboard",
+    path: "/admin/dashboard",
     name: "admin_dashboard",
     component: AdminDashboard,
     meta: {
@@ -83,8 +83,8 @@ const routes = [
     },
   },
   {
-    path: "/edit/:id",
-    name: "edit",
+    path: "/admin/loan/:id",
+    name: "admin",
     component: AdminLoanForm,
     meta: {
       requiresAdminAuthentication: true,

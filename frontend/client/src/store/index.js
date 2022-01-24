@@ -6,6 +6,7 @@ import {
   register,
   updateUser,
   fetchLoans,
+  fetchAllLoans,
   fetchLoan,
   updateLoan,
   postLoan,
@@ -55,7 +56,7 @@ const store = new Vuex.Store({
       return updateLoan(context.state.loan, context.state.jwt);
     },
     fetchAllLoans(context) {
-      return fetchLoans(context.state.jwt).then((response) => {
+      return fetchAllLoans(context.state.jwt).then((response) => {
         context.commit("setLoans", { loans: response.data });
       });
     },
@@ -91,7 +92,7 @@ const store = new Vuex.Store({
     },
     register(context, user) {
       return register(user)
-        .then(context.dispatch("login", user))
+        .then(context.dispatch("login",user))
         .catch((error) => {
           console.log("Registration Error: ", error);
           EventBus.$emit("failedRegister: ", error);
@@ -106,10 +107,10 @@ const store = new Vuex.Store({
     isAuthenticated() {
       return isValidJwt(localStorage.getItem("token"));
     },
-    isAdminAuthenticated(context) {
+    isAdminAuthenticated(state) {
       return (
         isValidJwt(localStorage.getItem("token")) &&
-        context.state.user.role == "admin"
+        state.user.role == "admin"
       );
     },
   },

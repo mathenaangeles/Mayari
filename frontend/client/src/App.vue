@@ -28,7 +28,9 @@
           </b-navbar-nav>
           <b-navbar-nav v-if="isAuthenticated">
             <b-nav-item to="/dashboard" class="mr-2">Dashboard</b-nav-item>
-            <b-nav-item to="/404" class="mr-2">Profile</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-nav v-if="isAdminAuthenticated">
+            <b-nav-item to="/admin/dashboard" class="mr-2">Admin</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
             <b-button class="white-outline-button mt-1" @click="logout"
@@ -96,6 +98,9 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters.isAuthenticated;
+    },
+    isAdminAuthenticated() {
+      return this.$store.getters.isAdminAuthenticated;
     },
   },
   methods: {

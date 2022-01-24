@@ -6,14 +6,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 db = SQLAlchemy()
 
 class User(db.Model):
-    USER_ROLES = [
-        (u'super_admin', u'Super Admin'),
-        (u'admin', u'Admin'),
-        (u'regular_user', u'Regular User'),
-    ]
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
-    role = db.Column(ChoiceType(USER_ROLES), default=u'regular_user')
+    role = db.Column(db.String(255), default=u'regular_user')
     email = db.Column(db.String(255), unique=True, nullable=False)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
@@ -49,6 +44,7 @@ class User(db.Model):
 
     def to_dict(self):
         return dict(id=self.id, 
+                    role=self.role,
                     email=self.email, 
                     name=self.first_name + self.last_name,
                     mobile_number=self.mobile_number,

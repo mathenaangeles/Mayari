@@ -92,7 +92,7 @@ const store = new Vuex.Store({
     },
     register(context, user) {
       return register(user)
-        .then(context.dispatch("login",user))
+        .then(context.dispatch("login", user))
         .catch((error) => {
           console.log("Registration Error: ", error);
           EventBus.$emit("failedRegister: ", error);
@@ -109,8 +109,7 @@ const store = new Vuex.Store({
     },
     isAdminAuthenticated(state) {
       return (
-        isValidJwt(localStorage.getItem("token")) &&
-        state.user.role == "admin"
+        isValidJwt(localStorage.getItem("token")) && state.user.role == "admin"
       );
     },
   },

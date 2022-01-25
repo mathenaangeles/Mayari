@@ -2,7 +2,7 @@
   <div class="admin-loan-form">
     <h1>Loan</h1>
     <h2>{{ loan.id }}</h2>
-     <b-form @submit="onSubmitLoan">
+    <b-form @submit="onSubmitLoan">
       <b-form-group label="Status">
         <b-form-select
           v-model="form.status"
@@ -11,32 +11,32 @@
         ></b-form-select>
       </b-form-group>
       <b-form-group label="Principal">
-          <b-form-input
-            v-model="form.principal"
-            type="number"
-            required
-          ></b-form-input>
+        <b-form-input
+          v-model="form.principal"
+          type="number"
+          required
+        ></b-form-input>
       </b-form-group>
       <b-form-group label="Interest Rate">
-          <b-form-input
-            v-model="form.interest_rate"
-            type="number"
-            required
-          ></b-form-input>
+        <b-form-input
+          v-model="form.interest_rate"
+          type="number"
+          required
+        ></b-form-input>
       </b-form-group>
       <b-form-group label="Payment Term">
-          <b-form-input
-            v-model="form.payment_term"
-            type="number"
-            required
-          ></b-form-input>
+        <b-form-input
+          v-model="form.payment_term"
+          type="number"
+          required
+        ></b-form-input>
       </b-form-group>
       <b-form-group label="Total Amount">
-          <b-form-input
-            v-model="form.total_amount"
-            type="number"
-            required
-          ></b-form-input>
+        <b-form-input
+          v-model="form.total_amount"
+          type="number"
+          required
+        ></b-form-input>
       </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
@@ -70,10 +70,10 @@ export default {
     });
   },
   computed: {
-    loan () {
-      console.log(this.$store.state.loan)
-      return this.$store.state.loan
-    }
+    loan() {
+      console.log(this.$store.state.loan);
+      return this.$store.state.loan;
+    },
   },
   created: function () {
     let user = this.$store.state.user;
@@ -86,7 +86,7 @@ export default {
       }
     }
   },
-  methods : {
+  methods: {
     onSubmitLoan(event) {
       event.preventDefault();
       this.$store
@@ -102,6 +102,6 @@ export default {
           console.log("ERROR: Loan could not be updated.", error);
         });
     },
-  }
+  },
 };
 </script>

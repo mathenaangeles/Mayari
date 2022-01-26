@@ -48,7 +48,7 @@
   min-width: 50%;
 }
 .custom-column {
-  height: 80vh;
+  min-height: 80vh;
 }
 .side {
   text-align: left;
@@ -66,7 +66,7 @@
   padding: 3rem 2rem;
   background: rgba(0, 0, 0, 0.356);
   border-radius: 20px;
-  height: 40vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

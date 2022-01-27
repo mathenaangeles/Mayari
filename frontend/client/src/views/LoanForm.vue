@@ -5,167 +5,150 @@
         v-for="stepVal in totalSteps"
         :key="stepVal"
         class="text-center d-flex align-items-center"
-        style="justify-content: center">
+        style="justify-content: center"
+      >
         <div
-          style="height: 75px; width: 75px; 
-          border-radius: 50%; justify-content:center;"
-          class="bg-secondary d-flex align-items-center"
-          :class="{'bg-success ': stepVal <= step}">
-          <span
-            class="text-white"
-            style="font-size: 25px"
-          ><strong>{{ stepVal }}</strong></span>
+          class="bg-secondary d-flex align-items-center step-container"
+          :class="{ 'bg-info': stepVal <= step }"
+        >
+          <span class="text-white" style="font-size: 25px">
+            <strong>{{ stepVal }}</strong>
+          </span>
         </div>
       </b-col>
-  </b-row>
-    <div v-if="step == 1">
-      <b-form @submit="onSubmitUser">
-        <b-form-group label="Birthdate">
-          <b-form-datepicker
-            v-model="form.birthdate"
-            type="date"
-            required
-          ></b-form-datepicker>
-        </b-form-group>
-        <b-form-group label="Street Address">
-          <b-form-input v-model="form.street_address" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="City">
-          <b-form-input v-model="form.city" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Zip Code">
-          <b-form-input v-model="form.zip_code" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Country">
-          <b-form-select
-            v-model="form.country"
-            :options="countries"
-            required
-          ></b-form-select>
-        </b-form-group>
-        <b-form-group label="Region">
-          <b-form-select
-            v-model="form.region"
-            :options="regions"
-            required
-          ></b-form-select>
-        </b-form-group>
-        <b-form-group label="Gender">
-          <b-form-select v-model="form.gender" :options="genders" required>
-          </b-form-select>
-        </b-form-group>
-        <b-form-group label="Marital Status">
-          <b-form-select
-            v-model="form.marital_status"
-            :options="marital_statuses"
-            required
-          ></b-form-select>
-        </b-form-group>
-        <b-button variant="primary" @click="onNext">Next</b-button>
-      </b-form>
-    </div>
-    <div v-if="step == 2">
-      <b-form>
-        <b-form-group>
-          <b-form-checkbox v-model="form.isHomeAddress" @change="onCheck">
-            Is your business address the same as your home address?
-          </b-form-checkbox>
-        </b-form-group>
-        <b-form-group label="Name">
-          <b-form-input v-model="form.business.name" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Street Address">
-          <b-form-input
-            v-model="form.business.street_address"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group label="City">
-          <b-form-input v-model="form.business.city" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Zip Code">
-          <b-form-input
-            v-model="form.business.zip_code"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group label="Industry">
-          <b-form-input
-            v-model="form.business.industry"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group label="Monthly Income">
-          <b-form-input
-            v-model="form.business.monthly_income"
-            type="number"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group label="Monthly Expenses">
-          <b-form-input
-            v-model="form.business.monthly_expenses"
-            type="number"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group label="Years in Business">
-          <b-form-input
-            v-model="form.business.years"
-            type="number"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-button variant="primary" @click="onNext">Next</b-button>
-        <b-button variant="secondary" @click="onPrevious">Previous</b-button>
-      </b-form>
-    </div>
-    <div v-if="step == 3">
-      <b-form @submit="onSubmitLoan">
-        <b-form-group label="Requested Amount">
-          <b-form-input v-model="form.requested_amount" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Payment Term">
-          <b-form-input v-model="form.payment_term" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Collateral Type">
-          <b-form-select
-            v-model="form.collateral_type"
-            :options="collateral_types"
-            required
-          ></b-form-select>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button variant="secondary" @click="onPrevious">Previous</b-button>
-      </b-form>
+    </b-row>
+    <div class="mt-4 border p-3 rounded"
+      style="border-width: 3px">
+      <div v-if="step == 1">
+        <b-form @submit="onSubmitUser">
+          <b-form-group label="Birthdate">
+            <b-form-datepicker
+              v-model="form.birthdate"
+              type="date"
+              required
+            ></b-form-datepicker>
+          </b-form-group>
+          <b-form-group label="Street Address">
+            <b-form-input v-model="form.street_address" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="City">
+            <b-form-input v-model="form.city" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Zip Code">
+            <b-form-input v-model="form.zip_code" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Country">
+            <b-form-select
+              v-model="form.country"
+              :options="countries"
+              required
+            ></b-form-select>
+          </b-form-group>
+          <b-form-group label="Region">
+            <b-form-select
+              v-model="form.region"
+              :options="regions"
+              required
+            ></b-form-select>
+          </b-form-group>
+          <b-form-group label="Gender">
+            <b-form-select v-model="form.gender" :options="genders" required>
+            </b-form-select>
+          </b-form-group>
+          <b-form-group label="Marital Status">
+            <b-form-select
+              v-model="form.marital_status"
+              :options="marital_statuses"
+              required
+            ></b-form-select>
+          </b-form-group>
+        </b-form>
+      </div>
+      <div v-if="step == 2">
+        <b-form>
+          <b-form-group>
+            <b-form-checkbox v-model="form.isHomeAddress" @change="onCheck">
+              Is your business address the same as your home address?
+            </b-form-checkbox>
+          </b-form-group>
+          <b-form-group label="Name">
+            <b-form-input v-model="form.business.name" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Street Address">
+            <b-form-input
+              v-model="form.business.street_address"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group label="City">
+            <b-form-input v-model="form.business.city" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Zip Code">
+            <b-form-input
+              v-model="form.business.zip_code"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group label="Industry">
+            <b-form-input
+              v-model="form.business.industry"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group label="Monthly Income">
+            <b-form-input
+              v-model="form.business.monthly_income"
+              type="number"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group label="Monthly Expenses">
+            <b-form-input
+              v-model="form.business.monthly_expenses"
+              type="number"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group label="Years in Business">
+            <b-form-input
+              v-model="form.business.years"
+              type="number"
+              required
+            ></b-form-input>
+          </b-form-group>
+        </b-form>
+      </div>
+      <div v-if="step == 3">
+        <b-form @submit="onSubmitLoan">
+          <b-form-group label="Requested Amount">
+            <b-form-input v-model="form.requested_amount" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Payment Term">
+            <b-form-input v-model="form.payment_term" required></b-form-input>
+          </b-form-group>
+          <b-form-group label="Collateral Type">
+            <b-form-select
+              v-model="form.collateral_type"
+              :options="collateral_types"
+              required
+            ></b-form-select>
+          </b-form-group>
+        </b-form>
+      </div>
+      <div class="text-center">
+        <b-button v-if="step > 1" class="mx-2" variant="secondary" @click="onPrevious">Previous</b-button>
+        <b-button v-if="step < 3" class="mx-2" variant="primary" @click="onNext">Next</b-button>
+        <b-button v-if="step === 3" class="mx-2" type="submit" variant="primary">Submit</b-button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
-.progress-bar {
-  display: flex;
-  list-style: none;
-  counter-reset: container 0;
-}
-.progress-bar li {
-  display: flex;
-  list-style: none;
-  counter-increment: container 1;
-  position: relative;
-  margin-right: 133px;
-  margin-top: 20px;
-}
-.progress-bar li.active::before {
-  background-color: #664de5;
-  border: none;
-  color: #fff;
-}
-.progress-bar li.active::after {
-  background-color: #664de5 !important;
-}
-
-.progress-bar li:first-child:after {
-  display: none;
+.step-container {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  justify-content: center;
 }
 </style>
 <script>

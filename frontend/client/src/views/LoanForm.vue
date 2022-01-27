@@ -1,5 +1,23 @@
 <template>
-  <div class="loan-form">
+  <div class="container text-left mt-5 loan-form">
+    <b-row>
+      <b-col
+        v-for="stepVal in totalSteps"
+        :key="stepVal"
+        class="text-center d-flex align-items-center"
+        style="justify-content: center">
+        <div
+          style="height: 75px; width: 75px; 
+          border-radius: 50%; justify-content:center;"
+          class="bg-secondary d-flex align-items-center"
+          :class="{'bg-success ': stepVal <= step}">
+          <span
+            class="text-white"
+            style="font-size: 25px"
+          ><strong>{{ stepVal }}</strong></span>
+        </div>
+      </b-col>
+  </b-row>
     <div v-if="step == 1">
       <b-form @submit="onSubmitUser">
         <b-form-group label="Birthdate">
@@ -43,7 +61,7 @@
             required
           ></b-form-select>
         </b-form-group>
-        <b-button type="submit" variant="primary">Next</b-button>
+        <b-button variant="primary" @click="onNext">Next</b-button>
       </b-form>
     </div>
     <div v-if="step == 2">
@@ -123,13 +141,40 @@
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+.progress-bar {
+  display: flex;
+  list-style: none;
+  counter-reset: container 0;
+}
+.progress-bar li {
+  display: flex;
+  list-style: none;
+  counter-increment: container 1;
+  position: relative;
+  margin-right: 133px;
+  margin-top: 20px;
+}
+.progress-bar li.active::before {
+  background-color: #664de5;
+  border: none;
+  color: #fff;
+}
+.progress-bar li.active::after {
+  background-color: #664de5 !important;
+}
+
+.progress-bar li:first-child:after {
+  display: none;
+}
+</style>
 <script>
 export default {
   name: "LoanForm",
   components: {},
   data: () => {
     return {
+      totalSteps: 3,
       step: 1,
       form: {
         birthdate: new Date(),
@@ -157,15 +202,30 @@ export default {
       },
       regions: [
         { text: "Select a region", value: null },
+        "NCR",
+        "CAR",
         "Region I",
         "Region II",
+        "Region III",
+        "Region IV-A",
+        "Mimaropa",
+        "Region V",
+        "Region VI",
+        "Region VII",
+        "Region VIII",
+        "Region IX",
+        "Region X",
+        "Region XI",
+        "Region XII",
+        "Region XIII",
+        "BARMM",
       ],
       countries: [{ text: "Select a country", value: null }, "Philippines"],
       genders: [
         { text: "Select a gender", value: null },
         "Male",
         "Female",
-        "Non-binary",
+        "Prefer not to say",
       ],
       marital_statuses: [
         { text: "Select a marital status", value: null },
@@ -181,6 +241,7 @@ export default {
   },
   methods: {
     onNext() {
+      console.log(this.step);
       this.step++;
     },
     onPrevious() {

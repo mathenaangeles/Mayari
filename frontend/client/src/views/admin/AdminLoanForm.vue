@@ -2,7 +2,7 @@
   <div class="admin-loan-form">
     <h1>Loan</h1>
     <h2>{{ loan.id }}</h2>
-     <b-form @submit="onSubmitLoan">
+    <b-form @submit="onSubmitLoan">
       <b-form-group label="Status">
         <b-form-select
           v-model="form.status"
@@ -11,30 +11,21 @@
         ></b-form-select>
       </b-form-group>
       <b-form-group label="Principal">
-          <b-form-input
-            v-model="form.principal"
-            type="number"
-          ></b-form-input>
+        <b-form-input v-model="form.principal" type="number"></b-form-input>
       </b-form-group>
       <b-form-group label="Interest Rate">
-          <b-form-input
-            v-model="form.interest_rate"
-            type="number"
-          ></b-form-input>
+        <b-form-input v-model="form.interest_rate" type="number"></b-form-input>
       </b-form-group>
       <b-form-group label="Payment Term">
-          <b-form-input
-            v-model="form.payment_term"
-            type="number"
-          ></b-form-input>
+        <b-form-input v-model="form.payment_term" type="number"></b-form-input>
       </b-form-group>
       <b-form-group label="Outstanding Balance">
-          <b-form-input
-            v-model="form.outstanding_balance"
-            type="number"
-          ></b-form-input>
+        <b-form-input
+          v-model="form.outstanding_balance"
+          type="number"
+        ></b-form-input>
       </b-form-group>
-      <p>Total Amount {{total_amount}} PHP</p>
+      <p>Total Amount {{ total_amount }} PHP</p>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
@@ -67,13 +58,18 @@ export default {
     });
   },
   computed: {
-    loan () {
-      return this.$store.state.loan
+    loan() {
+      return this.$store.state.loan;
     },
-    total_amount () {
-      return ((this.form.principal * (this.form.interest_rate * Math.pow(1 + this.form.interest_rate, this.form.payment_term))) /
-        (Math.pow(1 + this.form.interest_rate, this.form.payment_term) - 1)) || 0;
-    }
+    total_amount() {
+      return (
+        (this.form.principal *
+          (this.form.interest_rate *
+            Math.pow(1 + this.form.interest_rate, this.form.payment_term))) /
+          (Math.pow(1 + this.form.interest_rate, this.form.payment_term) - 1) ||
+        0
+      );
+    },
   },
   created: function () {
     let user = this.$store.state.user;
@@ -83,15 +79,15 @@ export default {
         this.form.payment_term = this.loan.payment_term ?? 0;
         this.form.interest_rate = this.loan.interest_rate ?? 0;
         this.form.principal = this.loan.principal ?? 0;
-        if (this.loan.status=='approved' && this.loan.outstanding_balance) {
-          this.form.outstanding_balance = this.loan.outstanding_balance
+        if (this.loan.status == "approved" && this.loan.outstanding_balance) {
+          this.form.outstanding_balance = this.loan.outstanding_balance;
         }
       } catch (error) {
         console.log("ERROR: User could not be found.", error);
       }
     }
   },
-  methods : {
+  methods: {
     onSubmitLoan(event) {
       event.preventDefault();
       this.$store
@@ -102,13 +98,13 @@ export default {
           principal: this.form.principal,
           total_amount: this.total_amount,
           status: this.form.status,
-          outstanding_balance: this.form.outstanding_balance
+          outstanding_balance: this.form.outstanding_balance,
         })
         .then(() => this.$router.push("/admin/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be updated.", error);
         });
     },
-  }
+  },
 };
 </script>

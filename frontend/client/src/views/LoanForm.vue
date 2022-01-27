@@ -1,11 +1,16 @@
 <template>
   <div class="container text-left mt-5 loan-form">
+    <div class="text-center mb-5">
+      <h1>Form Application</h1>
+      <p>Answer all the fields as accurately as possible.</p>
+    </div>
     <b-row>
       <b-col
         v-for="stepVal in totalSteps"
         :key="stepVal"
-        class="text-center d-flex align-items-center"
-        style="justify-content: center"
+        class="text-center d-flex align-items-center bg-secondary mb-5"
+        style="justify-content: center; height: 3px"
+        :class="{ 'bg-info': stepVal <= step }"
       >
         <div
           class="bg-secondary d-flex align-items-center step-container"
@@ -17,9 +22,11 @@
         </div>
       </b-col>
     </b-row>
-    <div class="mt-4 border p-3 rounded"
-      style="border-width: 3px">
+    <div class="mt-4 border p-3 rounded" style="border-width: 3px">
       <div v-if="step == 1">
+        <div class="text-center">
+          <h2>Personal Information</h2>
+        </div>
         <b-form @submit="onSubmitUser">
           <b-form-group label="Birthdate">
             <b-form-datepicker
@@ -65,6 +72,9 @@
         </b-form>
       </div>
       <div v-if="step == 2">
+        <div class="text-center">
+          <h2>Business Information</h2>
+        </div>
         <b-form>
           <b-form-group>
             <b-form-checkbox v-model="form.isHomeAddress" @change="onCheck">
@@ -119,9 +129,15 @@
         </b-form>
       </div>
       <div v-if="step == 3">
+        <div class="text-center">
+          <h2>Loan Request</h2>
+        </div>
         <b-form @submit="onSubmitLoan">
           <b-form-group label="Requested Amount">
-            <b-form-input v-model="form.requested_amount" required></b-form-input>
+            <b-form-input
+              v-model="form.requested_amount"
+              required
+            ></b-form-input>
           </b-form-group>
           <b-form-group label="Payment Term">
             <b-form-input v-model="form.payment_term" required></b-form-input>
@@ -136,9 +152,19 @@
         </b-form>
       </div>
       <div class="text-center">
-        <b-button v-if="step > 1" class="mx-2" variant="secondary" @click="onPrevious">Previous</b-button>
-        <b-button v-if="step < 3" class="mx-2" variant="primary" @click="onNext">Next</b-button>
-        <b-button v-if="step === 3" class="mx-2" type="submit" variant="primary">Submit</b-button>
+        <b-button
+          v-if="step > 1"
+          class="mx-2"
+          variant="secondary"
+          @click="onPrevious"
+          >Previous</b-button
+        >
+        <b-button v-if="step < 3" class="mx-2" variant="primary" @click="onNext"
+          >Next</b-button
+        >
+        <b-button v-if="step === 3" class="mx-2" type="submit" variant="primary"
+          >Submit</b-button
+        >
       </div>
     </div>
   </div>
@@ -224,7 +250,6 @@ export default {
   },
   methods: {
     onNext() {
-      console.log(this.step);
       this.step++;
     },
     onPrevious() {

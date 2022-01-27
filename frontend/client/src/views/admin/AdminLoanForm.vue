@@ -14,30 +14,27 @@
           <b-form-input
             v-model="form.principal"
             type="number"
-            required
           ></b-form-input>
       </b-form-group>
       <b-form-group label="Interest Rate">
           <b-form-input
             v-model="form.interest_rate"
             type="number"
-            required
           ></b-form-input>
       </b-form-group>
       <b-form-group label="Payment Term">
           <b-form-input
             v-model="form.payment_term"
             type="number"
-            required
           ></b-form-input>
       </b-form-group>
-      <b-form-group label="Total Amount">
+      <b-form-group label="Outstanding Balance">
           <b-form-input
-            v-model="form.total_amount"
+            v-model="form.outstanding_balance"
             type="number"
-            required
           ></b-form-input>
       </b-form-group>
+      <p>Total Amount {{total_amount}} PHP</p>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
@@ -54,7 +51,7 @@ export default {
         interest_rate: 0,
         payment_term: 0,
         principal: 0,
-        total_amount: 0,
+        outstanding_balance: 0,
       },
       statuses: [
         { text: "Select a status", value: null },
@@ -71,8 +68,11 @@ export default {
   },
   computed: {
     loan () {
-      console.log(this.$store.state.loan)
       return this.$store.state.loan
+    },
+    total_amount () {
+      return ((this.form.principal * (this.form.interest_rate * Math.pow(1 + this.form.interest_rate, this.form.payment_term))) /
+        (Math.pow(1 + this.form.interest_rate, this.form.payment_term) - 1)) || 0;
     }
   },
   created: function () {
@@ -80,7 +80,12 @@ export default {
     if (user) {
       try {
         this.form.status = this.loan.status;
-        this.form.payment_term = this.loan.payment_term;
+        this.form.payment_term = this.loan.payment_term ?? 0;
+        this.form.interest_rate = this.loan.interest_rate ?? 0;
+        this.form.principal = this.loan.principal ?? 0;
+        if (this.loan.status=='approved' && this.loan.outstanding_balance) {
+          this.form.outstanding_balance = this.loan.outstanding_balance
+        }
       } catch (error) {
         console.log("ERROR: User could not be found.", error);
       }
@@ -91,13 +96,15 @@ export default {
       event.preventDefault();
       this.$store
         .dispatch("updateLoan", {
+          id: this.loan.id,
           interest_rate: this.form.interest_rate,
           payment_term: this.form.payment_term,
           principal: this.form.principal,
-          total_amount: this.form.total_amount,
+          total_amount: this.total_amount,
           status: this.form.status,
+          outstanding_balance: this.form.outstanding_balance
         })
-        .then(() => this.$router.push("/dashboard"))
+        .then(() => this.$router.push("/admin/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be updated.", error);
         });

@@ -32,14 +32,16 @@ def fetch_loan(user, id=id):
     loan = Loan.query.get(id)
     return jsonify(loan.to_dict()), 201
  
-@loans_api.route('/edit/<int:id>/', methods=('GET',))
+@loans_api.route('/edit/<int:id>/', methods=('PUT',))
 @admin_token_required
 def update_loan(user, id=id):
     data = request.get_json()
+    print(data, file=sys.stderr)
     loan = Loan.query.get(data['id'])
     loan.interest_rate = data['interest_rate']
     loan.payment_term = data['payment_term'] 
     loan.principal = data['principal']
+    loan.outstanding_balance = data['outstanding_balance']
     loan.total_amount = data['total_amount']
     loan.status = data['status']
     db.session.commit()

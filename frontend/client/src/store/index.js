@@ -52,8 +52,8 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    updateLoan(context) {
-      return updateLoan(context.state.loan, context.state.jwt);
+    updateLoan(context, loan) {
+      return updateLoan(loan, context.state.jwt);
     },
     fetchAllLoans(context) {
       return fetchAllLoans(context.state.jwt).then((response) => {

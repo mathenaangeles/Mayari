@@ -216,12 +216,6 @@ export default {
 .calculator {
   text-align: start;
 }
-.btn-dark {
-  background-color: #000000;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 10px;
-}
 .subtitle,
 .subtext,
 .pink-text {

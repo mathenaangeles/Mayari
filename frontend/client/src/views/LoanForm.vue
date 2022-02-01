@@ -1,52 +1,161 @@
 <template>
-  <div class="container text-left my-5 loan-form">
-    <div class="text-center mb-5">
-      <h1>Loan Application</h1>
-      <p>Answer all the fields as accurately as possible.</p>
-    </div>
-    <b-row>
-      <b-col
-        v-for="stepVal in totalSteps"
-        :key="stepVal"
-        class="text-center d-flex align-items-center bg-secondary mb-5"
-        style="justify-content: center; height: 3px"
-        :class="{ 'bg-step': stepVal <= step }"
-      >
-        <div
-          class="bg-secondary d-flex align-items-center step-container"
+  <div style="height: 100%; background-color: #e5e5e5">
+
+    <div class="text-center bg-light py-3">
+      <div>
+        <img src="img/mayari-icon.png" style="height: 10rem" />
+      </div>
+      <b-row>
+        <b-col
+          v-for="stepVal in totalSteps"
+          :key="stepVal"
+          class="text-center d-flex align-items-center bg-secondary mt-3 mb-5"
+          style="justify-content: center; height: 3px"
           :class="{ 'bg-step': stepVal <= step }"
         >
-          <span class="text-white" style="font-size: 25px">
-            <strong>{{ stepVal }}</strong>
-          </span>
-        </div>
-      </b-col>
-    </b-row>
-    <div>
-      <div class="mt-4 border p-3 rounded" style="border-width: 3px">
-        <b-form @submit="onSubmitLoan">
-          <div v-if="step == 1">
-            <div class="text-center">
-              <h2>01. Personal Information</h2>
+          <div
+            class="d-flex align-items-center p-2 mb-5"
+          >
+            <span class="text-dark text-left" style="font-size: 1.5rem">
+              <strong>{{ stepContent[stepVal - 1] }}</strong>
+            </span>
+          </div>
+        </b-col>
+      </b-row>
+    </div>
+    <div class="container text-left my-5 loan-form bg-light p-4">
+      <div>
+        <div class="mt-4">
+          <b-form @submit="onSubmitLoan">
+            <div v-if="step == 1">
+              <div class="text-left">
+                <h2>01. Personal Information</h2>
+                <hr class="border-dark" style="border-width: 3px;"/>
+              </div>
+              <b-form>
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Birthdate">
+                      <b-form-datepicker
+                        v-model="v$.form1.birthdate.$model"
+                        type="date"
+                        required
+                        :state="validateState('birthdate', 1)"
+                        placeholder="Enter your date of birth (MM/DD/YYYY)"
+                      ></b-form-datepicker>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group label="Street Address">
+                      <b-form-input
+                        v-model="v$.form1.street_address.$model"
+                        :state="validateState('street_address', 1)"
+                        required
+                        placeholder="Enter your street address"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col>
+                    <b-form-group label="City">
+                      <b-form-input
+                        v-model="v$.form1.city.$model"
+                        :state="validateState('city', 1)"
+                        required
+                        placeholder="Enter your city"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group label="Zip Code">
+                      <b-form-input
+                        v-model="v$.form1.zip_code.$model"
+                        :state="validateState('zip_code', 1)"
+                        placeholder="Enter your zip code"
+                        required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Region">
+                      <b-form-select
+                        v-model="v$.form1.region.$model"
+                        :options="regions"
+                        :state="validateState('region', 1)"
+                        placeholder="Select your region"
+                      ></b-form-select>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group label="Country">
+                      <b-form-select
+                        v-model="v$.form1.country.$model"
+                        :state="validateState('country', 1)"
+                        :options="countries"
+                        required
+                        placeholder="Select your country"
+                      ></b-form-select>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Gender">
+                      <b-form-select
+                        v-model="v$.form1.gender.$model"
+                        :state="validateState('gender', 1)"
+                        :options="genders"
+                        required
+                        placeholder="Select your gender"
+                      >
+                      </b-form-select>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group label="Marital Status">
+                      <b-form-select
+                        v-model="v$.form1.marital_status.$model"
+                        :options="marital_statuses"
+                        :state="validateState('marital_status', 1)"
+                        placeholder="Select your marital status"
+                      ></b-form-select>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+              </b-form>
             </div>
-            <b-form>
+            <div v-if="step == 2">
+              <div class="text-center">
+                <h2>02. Business Information</h2>
+                <hr class="border-dark" style="border-width: 3px;"/>
+              </div>
+              <b-form-group>
+                <b-form-checkbox
+                  v-model="v$.form2.isHomeAddress.$model"
+                  @change="onCheck"
+                >
+                  Is your business address the same as your personal address?
+                </b-form-checkbox>
+              </b-form-group>
               <b-row>
                 <b-col>
-                  <b-form-group label="Birthdate">
-                    <b-form-datepicker
-                      v-model="v$.form1.birthdate.$model"
-                      type="date"
+                  <b-form-group label="Company Name">
+                    <b-form-input
+                      v-model="v$.form2.name.$model"
+                      :state="validateState('name', 2)"
                       required
-                      :state="validateState('birthdate', 1)"
-                      placeholder="Enter your date of birth (MM/DD/YYYY)"
-                    ></b-form-datepicker>
+                      placeholder="Enter your company name"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
                   <b-form-group label="Street Address">
                     <b-form-input
-                      v-model="v$.form1.street_address.$model"
-                      :state="validateState('street_address', 1)"
+                      v-model="v$.form2.street_address.$model"
+                      :state="validateState('street_address', 2)"
                       required
                       placeholder="Enter your street address"
                     ></b-form-input>
@@ -57,8 +166,8 @@
                 <b-col>
                   <b-form-group label="City">
                     <b-form-input
-                      v-model="v$.form1.city.$model"
-                      :state="validateState('city', 1)"
+                      v-model="v$.form2.city.$model"
+                      :state="validateState('city', 2)"
                       required
                       placeholder="Enter your city"
                     ></b-form-input>
@@ -67,8 +176,8 @@
                 <b-col>
                   <b-form-group label="Zip Code">
                     <b-form-input
-                      v-model="v$.form1.zip_code.$model"
-                      :state="validateState('zip_code', 1)"
+                      v-model="v$.form2.zip_code.$model"
+                      :state="validateState('zip_code', 2)"
                       placeholder="Enter your zip code"
                       required
                     ></b-form-input>
@@ -77,210 +186,107 @@
               </b-row>
               <b-row>
                 <b-col>
-                  <b-form-group label="Region">
-                    <b-form-select
-                      v-model="v$.form1.region.$model"
-                      :options="regions"
-                      :state="validateState('region', 1)"
-                      placeholder="Select your region"
-                    ></b-form-select>
+                  <b-form-group label="Industry">
+                    <b-form-input
+                      v-model="v$.form2.industry.$model"
+                      :state="validateState('industry', 2)"
+                      required
+                      placeholder="Enter your industry"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
-                  <b-form-group label="Country">
-                    <b-form-select
-                      v-model="v$.form1.country.$model"
-                      :state="validateState('country', 1)"
-                      :options="countries"
+                  <b-form-group label="Monthly Income">
+                    <b-form-input
+                      v-model="v$.form2.monthly_income.$model"
+                      :state="validateState('monthly_income', 2)"
+                      type="number"
                       required
-                      placeholder="Select your country"
-                    ></b-form-select>
+                      placeholder="Enter your annual income"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
-                  <b-form-group label="Gender">
-                    <b-form-select
-                      v-model="v$.form1.gender.$model"
-                      :state="validateState('gender', 1)"
-                      :options="genders"
+                  <b-form-group label="Monthly Expenses">
+                    <b-form-input
+                      v-model="v$.form2.monthly_expenses.$model"
+                      :state="validateState('monthly_expenses', 2)"
+                      type="number"
                       required
-                      placeholder="Select your gender"
-                    >
-                    </b-form-select>
+                      placeholder="Enter your monthly expenses"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
-                  <b-form-group label="Marital Status">
-                    <b-form-select
-                      v-model="v$.form1.marital_status.$model"
-                      :options="marital_statuses"
-                      :state="validateState('marital_status', 1)"
-                      placeholder="Select your marital status"
-                    ></b-form-select>
+                  <b-form-group label="Year(s) of Business">
+                    <b-form-input
+                      v-model="v$.form2.years.$model"
+                      :state="validateState('years', 2)"
+                      type="number"
+                      required
+                      placeholder="Enter your year(s) of business"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-row>
-            </b-form>
-          </div>
-          <div v-if="step == 2">
-            <div class="text-center">
-              <h2>02. Business Information</h2>
             </div>
-            <b-form-group>
-              <b-form-checkbox
-                v-model="v$.form2.isHomeAddress.$model"
-                @change="onCheck"
+            <div v-if="step == 3">
+              <div class="text-center">
+                <h2>03. Loan Details</h2>
+                <hr class="border-dark" style="border-width: 3px;"/>
+              </div>
+              <b-form>
+                <b-form-group label="Requested Amount">
+                  <b-form-input
+                    v-model="v$.form3.requested_amount.$model"
+                    placeholder="Enter a requested loan amount"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Payment Term">
+                  <b-form-input
+                    v-model="v$.form3.payment_term.$model"
+                    placeholder="Enter how long the loan will last in months"
+                    required
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <b-form-group label="Collateral Type">
+                  <b-form-select
+                    v-model="v$.form3.collateral_type.$model"
+                    :options="collateral_types"
+                    required
+                  ></b-form-select>
+                </b-form-group>
+              </b-form>
+            </div>
+            <div class="text-center">
+              <b-button
+                v-if="step > 1"
+                class="mx-2"
+                variant="secondary"
+                @click="onPrevious"
+                >Previous</b-button
               >
-                Is your business address the same as your personal address?
-              </b-form-checkbox>
-            </b-form-group>
-            <b-row>
-              <b-col>
-                <b-form-group label="Company Name">
-                  <b-form-input
-                    v-model="v$.form2.name.$model"
-                    :state="validateState('name', 2)"
-                    required
-                    placeholder="Enter your company name"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group label="Street Address">
-                  <b-form-input
-                    v-model="v$.form2.street_address.$model"
-                    :state="validateState('street_address', 2)"
-                    required
-                    placeholder="Enter your street address"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <b-form-group label="City">
-                  <b-form-input
-                    v-model="v$.form2.city.$model"
-                    :state="validateState('city', 2)"
-                    required
-                    placeholder="Enter your city"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group label="Zip Code">
-                  <b-form-input
-                    v-model="v$.form2.zip_code.$model"
-                    :state="validateState('zip_code', 2)"
-                    placeholder="Enter your zip code"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <b-form-group label="Industry">
-                  <b-form-input
-                    v-model="v$.form2.industry.$model"
-                    :state="validateState('industry', 2)"
-                    required
-                    placeholder="Enter your industry"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group label="Monthly Income">
-                  <b-form-input
-                    v-model="v$.form2.monthly_income.$model"
-                    :state="validateState('monthly_income', 2)"
-                    type="number"
-                    required
-                    placeholder="Enter your annual income"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <b-form-group label="Monthly Expenses">
-                  <b-form-input
-                    v-model="v$.form2.monthly_expenses.$model"
-                    :state="validateState('monthly_expenses', 2)"
-                    type="number"
-                    required
-                    placeholder="Enter your monthly expenses"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group label="Year(s) of Business">
-                  <b-form-input
-                    v-model="v$.form2.years.$model"
-                    :state="validateState('years', 2)"
-                    type="number"
-                    required
-                    placeholder="Enter your year(s) of business"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
-            </b-row>
-          </div>
-          <div v-if="step == 3">
-            <div class="text-center">
-              <h2>03. Loan Details</h2>
+              <b-button
+                v-if="step < 3"
+                class="mx-2 btn-dark"
+                variant="primary"
+                @click="onNext"
+                >Next</b-button
+              >
+              <b-button
+                v-if="step === 3"
+                class="mx-2 btn-dark"
+                type="submit"
+                variant="primary"
+                >Submit</b-button
+              >
             </div>
-            <b-form>
-              <b-form-group label="Requested Amount">
-                <b-form-input
-                  v-model="v$.form3.requested_amount.$model"
-                  placeholder="Enter a requested loan amount"
-                  required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group label="Payment Term">
-                <b-form-input
-                  v-model="v$.form3.payment_term.$model"
-                  placeholder="Enter how long the loan will last in months"
-                  required
-                >
-                </b-form-input>
-              </b-form-group>
-              <b-form-group label="Collateral Type">
-                <b-form-select
-                  v-model="v$.form3.collateral_type.$model"
-                  :options="collateral_types"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-form>
-          </div>
-          <div class="text-center">
-            <b-button
-              v-if="step > 1"
-              class="mx-2"
-              variant="secondary"
-              @click="onPrevious"
-              >Previous</b-button
-            >
-            <b-button
-              v-if="step < 3"
-              class="mx-2 btn-dark"
-              variant="primary"
-              @click="onNext"
-              >Next</b-button
-            >
-            <b-button
-              v-if="step === 3"
-              class="mx-2 btn-dark"
-              type="submit"
-              variant="primary"
-              >Submit</b-button
-            >
-          </div>
-        </b-form>
+          </b-form>
+        </div>
       </div>
     </div>
   </div>
@@ -288,6 +294,10 @@
 <style scoped>
 .loan-form * {
   font-weight: 700;
+}
+.loan-form {
+  border-radius: 10px;
+  box-shadow: 10px 10px 12px grey;
 }
 .bg-step {
   background-color: #b456de !important;
@@ -316,6 +326,11 @@ export default {
     return {
       totalSteps: 3,
       step: 1,
+      stepContent: [
+        "01. Personal Information",
+        "02. Business Information",
+        "03. Loan Information",
+      ],
       form1: {
         birthdate: new Date(),
         street_address: "",
@@ -520,6 +535,7 @@ export default {
   },
   created: function () {
     let user = this.$store.state.user;
+    console.log('USER', user);
     if (user) {
       try {
         this.form1.birthdate = new Date(user.birthdate) ?? new Date();

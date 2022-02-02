@@ -1,6 +1,12 @@
 <template>
   <div class="edit-profile">
     <b-form @submit="onSubmit">
+        <b-form-file
+            v-model="form.profile_photo"
+            :state="Boolean(form.profile_photo)"
+            placeholder="Choose a file or drop it here..."
+            drop-placeholder="Drop file here..."
+        ></b-form-file>
         <b-form-group label="Birthdate">
         <b-form-datepicker
             v-model="form.birthdate"
@@ -69,6 +75,7 @@ export default {
         country: null,
         gender: null,
         marital_status: null,
+        profile_photo: null,
       },
       regions: [
         { text: "Select a region", value: null },

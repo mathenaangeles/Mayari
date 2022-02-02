@@ -79,7 +79,7 @@ const store = new Vuex.Store({
     updateUser(context, user) {
       return updateUser(user, context.state.user.id, context.state.jwt).then(
         (response) => {
-          context.commit("setUser", { user: response.data.user });
+          context.commit("setUser", { user: response.data });
       });
     },
     login(context, user) {

@@ -5,6 +5,7 @@
       <h1>You currently do not have any loans.</h1>
       <b-button href="/apply" class="ctv-button">Apply Now</b-button>
     </div>
+    <router-link :to="`/profile/${user.id}`"><p>Edit Profile</p></router-link>
     <DashboardLoanItem v-for="loan in loans" :key="loan.id" :loanInfo="loan">
     </DashboardLoanItem>
   </div>
@@ -20,6 +21,7 @@ export default {
   },
   computed: mapState({
     loans: (state) => state.loans,
+    user: (state) => state.user,
   }),
   beforeMount() {
     this.$store.dispatch("fetchLoans");

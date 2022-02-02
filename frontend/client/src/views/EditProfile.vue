@@ -1,6 +1,6 @@
 <template>
   <div class="edit-profile">
-    <b-form @submit="onSubmitUser">
+    <b-form @submit="onSubmit">
         <b-form-group label="Birthdate">
         <b-form-datepicker
             v-model="form.birthdate"

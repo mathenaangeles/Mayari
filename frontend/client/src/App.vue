@@ -173,4 +173,10 @@ footer.section-footer {
   border: 1px solid white !important;
   border-radius: 10px;
 }
+.btn-dark {
+  background-color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+}
 </style>

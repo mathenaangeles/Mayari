@@ -11,6 +11,7 @@ import AdminDashboard from "../views/admin/AdminDashboard.vue";
 import AdminLoanForm from "../views/admin/AdminLoanForm";
 import LoanForm from "../views/LoanForm.vue";
 import Loan from "../views/Loan.vue";
+import EditProfile from "../views/EditProfile.vue";
 
 import store from "../store/index.js";
 
@@ -94,6 +95,14 @@ const routes = [
     path: "/loan/:id",
     name: "loan",
     component: Loan,
+    meta: {
+      requiresAuthentication: true,
+    },
+  },
+  {
+    path: "/profile/:id",
+    name: "profile",
+    component: EditProfile,
     meta: {
       requiresAuthentication: true,
     },

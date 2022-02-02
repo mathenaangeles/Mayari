@@ -1,6 +1,5 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy_utils import ChoiceType
 from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
@@ -14,6 +13,7 @@ class User(db.Model):
     last_name = db.Column(db.String(255), nullable=False)
     mobile_number = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(255), nullable=False)
+    profile_photo = db.Column(db.String(255), nullable=True)
     birthdate = db.Column(db.Date, nullable=True)
     street_address = db.Column(db.String(255), nullable=True)
     city = db.Column(db.String(255), nullable=True)
@@ -48,6 +48,7 @@ class User(db.Model):
                     email=self.email, 
                     name=self.first_name + self.last_name,
                     mobile_number=self.mobile_number,
+                    profile_photo=self.profile_photo,
                     birthdate=self.birthdate,
                     street_address=self.street_address,
                     city=self.city,
@@ -66,26 +67,36 @@ class Loan(db.Model):
     requested_amount = db.Column(db.Float, nullable=False)
     collateral_type = db.Column(db.String(255), nullable=False)
     payment_term = db.Column(db.Integer, nullable=False)
+    primary_id = db.Column(db.String(255), nullable=False)
+    proof_of_income = db.Column(db.String(255), nullable=False)
     interest_rate = db.Column(db.Float, nullable=True)
     principal = db.Column(db.Float, nullable=True)
     total_amount = db.Column(db.Float, nullable=True)
     outstanding_balance =  db.Column(db.Float, nullable=True)
+    overdue_balance = db.Column(db.Float, nullable=True)
     status = db.Column(db.String(255),  default=u'pending')
+   
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, requested_amount, collateral_type, payment_term):
+    def __init__(self, requested_amount, collateral_type, payment_term, primary_id, proof_of_income):
         self.requested_amount = requested_amount
         self.collateral_type = collateral_type
         self.payment_term = payment_term
+        self.primary_id = self.proof_of_income
 
     def to_dict(self):
       return dict(id=self.id,
                   borrower_id=self.borrower_id,
-                  total_amount=self.total_amount,
-                  principal = self.principal,
-                  interest_rate = self.interest_rate,
+                  requested_amount=self.requested_amount,
+                  collateral_type=self.collateral_type,
                   payment_term = self.payment_term,
+                  primary_id = self.primary_id,
+                  proof_of_income = self.proof_of_income,
+                  interest_rate = self.interest_rate,
+                  principal = self.principal,
+                  total_amount=self.total_amount,
                   outstanding_balance = self.outstanding_balance,
+                  overdue_balance = self.overdue_balance,
                   status = self.status,
                   created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
 

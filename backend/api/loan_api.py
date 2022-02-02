@@ -12,7 +12,7 @@ loans_api = Blueprint('loans', __name__)
 @token_required
 def create_loan(user):
     data = request.get_json()
-    loan = Loan(data['requested_amount'],data['collateral_type'],data['payment_term'])
+    loan = Loan(data['requested_amount'],data['collateral_type'],data['payment_term'], data['primary_id'],  data['proof_of_income'])
     loan.borrower = user
     business = Business(**data['business'])
     loan.business = business

@@ -501,7 +501,7 @@ export default {
     },
     onSubmitLoan(event) {
       event.preventDefault();
-      this.$store.dispatch("postLoan", {
+      /* this.$store.dispatch("postLoan", {
         requested_amount: this.form3.requested_amount,
         payment_term: this.form3.payment_term,
         collateral_type: this.form3.collateral_type,
@@ -518,8 +518,8 @@ export default {
       }).then(() => this.$router.push("/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be created.", error);
-        });
-      /* const promise1 = this.$store.dispatch("updateUser", {
+        }); */
+      const promise1 = this.$store.dispatch("updateUser", {
         birthdate: this.form1.birthdate,
         street_address: this.form1.street_address,
         city: this.form1.city,
@@ -552,7 +552,7 @@ export default {
         .then(() => this.$router.push("/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be created.", error);
-        }); */
+        });
     },
   },
   created: function () {

@@ -1,7 +1,7 @@
 <template>
-  <div style="height: 100%; background-color: #e5e5e5">
+  <div class="d-flex flex-column" style="justify-content: space-between;">
 
-    <div class="text-center bg-light py-3">
+    <div class="text-center pb-3">
       <div>
         <img src="img/mayari-icon.png" style="height: 10rem" />
       </div>
@@ -23,7 +23,7 @@
         </b-col>
       </b-row>
     </div>
-    <div class="container text-left my-5 loan-form bg-light p-4">
+    <div class="container text-left my-5 loan-form p-4">
       <div>
         <div class="mt-4">
           <b-form @submit="onSubmitLoan">
@@ -298,6 +298,7 @@
 .loan-form {
   border-radius: 10px;
   box-shadow: 10px 10px 12px grey;
+  height: 100%;
 }
 .bg-step {
   background-color: #b456de !important;
@@ -500,7 +501,25 @@ export default {
     },
     onSubmitLoan(event) {
       event.preventDefault();
-      const promise1 = this.$store.dispatch("updateUser", {
+      this.$store.dispatch("postLoan", {
+        requested_amount: this.form3.requested_amount,
+        payment_term: this.form3.payment_term,
+        collateral_type: this.form3.collateral_type,
+        business: {
+          name: this.form2.name,
+          street_address: this.form2.street_address,
+          city: this.form2.city,
+          zip_code: this.form2.zip_code,
+          industry: this.form2.industry,
+          monthly_income: this.form2.monthly_income,
+          monthly_expenses: this.form2.monthly_expenses,
+          years: this.form2.years,
+        },
+      }).then(() => this.$router.push("/dashboard"))
+        .catch((error) => {
+          console.log("ERROR: Loan could not be created.", error);
+        });
+      /* const promise1 = this.$store.dispatch("updateUser", {
         birthdate: this.form1.birthdate,
         street_address: this.form1.street_address,
         city: this.form1.city,
@@ -525,11 +544,15 @@ export default {
           years: this.form2.years,
         },
       });
+      promise2.then(() => this.$router.push("/dashboard"))
+        .catch((error) => {
+          console.log("ERROR: Loan could not be created.", error);
+        });
       Promise.all([promise1, promise2])
         .then(() => this.$router.push("/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be created.", error);
-        });
+        }); */
     },
   },
   created: function () {

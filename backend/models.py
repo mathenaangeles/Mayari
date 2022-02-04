@@ -22,7 +22,7 @@ class User(db.Model):
     country = db.Column(db.String(255), nullable=True)
     gender = db.Column(db.String(255), nullable=True)
     marital_status = db.Column(db.String(255), nullable=True)
-    loans = db.relationship("Loan", backref="borrower", lazy=False)
+    loans = db.relationship("Loan", backref="borrower", cascade="all,delete", lazy=False)
     
     def __init__(self, email, first_name, last_name, mobile_number, password):
         self.email = email
@@ -63,7 +63,7 @@ class Loan(db.Model):
     __tablename__ = 'loans'
     id = db.Column(db.Integer, primary_key=True)
     borrower_id =  db.Column(db.Integer, db.ForeignKey('users.id'))
-    business = db.relationship("Business",  backref="loan", uselist=False)
+    business = db.relationship("Business",  backref="loan", cascade="all,delete", uselist=False)
     requested_amount = db.Column(db.Float, nullable=False)
     collateral_type = db.Column(db.String(255), nullable=False)
     payment_term = db.Column(db.Integer, nullable=False)

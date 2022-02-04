@@ -1,54 +1,54 @@
 <template>
   <div class="edit-profile">
     <b-form @submit="onSubmit">
-        <b-form-file
-            v-model="form.profile_photo"
-            :state="Boolean(form.profile_photo)"
-            placeholder="Choose a file or drop it here..."
-            drop-placeholder="Drop file here..."
-        ></b-form-file>
-        <b-form-group label="Birthdate">
+      <b-form-file
+        v-model="form.profile_photo"
+        :state="Boolean(form.profile_photo)"
+        placeholder="Choose a file or drop it here..."
+        drop-placeholder="Drop file here..."
+      ></b-form-file>
+      <b-form-group label="Birthdate">
         <b-form-datepicker
-            v-model="form.birthdate"
-            type="date"
-            required
+          v-model="form.birthdate"
+          type="date"
+          required
         ></b-form-datepicker>
-        </b-form-group>
-        <b-form-group label="Street Address">
+      </b-form-group>
+      <b-form-group label="Street Address">
         <b-form-input v-model="form.street_address" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="City">
+      </b-form-group>
+      <b-form-group label="City">
         <b-form-input v-model="form.city" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Zip Code">
+      </b-form-group>
+      <b-form-group label="Zip Code">
         <b-form-input v-model="form.zip_code" required></b-form-input>
-        </b-form-group>
-        <b-form-group label="Country">
+      </b-form-group>
+      <b-form-group label="Country">
         <b-form-select
-            v-model="form.country"
-            :options="countries"
-            required
+          v-model="form.country"
+          :options="countries"
+          required
         ></b-form-select>
-        </b-form-group>
-        <b-form-group label="Region">
+      </b-form-group>
+      <b-form-group label="Region">
         <b-form-select
-            v-model="form.region"
-            :options="regions"
-            required
+          v-model="form.region"
+          :options="regions"
+          required
         ></b-form-select>
-        </b-form-group>
-        <b-form-group label="Gender">
+      </b-form-group>
+      <b-form-group label="Gender">
         <b-form-select v-model="form.gender" :options="genders" required>
         </b-form-select>
-        </b-form-group>
-        <b-form-group label="Marital Status">
+      </b-form-group>
+      <b-form-group label="Marital Status">
         <b-form-select
-            v-model="form.marital_status"
-            :options="marital_statuses"
-            required
+          v-model="form.marital_status"
+          :options="marital_statuses"
+          required
         ></b-form-select>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
+      </b-form-group>
+      <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
 </template>

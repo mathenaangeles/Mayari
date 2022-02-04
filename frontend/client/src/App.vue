@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="d-flex flex-column">
-    <div style="height: 100%;">
-
+    <div style="height: 100%">
       <div id="nav">
         <b-navbar toggleable="lg">
           <b-navbar-brand v-if="!isAuthenticated" to="/"

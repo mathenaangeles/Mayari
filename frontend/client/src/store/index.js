@@ -80,7 +80,8 @@ const store = new Vuex.Store({
       return updateUser(user, context.state.user.id, context.state.jwt).then(
         (response) => {
           context.commit("setUser", { user: response.data });
-      });
+        }
+      );
     },
     login(context, user) {
       return login(user)
@@ -95,6 +96,9 @@ const store = new Vuex.Store({
     },
     register(context, user) {
       return register(user)
+        .then((response) => {
+          console.log(response);
+        })
         .then(context.dispatch("login", user))
         .catch((error) => {
           console.log("Registration Error: ", error);

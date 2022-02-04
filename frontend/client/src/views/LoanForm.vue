@@ -1,6 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="justify-content: space-between;">
-
+  <div class="d-flex flex-column" style="justify-content: space-between">
     <div class="text-center pb-3">
       <div>
         <img src="img/mayari-icon.png" style="height: 10rem" />
@@ -13,9 +12,7 @@
           style="justify-content: center; height: 3px"
           :class="{ 'bg-step': stepVal <= step }"
         >
-          <div
-            class="d-flex align-items-center p-2 mb-5"
-          >
+          <div class="d-flex align-items-center p-2 mb-5">
             <span class="text-dark text-left" style="font-size: 1.5rem">
               <strong>{{ stepContent[stepVal - 1] }}</strong>
             </span>
@@ -30,7 +27,7 @@
             <div v-if="step == 1">
               <div class="text-left">
                 <h2>01. Personal Information</h2>
-                <hr class="border-dark" style="border-width: 3px;"/>
+                <hr class="border-dark" style="border-width: 3px" />
               </div>
               <b-form>
                 <b-row>
@@ -130,7 +127,7 @@
             <div v-if="step == 2">
               <div class="text-center">
                 <h2>02. Business Information</h2>
-                <hr class="border-dark" style="border-width: 3px;"/>
+                <hr class="border-dark" style="border-width: 3px" />
               </div>
               <b-form-group>
                 <b-form-checkbox
@@ -235,7 +232,7 @@
             <div v-if="step == 3">
               <div class="text-center">
                 <h2>03. Loan Details</h2>
-                <hr class="border-dark" style="border-width: 3px;"/>
+                <hr class="border-dark" style="border-width: 3px" />
               </div>
               <b-form>
                 <b-form-group label="Requested Amount">
@@ -260,6 +257,18 @@
                     required
                   ></b-form-select>
                 </b-form-group>
+                <b-form-file
+                  v-model="v$.form3.primary_id.$model"
+                  :state="Boolean(v$.form3.primary_id.$model)"
+                  placeholder="Choose a file or drop it here..."
+                  drop-placeholder="Drop file here..."
+                ></b-form-file>
+                <b-form-file
+                  v-model="v$.form3.proof_of_income.$model"
+                  :state="Boolean(v$.form3.proof_of_income.$model)"
+                  placeholder="Choose a file or drop it here..."
+                  drop-placeholder="Drop file here..."
+                ></b-form-file>
               </b-form>
             </div>
             <div class="text-center">
@@ -357,6 +366,8 @@ export default {
         requested_amount: 0,
         payment_term: 0,
         collateral_type: null,
+        primary_id: null,
+        proof_of_income: null,
       },
       regions: [
         { text: "Select a region", value: null },
@@ -443,6 +454,8 @@ export default {
         requested_amount: { required },
         payment_term: { required },
         collateral_type: { required },
+        primary_id: { required },
+        proof_of_income: { required },
       },
     };
   },
@@ -529,11 +542,10 @@ export default {
         gender: this.form1.gender,
         marital_status: this.form1.marital_status,
       });
-      const promise2 = this.$store.dispatch("postLoan", {
-        requested_amount: this.form3.requested_amount,
-        payment_term: this.form3.payment_term,
-        collateral_type: this.form3.collateral_type,
-        business: {
+      let loan = new FormData();
+      loan.append('primary_id', this.form3.primary_id);
+      loan.append('proof_of_income', this.form3.proof_of_income);
+      var business = {
           name: this.form2.name,
           street_address: this.form2.street_address,
           city: this.form2.city,
@@ -542,9 +554,14 @@ export default {
           monthly_income: this.form2.monthly_income,
           monthly_expenses: this.form2.monthly_expenses,
           years: this.form2.years,
-        },
-      });
-      promise2.then(() => this.$router.push("/dashboard"))
+      };
+      loan.append('business', business);
+      loan.append('requested_amount', this.form3.requested_amount);
+      loan.append('payment_term', this.form3.payment_term);
+      loan.append('collateral_type', this.form3.collateral_type);
+      const promise2 = this.$store.dispatch("postLoan", loan);
+      promise2
+        .then(() => this.$router.push("/dashboard"))
         .catch((error) => {
           console.log("ERROR: Loan could not be created.", error);
         });
@@ -557,7 +574,7 @@ export default {
   },
   created: function () {
     let user = this.$store.state.user;
-    console.log('USER', user);
+    console.log("USER", user);
     if (user) {
       try {
         this.form1.birthdate = new Date(user.birthdate) ?? new Date();

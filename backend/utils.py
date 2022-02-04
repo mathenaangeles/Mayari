@@ -1,6 +1,7 @@
 from functools import wraps
 from flask import jsonify, request, current_app
 import jwt
+import boto3
 
 import sys
 sys.path.append("..") 
@@ -61,6 +62,11 @@ def admin_token_required(f):
         except jwt.ExpiredSignatureError:
             return jsonify(expired_msg), 401 
         except (jwt.InvalidTokenError, Exception) as e:
-            print(e)
             return jsonify(invalid_msg), 401
     return _verify
+
+def upload_file(file, bucket, key):
+    s3_client = boto3.client('s3')
+    response = s3_client.upload_fileobj(file, bucket, key)
+    print(response)
+    return response

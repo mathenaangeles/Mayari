@@ -67,6 +67,6 @@ def admin_token_required(f):
 
 def upload_file(file, bucket, key):
     s3_client = boto3.client('s3')
-    response = s3_client.upload_fileobj(file, bucket, key)
-    print(response)
-    return response
+    s3_client.upload_fileobj(file, bucket, key)
+    file_url = 'https://%s.s3.amazonaws.com/%s' % (bucket, key)
+    return file_url

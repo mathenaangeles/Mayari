@@ -75,14 +75,14 @@ class Loan(db.Model):
     outstanding_balance =  db.Column(db.Float, nullable=True)
     overdue_balance = db.Column(db.Float, nullable=True)
     status = db.Column(db.String(255),  default=u'pending')
-   
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, requested_amount, collateral_type, payment_term, primary_id, proof_of_income):
         self.requested_amount = requested_amount
         self.collateral_type = collateral_type
         self.payment_term = payment_term
-        self.primary_id = self.proof_of_income
+        self.primary_id = primary_id
+        self.proof_of_income = proof_of_income
 
     def to_dict(self):
       return dict(id=self.id,
@@ -112,6 +112,17 @@ class Business(db.Model):
     monthly_income = db.Column(db.Float, nullable=False)
     monthly_expenses= db.Column(db.Float, nullable=False)
     years = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, name, street_address, city, zip_code, industry, monthly_income, 
+    monthly_expenses, years):
+        self.name = name
+        self.street_address = street_address
+        self.city = city
+        self.zip_code = zip_code
+        self.industry = industry
+        self.monthly_income = monthly_income
+        self.monthly_expenses = monthly_expenses
+        self.years = years
 
     def to_dict(self):
       return dict(id=self.id,

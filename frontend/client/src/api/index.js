@@ -32,6 +32,12 @@ export function postLoan(loan, jwt) {
   });
 }
 
+export function uploadProfilePhoto(image, userId, jwt) {
+  return axios.put(`${API_URL}/users/upload/photo/${userId}/`, image, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
 export function updateUser(user, userId, jwt) {
   return axios.put(`${API_URL}/users/${userId}/`, user, {
     headers: { Authorization: `Bearer: ${jwt}` },

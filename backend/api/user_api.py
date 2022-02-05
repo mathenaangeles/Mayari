@@ -6,9 +6,11 @@ import jwt
 sys.path.append("..") 
 
 from models import db, User
-from utils import token_required
+from utils import token_required, upload_file
 
 users_api = Blueprint('users', __name__)
+
+BUCKET = "mayari-uploads"
 
 @users_api.route('/register/', methods=('POST',))
 def register():
@@ -53,6 +55,16 @@ def update_user(user, id=id):
         user.marital_status = data['marital_status']
         db.session.commit()
         return jsonify(user.to_dict()), 201
+
+@users_api.route('upload/photo/<int:id>/', methods=('PUT',))
+@token_required
+def upload_profile_photo(user, id=id):
+    user = User.query.get(id)
+    profile_photo = request.files["profile_photo"]
+    profile_photo_url = upload_file(profile_photo, BUCKET, "profile-photos/{}-{}".format(user.id,profile_photo.filename))
+    user.profile_photo = profile_photo_url
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
 
 def parse_date(text):
     for fmt in ('%Y-%m-%dT%H:%M:%S.%f%z', '%Y-%m-%d'):

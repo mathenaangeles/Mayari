@@ -5,6 +5,7 @@ import {
   login,
   register,
   updateUser,
+  uploadProfilePhoto,
   fetchLoans,
   fetchAllLoans,
   fetchLoan,
@@ -61,7 +62,6 @@ const store = new Vuex.Store({
       });
     },
     fetchLoan(context, { loanId }) {
-      console.log(loanId);
       return fetchLoan(loanId, context.state.jwt).then((response) => {
         context.commit("setLoan", { loan: response.data });
       });
@@ -75,6 +75,15 @@ const store = new Vuex.Store({
     },
     postLoan(context, loan) {
       return postLoan(loan, context.state.jwt);
+    },
+    uploadProfilePhoto(context, image) {
+      return uploadProfilePhoto(
+        image,
+        context.state.user.id,
+        context.state.jwt
+      ).then((response) => {
+        context.commit("setUser", { user: response.data });
+      });
     },
     updateUser(context, user) {
       return updateUser(user, context.state.user.id, context.state.jwt).then(

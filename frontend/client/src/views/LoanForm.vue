@@ -543,22 +543,19 @@ export default {
         marital_status: this.form1.marital_status,
       });
       let loan = new FormData();
-      loan.append('primary_id', this.form3.primary_id);
-      loan.append('proof_of_income', this.form3.proof_of_income);
-      var business = {
-          name: this.form2.name,
-          street_address: this.form2.street_address,
-          city: this.form2.city,
-          zip_code: this.form2.zip_code,
-          industry: this.form2.industry,
-          monthly_income: this.form2.monthly_income,
-          monthly_expenses: this.form2.monthly_expenses,
-          years: this.form2.years,
-      };
-      loan.append('business', business);
-      loan.append('requested_amount', this.form3.requested_amount);
-      loan.append('payment_term', this.form3.payment_term);
-      loan.append('collateral_type', this.form3.collateral_type);
+      loan.append("primary_id", this.form3.primary_id);
+      loan.append("proof_of_income", this.form3.proof_of_income);
+      loan.append("name", this.form2.name);
+      loan.append("street_address", this.form2.street_address);
+      loan.append("city", this.form2.city);
+      loan.append("zip_code", this.form2.zip_code);
+      loan.append("industry", this.form2.industry);
+      loan.append("monthly_income", this.form2.monthly_income);
+      loan.append("monthly_expenses", this.form2.monthly_expenses);
+      loan.append("years", this.form2.years);
+      loan.append("requested_amount", this.form3.requested_amount);
+      loan.append("payment_term", this.form3.payment_term);
+      loan.append("collateral_type", this.form3.collateral_type);
       const promise2 = this.$store.dispatch("postLoan", loan);
       promise2
         .then(() => this.$router.push("/dashboard"))
@@ -574,7 +571,6 @@ export default {
   },
   created: function () {
     let user = this.$store.state.user;
-    console.log("USER", user);
     if (user) {
       try {
         this.form1.birthdate = new Date(user.birthdate) ?? new Date();

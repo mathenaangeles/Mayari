@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+import uuid
 
 import sys
 sys.path.append("..") 
@@ -16,12 +17,12 @@ def create_loan(user):
     data = request.form
     primary_id = request.files['primary_id']
     proof_of_income = request.files['proof_of_income']
-    # print(primary_id, file=sys.stderr)
-    upload_file(primary_id, BUCKET, "primary-ids/{}".format(primary_id.filename),)
-    upload_file(proof_of_income, BUCKET, "proofs-of-income/{}".format(proof_of_income.filename))
-    loan = Loan(data['requested_amount'],data['collateral_type'],data['payment_term'])
+    primary_id_url = upload_file(primary_id, BUCKET, "primary-ids/{}-{}".format(str(uuid.uuid4()),primary_id.filename))
+    proof_of_income_url = upload_file(proof_of_income, BUCKET, "proofs-of-income/{}-{}".format(str(uuid.uuid4()),proof_of_income.filename))
+    loan = Loan(data['requested_amount'],data['collateral_type'],data['payment_term'], primary_id_url, proof_of_income_url)
     loan.borrower = user
-    business = Business(**data['business'])
+    business = Business(data['name'], data['street_address'], data['city'], data['zip_code'], data['industry'], 
+    data['monthly_income'], data['monthly_expenses'], data['years'])
     loan.business = business
     db.session.add(loan)
     db.session.commit()

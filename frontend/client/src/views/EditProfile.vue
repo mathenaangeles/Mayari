@@ -2,10 +2,9 @@
   <div class="edit-profile">
     <b-form @submit="onSubmit">
       <b-form-file
-        v-model="form.profile_photo"
-        :state="Boolean(form.profile_photo)"
         placeholder="Choose a file or drop it here..."
         drop-placeholder="Drop file here..."
+        @change="onChangePhoto"
       ></b-form-file>
       <b-form-group label="Birthdate">
         <b-form-datepicker
@@ -75,7 +74,6 @@ export default {
         country: null,
         gender: null,
         marital_status: null,
-        profile_photo: null,
       },
       regions: [
         { text: "Select a region", value: null },
@@ -133,6 +131,13 @@ export default {
         .catch((error) => {
           console.log("ERROR: User could not be updated.", error);
         });
+    },
+    onChangePhoto(event) {
+      const image = new FormData();
+      image.append("profile_photo", event.target.files[0]);
+      this.$store.dispatch("uploadProfilePhoto", image).catch((error) => {
+        console.log("ERROR: Profile photo could not be updated.", error);
+      });
     },
   },
   created: function () {

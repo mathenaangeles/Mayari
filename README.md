@@ -17,6 +17,7 @@ Rebuild in the following scenarios:
 - changes to docker-compose.yml
 
 ### Backend
+Prerequisites: Get .env file from other devs
 1. Navigate to the backend directory.
 2. Run `source venv/bin/activate` to activate the virtual environment.
 3. Run `pip3 install -r requirements.txt`.

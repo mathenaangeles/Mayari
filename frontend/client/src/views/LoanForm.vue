@@ -237,6 +237,7 @@
               <b-form>
                 <b-form-group label="Requested Amount">
                   <b-form-input
+                    :state="validateState('requested_amount', 3)"
                     v-model="v$.form3.requested_amount.$model"
                     placeholder="Enter a requested loan amount"
                     required
@@ -244,6 +245,7 @@
                 </b-form-group>
                 <b-form-group label="Payment Term">
                   <b-form-input
+                    :state="validateState('payment_term', 3)"
                     v-model="v$.form3.payment_term.$model"
                     placeholder="Enter how long the loan will last in months"
                     required
@@ -253,22 +255,29 @@
                 <b-form-group label="Collateral Type">
                   <b-form-select
                     v-model="v$.form3.collateral_type.$model"
+                    :state="validateState('collateral_type', 3)"
                     :options="collateral_types"
                     required
                   ></b-form-select>
                 </b-form-group>
+                <b-form-group label="Documents">
+                <p class="text-secondary" style="font-size: 0.8rem">*Only PDFs or JPGs with a maximum size of 10MB can be uploaded</p>
+                <p class="text-secondary">Primary Valid ID</p>
                 <b-form-file
                   v-model="v$.form3.primary_id.$model"
                   :state="Boolean(v$.form3.primary_id.$model)"
                   placeholder="Choose a file or drop it here..."
                   drop-placeholder="Drop file here..."
                 ></b-form-file>
+                <p class="text-secondary">Proof of Income (1 Month Payslip, Tax
+                Returns, or Bank Statements)</p>
                 <b-form-file
                   v-model="v$.form3.proof_of_income.$model"
                   :state="Boolean(v$.form3.proof_of_income.$model)"
                   placeholder="Choose a file or drop it here..."
                   drop-placeholder="Drop file here..."
                 ></b-form-file>
+                </b-form-group>
               </b-form>
             </div>
             <div class="text-center">
@@ -514,24 +523,6 @@ export default {
     },
     onSubmitLoan(event) {
       event.preventDefault();
-      /* this.$store.dispatch("postLoan", {
-        requested_amount: this.form3.requested_amount,
-        payment_term: this.form3.payment_term,
-        collateral_type: this.form3.collateral_type,
-        business: {
-          name: this.form2.name,
-          street_address: this.form2.street_address,
-          city: this.form2.city,
-          zip_code: this.form2.zip_code,
-          industry: this.form2.industry,
-          monthly_income: this.form2.monthly_income,
-          monthly_expenses: this.form2.monthly_expenses,
-          years: this.form2.years,
-        },
-      }).then(() => this.$router.push("/dashboard"))
-        .catch((error) => {
-          console.log("ERROR: Loan could not be created.", error);
-        }); */
       const promise1 = this.$store.dispatch("updateUser", {
         birthdate: this.form1.birthdate,
         street_address: this.form1.street_address,

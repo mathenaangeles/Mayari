@@ -69,6 +69,7 @@ class Loan(db.Model):
     payment_term = db.Column(db.Integer, nullable=False)
     primary_id = db.Column(db.String(255), nullable=False)
     proof_of_income = db.Column(db.String(255), nullable=False)
+    collateral = db.Column(db.String(255), nullable=True)
     interest_rate = db.Column(db.Float, nullable=True)
     principal = db.Column(db.Float, nullable=True)
     total_amount = db.Column(db.Float, nullable=True)
@@ -89,6 +90,7 @@ class Loan(db.Model):
                   borrower_id=self.borrower_id,
                   requested_amount=self.requested_amount,
                   collateral_type=self.collateral_type,
+                  collateral = self.collateral,
                   payment_term = self.payment_term,
                   primary_id = self.primary_id,
                   proof_of_income = self.proof_of_income,

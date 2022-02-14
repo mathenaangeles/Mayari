@@ -6,66 +6,90 @@
           @click="hasHistory() ? $router.go(-1) : $router.push('/')"
           class="btn btn-link text-dark"
         >
-          <h2><ArrowLeft /> Loan Information </h2>
+          <h2><ArrowLeft /> Loan Information</h2>
         </button>
       </b-col>
       <b-col md="4">
-        <h2 v-bind:class="getClass(loan.status)">{{ loan.status.charAt(0).toUpperCase() + loan.status.slice(1) }}</h2>
+        <h2 v-bind:class="getClass(loan.status)">
+          {{ loan.status.charAt(0).toUpperCase() + loan.status.slice(1) }}
+        </h2>
       </b-col>
     </b-row>
     <hr />
     <b-row>
       <b-col>
         <div class="header-text">Outstanding Balance</div>
-        <div class="header-value">{{!loan.outstanding_balance ? "NA" : "Php"+loan.outstanding_balance}}</div>
+        <div class="header-value">
+          {{
+            !loan.outstanding_balance ? "NA" : "Php" + loan.outstanding_balance
+          }}
+        </div>
       </b-col>
       <b-col>
         <div class="header-text">Overdue Balance</div>
-        <div class="header-value">{{!loan.overdue_balance ? "NA" : "Php"+loan.overdue_balance}}</div>
+        <div class="header-value">
+          {{ !loan.overdue_balance ? "NA" : "Php" + loan.overdue_balance }}
+        </div>
       </b-col>
     </b-row>
-    <p class="custom-text-success">Your loan application is pending approval.</p>
+    <p class="custom-text-success">
+      Your loan application is pending approval.
+    </p>
     <b-row>
       <b-col>
         <div class="more-info-text">Principal</div>
-        <div class="more-info-value">{{!loan.principal ? "NA" : "Php"+loan.principal}}</div>
+        <div class="more-info-value">
+          {{ !loan.principal ? "NA" : "Php" + loan.principal }}
+        </div>
       </b-col>
       <b-col>
         <div class="more-info-text">Total Paid</div>
-        <div class="more-info-value">{{!loan.principal ? "NA" : "Php"+loan.principal}}</div>
+        <div class="more-info-value">
+          {{ !loan.principal ? "NA" : "Php" + loan.principal }}
+        </div>
       </b-col>
       <b-col>
         <div class="more-info-text">Weekly Installments</div>
-        <div class="more-info-value">{{!loan.principal ? "NA" : "Php"+loan.principal}}</div>
+        <div class="more-info-value">
+          {{ !loan.principal ? "NA" : "Php" + loan.principal }}
+        </div>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
         <div class="more-info-text">Payment Term</div>
-        <div class="more-info-value">{{!loan.payment_term ? "NA" : loan.payment_term + " Weeks"}}</div>
+        <div class="more-info-value">
+          {{ !loan.payment_term ? "NA" : loan.payment_term + " Weeks" }}
+        </div>
       </b-col>
       <b-col>
         <div class="more-info-text">Interest Rate</div>
-        <div class="more-info-value">{{!loan.interest_rate ? "NA" : (loan.interest_rate * 100) + "%"}}</div>
+        <div class="more-info-value">
+          {{ !loan.interest_rate ? "NA" : loan.interest_rate * 100 + "%" }}
+        </div>
       </b-col>
       <b-col>
         <div class="more-info-text">Collateral</div>
-        <div class="more-info-value">{{loan.collateral_type}}</div>
+        <div class="more-info-value">{{ loan.collateral_type }}</div>
       </b-col>
     </b-row>
     <hr />
-    <h3> Business Information </h3>
+    <h3>Business Information</h3>
     <!-- TO DO: Business Information not yet available -->
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum cor</p>
     <hr />
     <h3>Documents</h3>
     <div>
       <h5 class="photo-text">Primary Valid ID</h5>
-      <a :href="loan.primary_id" class="btn btn-outline-secondary" download>Download File</a>
+      <a :href="loan.primary_id" class="btn btn-outline-secondary" download
+        >Download File</a
+      >
     </div>
     <div>
       <h5 class="photo-text">Proof of Income</h5>
-      <a :href="loan.proof_of_income" class="btn btn-outline-secondary" download>Download File</a>
+      <a :href="loan.proof_of_income" class="btn btn-outline-secondary" download
+        >Download File</a
+      >
     </div>
   </b-container>
 </template>
@@ -80,14 +104,14 @@
   border: 1px solid #535353;
 }
 .custom-text-success {
-  color: #F14F8C;
+  color: #f14f8c;
 }
 .header-text {
   font-weight: 700;
   font-size: 1.5rem;
 }
 .header-value {
-  color:#F14F8C;
+  color: #f14f8c;
   font-size: 2rem;
 }
 .more-info-text {
@@ -95,7 +119,7 @@
   font-size: 1.2rem;
 }
 .more-info-value {
-  color:#CA4DE5;
+  color: #ca4de5;
   font-size: 1.8rem;
 }
 .photo-text {

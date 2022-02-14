@@ -261,22 +261,27 @@
                   ></b-form-select>
                 </b-form-group>
                 <b-form-group label="Documents">
-                <p class="text-secondary" style="font-size: 0.8rem">*Only PDFs or JPGs with a maximum size of 10MB can be uploaded</p>
-                <p class="text-secondary">Primary Valid ID</p>
-                <b-form-file
-                  v-model="v$.form3.primary_id.$model"
-                  :state="Boolean(v$.form3.primary_id.$model)"
-                  placeholder="Choose a file or drop it here..."
-                  drop-placeholder="Drop file here..."
-                ></b-form-file>
-                <p class="text-secondary">Proof of Income (1 Month Payslip, Tax
-                Returns, or Bank Statements)</p>
-                <b-form-file
-                  v-model="v$.form3.proof_of_income.$model"
-                  :state="Boolean(v$.form3.proof_of_income.$model)"
-                  placeholder="Choose a file or drop it here..."
-                  drop-placeholder="Drop file here..."
-                ></b-form-file>
+                  <p class="text-secondary" style="font-size: 0.8rem">
+                    *Only PDFs or JPGs with a maximum size of 10MB can be
+                    uploaded
+                  </p>
+                  <p class="text-secondary">Primary Valid ID</p>
+                  <b-form-file
+                    v-model="v$.form3.primary_id.$model"
+                    :state="Boolean(v$.form3.primary_id.$model)"
+                    placeholder="Choose a file or drop it here..."
+                    drop-placeholder="Drop file here..."
+                  ></b-form-file>
+                  <p class="text-secondary">
+                    Proof of Income (1 Month Payslip, Tax Returns, or Bank
+                    Statements)
+                  </p>
+                  <b-form-file
+                    v-model="v$.form3.proof_of_income.$model"
+                    :state="Boolean(v$.form3.proof_of_income.$model)"
+                    placeholder="Choose a file or drop it here..."
+                    drop-placeholder="Drop file here..."
+                  ></b-form-file>
                 </b-form-group>
               </b-form>
             </div>

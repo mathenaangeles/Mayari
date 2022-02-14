@@ -25,6 +25,15 @@
           type="number"
         ></b-form-input>
       </b-form-group>
+      <b-form-group label="Overdue Balance">
+        <b-form-input
+          v-model="form.overdue_balance"
+          type="number"
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group label="Collateral">
+        <b-form-input v-model="form.collateral"></b-form-input>
+      </b-form-group>
       <p>Total Amount {{ total_amount }} PHP</p>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
@@ -43,6 +52,8 @@ export default {
         payment_term: 0,
         principal: 0,
         outstanding_balance: 0,
+        overdue_balance: 0,
+        collateral: null,
       },
       statuses: [
         { text: "Select a status", value: null },
@@ -82,6 +93,12 @@ export default {
         if (this.loan.status == "approved" && this.loan.outstanding_balance) {
           this.form.outstanding_balance = this.loan.outstanding_balance;
         }
+        if (this.loan.status == "approved" && this.loan.overdue_balance) {
+          this.form.outstanding_balance = this.loan.overdue_balance;
+        }
+        if (this.loan.type == "with collateral" && this.loan.collateral) {
+          this.form.collateral = this.loan.collateral;
+        }
       } catch (error) {
         console.log("ERROR: User could not be found.", error);
       }
@@ -99,6 +116,8 @@ export default {
           total_amount: this.total_amount,
           status: this.form.status,
           outstanding_balance: this.form.outstanding_balance,
+          overdue_balance: this.form.overdue_balance,
+          collateral: this.form.collateral,
         })
         .then(() => this.$router.push("/admin/dashboard"))
         .catch((error) => {

@@ -49,8 +49,10 @@ def update_loan(user, id=id):
     loan.payment_term = data['payment_term'] 
     loan.principal = data['principal']
     loan.outstanding_balance = data['outstanding_balance']
+    loan.overdue_balance = data['overdue_balance']
     loan.total_amount = data['total_amount']
     loan.status = data['status']
+    loan.collateral = data['collateral']
     db.session.commit()
     return jsonify(loan.to_dict()), 201
 

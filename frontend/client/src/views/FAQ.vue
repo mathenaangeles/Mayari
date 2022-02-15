@@ -41,7 +41,7 @@
                     required
                   ></b-form-input>
                 </b-input-group>
-                <b-link href="/register" type="submit" class="ctv-button">
+                <b-link @click="applyNow" type="submit" class="ctv-button">
                   Start your application now &nbsp;
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +65,10 @@
       </div>
     </b-jumbotron>
     <div class="faq-section mt-4">
-      <b-container>
+      <b-container fluid class="px-5">
         <h2 class="faq-header">Frequently Asked Questions</h2>
         <div class="my-3">
-          <b-row>
+          <b-row align-h="around">
             <b-col md="6" data-aos="fade">
               <h3>General</h3>
               <transition-group name="fade" tag="div" appear>
@@ -92,7 +92,7 @@
               </transition-group>
             </b-col>
           </b-row>
-          <b-row>
+          <b-row align-h="around">
             <b-col md="6" data-aos="fade">
               <h3>Application</h3>
               <transition-group name="fade" tag="div" appear>
@@ -287,6 +287,20 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    applyNow: function () {
+      if (!this.$store.getters.isAuthenticated){
+        this.$router.push({
+          name: "register",
+          params: { email: this.form.email, term: this.form.mobile },
+        });
+      } else {
+        this.$router.push({
+          name: "apply",
+        });
+      }
+    },
   },
   components: {
     FAQCalculator,

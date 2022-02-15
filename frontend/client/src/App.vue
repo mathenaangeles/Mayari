@@ -10,7 +10,7 @@
             ><img src="img/icons/mayari-white-shadow.png" style="height: 40px"
           /></b-navbar-brand>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-collapse id="nav-collapse" is-nav>
+          <b-collapse id="nav-collapse" class="ml-auto" is-nav>
             <b-navbar-nav v-if="!isAuthenticated">
               <b-nav-item to="/">Home</b-nav-item>
               <b-nav-item to="/faq">FAQ</b-nav-item>
@@ -19,10 +19,11 @@
             </b-navbar-nav>
             <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
               <router-link to="/register">
-                <b-button class="white-outline-button mt-1 mr-2"
+                <b-button class="white-outline-button mt-1"
                   >Register</b-button
                 >
               </router-link>
+              <div class="mx-1"></div>
               <router-link to="/login">
                 <b-button class="white-outline-button mt-1">Login</b-button>
               </router-link>

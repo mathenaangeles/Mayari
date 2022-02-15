@@ -44,7 +44,7 @@ const routes = [
     component: FAQ,
   },
   {
-    path: "/register",
+    path: "/register/:email?/:mobile?",
     name: "register",
     component: Register,
     meta: {

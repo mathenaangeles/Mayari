@@ -1,11 +1,9 @@
 <template>
   <div>
     <b-row v-b-toggle="faqItem.id">
-      <b-col cols="11">
+      <b-col>
         <span class="question">{{ faqItem.question }}</span>
-      </b-col>
-      <b-col cols="1">
-        <ChevronDown />
+        <span class="float-right"><ChevronDown /></span>
       </b-col>
     </b-row>
     <b-collapse v-bind:id="faqItem.id"> {{ faqItem.answer }} </b-collapse>

@@ -1,8 +1,8 @@
 <template>
   <div class="side">
-    <div class="side-card">
-      <div class="side-main">
-        <img src="/img/icons/mayari-white-shadow.png" height="30px" />
+    <div class="side-card my-5">
+      <div class="side-main mb-5">
+        <img src="/img/icons/mayari-white-shadow.png" height="50px" />
         <br />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,14 +20,14 @@
             stroke-width="2"
           />
         </svg>
-        <p>MAYARI</p>
-        <h2>We lend a helping hand.</h2>
-        <p>
+        <h4>MAYARI</h4>
+        <h1>We lend a helping hand.</h1>
+        <p class="subtext">
           We provide equitable access to capital and the financial support you
           need to succeed.
         </p>
       </div>
-      <div class="link-container">
+      <div class="link-container mt-5">
         {{ authContent.message }} <br />
         <b-link class="custom-link" :to="authContent.linkRoute">{{
           authContent.linkText
@@ -53,13 +53,13 @@
 .side {
   text-align: left;
   color: white;
-  font-weight: bolder;
   background-image: url(~@/assets/auth-bg.png);
   background-repeat: no-repeat !important;
   background-size: cover;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  font-size: 20px;
 }
 .side-card {
   margin: auto 4rem;
@@ -71,6 +71,7 @@
   flex-direction: column;
   justify-content: flex-end;
 }
+
 .link-container {
   margin-top: auto;
 }
@@ -79,7 +80,6 @@
   color: white;
   font-weight: bolder;
 }
-
 .custom-link:hover {
   color: #f14f8c;
 }

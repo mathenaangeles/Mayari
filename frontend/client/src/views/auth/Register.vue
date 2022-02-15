@@ -127,10 +127,10 @@ export default {
   data() {
     return {
       form: {
-        email: "",
+        email: this.$route.params.email ?? "",
         first_name: "",
         last_name: "",
-        mobile_number: "",
+        mobile_number: this.$route.params.mobile ?? "",
         password: "",
         error: "",
       },

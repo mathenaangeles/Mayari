@@ -272,7 +272,7 @@
                     placeholder="Choose a file or drop it here..."
                     drop-placeholder="Drop file here..."
                   ></b-form-file>
-                  <p class="text-secondary">
+                  <p class="text-secondary mt-3">
                     Proof of Income (1 Month Payslip, Tax Returns, or Bank
                     Statements)
                   </p>

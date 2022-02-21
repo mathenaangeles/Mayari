@@ -4,10 +4,10 @@
       <div id="nav">
         <b-navbar toggleable="lg">
           <b-navbar-brand v-if="!isAuthenticated" to="/"
-            ><img src="img/icons/mayari-white-shadow.png" style="height: 40px"
+            ><img src="/img/icons/mayari-white-shadow.png" style="height: 40px"
           /></b-navbar-brand>
           <b-navbar-brand v-if="isAuthenticated" to="/dashboard"
-            ><img src="img/icons/mayari-white-shadow.png" style="height: 40px"
+            ><img src="/img/icons/mayari-white-shadow.png" style="height: 40px"
           /></b-navbar-brand>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-collapse id="nav-collapse" class="ml-auto" is-nav>

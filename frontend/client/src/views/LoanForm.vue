@@ -305,6 +305,7 @@
                 class="mx-2 btn-dark"
                 type="submit"
                 variant="primary"
+                :disabled="disableSubmit"
                 >Submit</b-button
               >
             </div>
@@ -348,6 +349,7 @@ export default {
   components: {},
   data: () => {
     return {
+      disableSubmit: false,
       totalSteps: 3,
       step: 1,
       stepContent: [
@@ -528,6 +530,7 @@ export default {
     },
     onSubmitLoan(event) {
       event.preventDefault();
+      this.disableSubmit = true;
       const promise1 = this.$store.dispatch("updateUser", {
         birthdate: this.form1.birthdate,
         street_address: this.form1.street_address,
@@ -559,9 +562,13 @@ export default {
           console.log("ERROR: Loan could not be created.", error);
         });
       Promise.all([promise1, promise2])
-        .then(() => this.$router.push("/dashboard"))
+        .then(() => {
+          this.$router.push("/dashboard");
+          this.disableSubmit = false;
+        })
         .catch((error) => {
           console.log("ERROR: Loan could not be created.", error);
+          this.disableSubmit = false;
         });
     },
   },

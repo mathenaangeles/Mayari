@@ -19,9 +19,7 @@
             </b-navbar-nav>
             <b-navbar-nav v-if="!isAuthenticated" class="ml-auto">
               <router-link to="/register">
-                <b-button class="white-outline-button mt-1"
-                  >Register</b-button
-                >
+                <b-button class="white-outline-button mt-1">Register</b-button>
               </router-link>
               <div class="mx-1"></div>
               <router-link to="/login">

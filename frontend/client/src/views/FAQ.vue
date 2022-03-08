@@ -290,7 +290,7 @@ export default {
   },
   methods: {
     applyNow: function () {
-      if (!this.$store.getters.isAuthenticated){
+      if (!this.$store.getters.isAuthenticated) {
         this.$router.push({
           name: "register",
           params: { email: this.form.email, term: this.form.mobile },

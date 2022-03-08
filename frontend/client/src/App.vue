@@ -55,7 +55,7 @@
           <b-col xs="6">
             <span class="mayari-footer">
               <img src="/img/icons/mayari-white-shadow.png" height="30px" />
-              <h3 style="display: inline-block">AYARI</h3>
+              <h3 class="mb-auto mb-1 ml-1" style="display: inline-block">AYARI</h3>
             </span>
             <span>Quezon City, Metro Manila</span> <br />
             <span>Philippines, 1126</span> <br />

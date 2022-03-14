@@ -46,7 +46,7 @@ class User(db.Model):
         return dict(id=self.id, 
                     role=self.role,
                     email=self.email, 
-                    name=self.first_name + self.last_name,
+                    name=self.first_name + " " + self.last_name,
                     mobile_number=self.mobile_number,
                     profile_photo=self.profile_photo,
                     birthdate=self.birthdate,
@@ -100,7 +100,8 @@ class Loan(db.Model):
                   outstanding_balance = self.outstanding_balance,
                   overdue_balance = self.overdue_balance,
                   status = self.status,
-                  created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
+                  created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+                  business=self.business)
 
 class Business(db.Model):
     __tablename__ = 'business'

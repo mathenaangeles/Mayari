@@ -54,7 +54,7 @@
             >
           </div>
           <b-button block variant="dark" v-on:click="calculate"
-            >Check Your Rate</b-button
+            >Check your rate</b-button
           >
           <p class="subtext mt-2 mb-0">
             * For example, a loan of PHP 10000 PHP over a period of 2 weeks will

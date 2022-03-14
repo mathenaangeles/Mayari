@@ -6,9 +6,20 @@
     >
       <div class="user-card text-dark text-left">
         <div class="text-dark" v-if="user.name">
-          <img id="profile-photo" v-if="user.profile_photo" :src="user.profile_photo"/>
-          <h3><strong>Hello, {{ user.name }}</strong></h3></div>
-        <div v-if="user.street_address || user.city || user.region || user.zip_code">
+          <img
+            id="profile-photo"
+            v-if="user.profile_photo"
+            :src="user.profile_photo"
+          />
+          <h3>
+            <strong>Hello, {{ user.name }}</strong>
+          </h3>
+        </div>
+        <div
+          v-if="
+            user.street_address || user.city || user.region || user.zip_code
+          "
+        >
           <MapMarker />
           {{ user.street_address ? user.street_address + ", " : "" }}
           {{ user.city ? user.city + ", " : "" }}
@@ -23,7 +34,9 @@
           {{ user.mobile_number }}
         </div>
         <div class="text-center">
-          <router-link :to="`/profile/${user.id}`"><p>Edit Profile</p></router-link>
+          <router-link :to="`/profile/${user.id}`"
+            ><p>Edit Profile</p></router-link
+          >
         </div>
       </div>
     </div>
@@ -83,7 +96,7 @@
 }
 #profile-photo {
   border-radius: 50%;
-  width:50px;
+  width: 50px;
   height: 50px;
 }
 </style>

@@ -6,7 +6,11 @@
         <b-form @submit="onSubmit">
           <p class="text-secondary">Profile Photo</p>
           <b-form-file
-            :placeholder="form.profile_photo ? getFilename(form.profile_photo) : 'Choose a file or drop it here...'"
+            :placeholder="
+              form.profile_photo
+                ? getFilename(form.profile_photo)
+                : 'Choose a file or drop it here...'
+            "
             drop-placeholder="Drop file here..."
             @change="onChangePhoto"
           ></b-form-file>
@@ -148,12 +152,12 @@ export default {
       this.$store.dispatch("uploadProfilePhoto", image).catch((error) => {
         console.log("ERROR: Profile photo could not be updated.", error);
       });
-      this.form.profile_photo = event.target.files[0].filename
+      this.form.profile_photo = event.target.files[0].filename;
     },
     getFilename(profileLink) {
-      let splitString = profileLink.split('/');
+      let splitString = profileLink.split("/");
       return splitString[splitString.length - 1];
-    }
+    },
   },
   created: function () {
     let user = this.$store.state.user;

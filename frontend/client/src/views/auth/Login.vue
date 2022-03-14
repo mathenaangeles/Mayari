@@ -8,7 +8,7 @@
         <b-col md="6" sm="12" class="custom-column">
           <div class="form-container">
             <b-form class="sign-in-form" @submit="onSubmit">
-              <h1 class="my-2">Sign In</h1>
+              <h1 class="my-3"><b>Sign In</b></h1>
               <b-form-group id="email" label="Email" label-for="email-input">
                 <b-form-input
                   id="email-input"
@@ -39,12 +39,9 @@
                   This is a required field.
                 </b-form-invalid-feedback>
               </b-form-group>
-              <b-button type="submit" variant="primary"
+              <b-button block type="submit" variant="dark" class="my-3"
                 >Login to your account</b-button
               >
-              <span>
-                No account yet? <b-link href="/register">Register.</b-link>
-              </span>
             </b-form>
           </div>
         </b-col>

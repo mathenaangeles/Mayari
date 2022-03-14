@@ -35,7 +35,7 @@
         <b>1 Month</b><b class="float-right">12 Months</b>
       </div>
       <b-button block variant="dark" v-on:click="goToFAQ"
-        >Check Your Rate</b-button
+        >Check your rate</b-button
       >
     </b-card>
   </div>
@@ -67,12 +67,6 @@ export default {
 }
 .calculator {
   text-align: start;
-}
-.btn-dark {
-  background-color: #000000;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 10px;
 }
 .subtext {
   color: #707070;

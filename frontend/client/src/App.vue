@@ -53,7 +53,9 @@
           <b-col xs="6">
             <span class="mayari-footer">
               <img src="/img/icons/mayari-white-shadow.png" height="30px" />
-              <h3 class="mb-auto mb-1 ml-1" style="display: inline-block">AYARI</h3>
+              <h3 class="mb-auto mb-1 ml-1" style="display: inline-block">
+                AYARI
+              </h3>
             </span>
             <span>Quezon City, Metro Manila</span> <br />
             <span>Philippines, 1126</span> <br />
@@ -175,9 +177,10 @@ footer.section-footer {
   border-radius: 10px;
 }
 .btn-dark {
-  background-color: #000000;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 10px;
+  background-color: #000000 !important;
+  font-weight: bold !important;
+  font-size: 18px !important;
+  border-radius: 5px !important;
+  border: 0px;
 }
 </style>

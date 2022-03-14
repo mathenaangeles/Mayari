@@ -8,7 +8,7 @@
         <b-col md="6" sm="12">
           <div class="form-container">
             <b-form class="sign-up-form" @submit="onSubmit">
-              <h1 class="my-2">Sign Up</h1>
+              <h1 class="my-3"><b>Sign Up</b></h1>
               <b-form-group id="email" label="Email" label-for="email-input">
                 <b-form-input
                   id="email-input"
@@ -89,12 +89,9 @@
                   This is a required field. Should have a minimum 5 characters.
                 </b-form-invalid-feedback>
               </b-form-group>
-              <b-button type="submit" variant="primary"
+              <b-button block type="submit" variant="dark" class="my-3"
                 >Create an account</b-button
               >
-              <span>
-                Already have an account? <b-link href="/login">Login.</b-link>
-              </span>
             </b-form>
           </div>
         </b-col>

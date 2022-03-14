@@ -6,6 +6,7 @@
     >
       <div class="user-card text-dark text-left">
         <div class="text-dark" v-if="user.name">
+          <img id="profile-photo" v-if="user.profile_photo" :src="user.profile_photo"/>
           <h3><strong>Hello, {{ user.name }}</strong></h3></div>
         <div v-if="user.street_address || user.city || user.region || user.zip_code">
           <MapMarker />
@@ -79,6 +80,11 @@
   border-top: solid black 3px;
   min-height: 3rem;
   padding: 0.5rem;
+}
+#profile-photo {
+  border-radius: 50%;
+  width:50px;
+  height: 50px;
 }
 </style>
 <script>

@@ -1,44 +1,46 @@
 <template>
   <div class="dashboard-container">
-    <div
-      class="d-flex flex-column flex-shrink-0 p-3 text-white"
-      style="width: 300px; background-color: #e5e5e5"
-    >
-      <div class="user-card text-dark text-left">
-        <div class="text-dark" v-if="user.name">
+    <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-4">
+      <b-card class="user-card text-left">
+        <b-row v-if="user.name" class="align-items-center ml-1">
           <img
             id="profile-photo"
             v-if="user.profile_photo"
             :src="user.profile_photo"
           />
-          <h3>
-            <strong>Hello, {{ user.name }}</strong>
-          </h3>
-        </div>
-        <div
-          v-if="
-            user.street_address || user.city || user.region || user.zip_code
-          "
-        >
-          <MapMarker />
-          {{ user.street_address ? user.street_address + ", " : "" }}
-          {{ user.city ? user.city + ", " : "" }}
-          {{ user.region ? user.region + ", " : "" }} {{ user.zip_code }}
-        </div>
-        <div v-if="user.email" class="mt-1">
-          <Email />
-          {{ user.email }}
-        </div>
-        <div v-if="user.mobile_number" class="mt-1">
-          <Phone />
-          {{ user.mobile_number }}
-        </div>
-        <div class="text-center">
-          <router-link :to="`/profile/${user.id}`"
-            ><p>Edit Profile</p></router-link
+          <b-col>
+            <h4 class="bold mb-0" v-if="user.name.length < 16">
+              {{ user.name }}
+            </h4>
+            <h4 class="bold mb-0" v-else>
+              {{ user.name.substring(0, 16) + "..." }}
+            </h4>
+            <router-link :to="`/profile/${user.id}`"
+              ><p class="mb-0 edit-profile-link">Edit Profile</p></router-link
+            >
+          </b-col>
+        </b-row>
+        <b-card-text class="mt-3">
+          <div
+            v-if="
+              user.street_address || user.city || user.region || user.zip_code
+            "
           >
-        </div>
-      </div>
+            <MapMarker fillColor="#000000" />
+            {{ user.street_address ? user.street_address + ", " : "" }}
+            {{ user.city ? user.city + ", " : "" }}
+            {{ user.region ? user.region + ", " : "" }} {{ user.zip_code }}
+          </div>
+          <div v-if="user.email" class="mt-1">
+            <Email fillColor="#000000" />
+            {{ user.email }}
+          </div>
+          <div v-if="user.mobile_number" class="mt-1">
+            <Phone fillColor="#000000" />
+            {{ user.mobile_number }}
+          </div>
+        </b-card-text>
+      </b-card>
     </div>
     <b-container class="dashboard text-left">
       <h1>Business Loans</h1>
@@ -62,6 +64,10 @@
   </div>
 </template>
 <style scoped>
+#sidebar {
+  min-width: 25%;
+  background-color: #e5e5e5;
+}
 .apply-text {
   position: absolute;
   bottom: 10px;
@@ -88,16 +94,17 @@
   overflow-y: hidden;
 }
 .user-card {
+  border-top: 10px solid #000000;
   border-radius: 10px;
-  background-color: white;
-  border-top: solid black 3px;
-  min-height: 3rem;
-  padding: 0.5rem;
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #profile-photo {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+}
+.edit-profile-link {
+  color: #f14f8c;
 }
 </style>
 <script>

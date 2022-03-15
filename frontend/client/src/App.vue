@@ -183,4 +183,7 @@ footer.section-footer {
   border-radius: 5px !important;
   border: 0px;
 }
+.bold {
+  font-weight: 700;
+}
 </style>

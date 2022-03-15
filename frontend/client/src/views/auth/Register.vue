@@ -8,8 +8,13 @@
         <b-col md="6" sm="12">
           <div class="form-container">
             <b-form class="sign-up-form" @submit="onSubmit">
-              <h1 class="my-3"><b>Sign Up</b></h1>
-              <b-form-group id="email" label="Email" label-for="email-input">
+              <h1 class="my-3 bold">Sign Up</h1>
+              <b-form-group
+                id="email"
+                class="bold"
+                label="Email"
+                label-for="email-input"
+              >
                 <b-form-input
                   id="email-input"
                   v-model="v$.form.email.$model"
@@ -23,6 +28,7 @@
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
+                class="bold"
                 id="first-name"
                 label="First Name"
                 label-for="first-name-input"
@@ -39,6 +45,7 @@
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
+                class="bold"
                 id="last-name"
                 label="Last Name"
                 label-for="last-name-input"
@@ -55,6 +62,7 @@
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
+                class="bold"
                 id="mobile-number"
                 label="Mobile Number"
                 label-for="mobile-number-input"
@@ -73,11 +81,13 @@
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
+                class="bold"
                 id="password"
                 label="Password"
                 label-for="password-input"
               >
                 <b-form-input
+                  class="bold"
                   id="password-input"
                   v-model="v$.form.password.$model"
                   type="password"

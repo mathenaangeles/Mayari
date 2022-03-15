@@ -9,7 +9,12 @@
           <div class="form-container">
             <b-form class="sign-in-form" @submit="onSubmit">
               <h1 class="my-3"><b>Sign In</b></h1>
-              <b-form-group id="email" label="Email" label-for="email-input">
+              <b-form-group
+                class="bold"
+                id="email"
+                label="Email"
+                label-for="email-input"
+              >
                 <b-form-input
                   id="email-input"
                   v-model="v$.form.email.$model"
@@ -23,6 +28,7 @@
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group
+                class="bold"
                 id="password"
                 label="Password"
                 label-for="password-input"

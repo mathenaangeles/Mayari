@@ -100,8 +100,7 @@ class Loan(db.Model):
                   outstanding_balance = self.outstanding_balance,
                   overdue_balance = self.overdue_balance,
                   status = self.status,
-                  created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-                  business=self.business)
+                  created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
 
 class Business(db.Model):
     __tablename__ = 'business'

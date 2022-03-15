@@ -1,74 +1,81 @@
 <template>
-  <div class="edit-profile container text-left my-5 p-4">
-    <div class="text-center"><h1>Edit Profile</h1></div>
-    <div>
-      <div class="mt-4">
-        <b-form @submit="onSubmit">
-          <p class="text-secondary">Profile Photo</p>
-          <b-form-file
-            :placeholder="
-              form.profile_photo
-                ? getFilename(form.profile_photo)
-                : 'Choose a file or drop it here...'
-            "
-            drop-placeholder="Drop file here..."
-            @change="onChangePhoto"
-          ></b-form-file>
-          <b-form-group label="Birthdate">
-            <b-form-datepicker
-              v-model="form.birthdate"
-              type="date"
-              required
-            ></b-form-datepicker>
-          </b-form-group>
-          <b-form-group label="Street Address">
-            <b-form-input v-model="form.street_address" required></b-form-input>
-          </b-form-group>
-          <b-form-group label="City">
-            <b-form-input v-model="form.city" required></b-form-input>
-          </b-form-group>
-          <b-form-group label="Zip Code">
-            <b-form-input v-model="form.zip_code" required></b-form-input>
-          </b-form-group>
-          <b-form-group label="Country">
-            <b-form-select
-              v-model="form.country"
-              :options="countries"
-              required
-            ></b-form-select>
-          </b-form-group>
-          <b-form-group label="Region">
-            <b-form-select
-              v-model="form.region"
-              :options="regions"
-              required
-            ></b-form-select>
-          </b-form-group>
-          <b-form-group label="Gender">
-            <b-form-select v-model="form.gender" :options="genders" required>
-            </b-form-select>
-          </b-form-group>
-          <b-form-group label="Marital Status">
-            <b-form-select
-              v-model="form.marital_status"
-              :options="marital_statuses"
-              required
-            ></b-form-select>
-          </b-form-group>
-          <b-button type="submit" variant="primary">Submit</b-button>
-        </b-form>
+  <b-container fluid class="edit-profile p-5">
+    <b-card class="text-left p-4 edit-profile-card">
+      <h1 class="bold">Edit Profile</h1>
+      <div>
+        <div class="mt-4">
+          <b-form @submit="onSubmit">
+            <b-form-group class="bold" label="Profile Photo">
+              <b-form-file
+                :placeholder="
+                  form.profile_photo
+                    ? getFilename(form.profile_photo)
+                    : 'Choose a file or drop it here...'
+                "
+                drop-placeholder="Drop file here..."
+                @change="onChangePhoto"
+              ></b-form-file>
+            </b-form-group>
+            <b-form-group class="bold" label="Birthdate">
+              <b-form-datepicker
+                v-model="form.birthdate"
+                type="date"
+                required
+              ></b-form-datepicker>
+            </b-form-group>
+            <b-form-group class="bold" label="Street Address">
+              <b-form-input
+                v-model="form.street_address"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group class="bold" label="City">
+              <b-form-input v-model="form.city" required></b-form-input>
+            </b-form-group>
+            <b-form-group class="bold" label="Zip Code">
+              <b-form-input v-model="form.zip_code" required></b-form-input>
+            </b-form-group>
+            <b-form-group class="bold" label="Country">
+              <b-form-select
+                v-model="form.country"
+                :options="countries"
+                required
+              ></b-form-select>
+            </b-form-group>
+            <b-form-group class="bold" label="Region">
+              <b-form-select
+                v-model="form.region"
+                :options="regions"
+                required
+              ></b-form-select>
+            </b-form-group>
+            <b-form-group class="bold" label="Gender">
+              <b-form-select v-model="form.gender" :options="genders" required>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group class="bold" label="Marital Status">
+              <b-form-select
+                v-model="form.marital_status"
+                :options="marital_statuses"
+                required
+              ></b-form-select>
+            </b-form-group>
+            <b-button type="submit" variant="dark">Save</b-button>
+          </b-form>
+        </div>
       </div>
-    </div>
-  </div>
+    </b-card>
+  </b-container>
 </template>
 <style scoped>
-.edit-profile * {
-  font-weight: 700;
+.edit-profile-card {
+  border-radius: 10px;
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 100%;
 }
 .edit-profile {
-  border-radius: 10px;
-  box-shadow: 10px 10px 12px grey;
-  height: 100%;
+  background-color: #e5e5e5;
+  min-height: 100vh;
 }
 </style>
 <script>
@@ -119,11 +126,6 @@ export default {
         { text: "Select a marital status", value: null },
         "Single",
         "Married",
-      ],
-      collateral_types: [
-        { text: "Select a collateral type", value: null },
-        "with collateral",
-        "no collateral",
       ],
     };
   },

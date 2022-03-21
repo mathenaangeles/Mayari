@@ -8,10 +8,14 @@ Recommended: Have Docker VSCode extension
 
 1. In the root of the folder, ```docker-compose up``` on terminal
 - Stop the containers from either the terminal or extension.
-Build/Rebuild images 
+2. Build/Rebuild images 
 - ```docker-compose build```
 
-Rebuild in the following scenarios:
+3. If you'd like to verify the tables were created:
+- ```docker-compose exec db psql --username=admin --dbname=mayaridb```
+- Then run ```\dt``` in the terminal
+
+4. Rebuild in the following scenarios:
 - adding of new libraries
 - changes to any of the Dockerfiles
 - changes to docker-compose.yml

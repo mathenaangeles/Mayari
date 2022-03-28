@@ -75,6 +75,7 @@ class Loan(db.Model):
     total_amount = db.Column(db.Float, nullable=True)
     outstanding_balance =  db.Column(db.Float, nullable=True)
     overdue_balance = db.Column(db.Float, nullable=True)
+    installments = db.Column(db.Float, nullable=True)
     status = db.Column(db.String(255),  default=u'pending')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -99,6 +100,7 @@ class Loan(db.Model):
                   total_amount=self.total_amount,
                   outstanding_balance = self.outstanding_balance,
                   overdue_balance = self.overdue_balance,
+                  installments = self.installments,
                   status = self.status,
                   created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'))
 

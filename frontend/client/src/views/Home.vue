@@ -160,7 +160,6 @@ a:hover {
     background-repeat: no-repeat;
   }
 }
-
 .transparent-card {
   text-align: start;
   background-color: rgba(255, 255, 255, 0.01);

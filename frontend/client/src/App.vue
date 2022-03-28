@@ -28,6 +28,7 @@
             </b-navbar-nav>
             <b-navbar-nav v-if="isAuthenticated">
               <b-nav-item to="/dashboard" class="mr-2">Dashboard</b-nav-item>
+              <b-nav-item to="/faq">FAQ</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav v-if="isAdminAuthenticated">
               <b-nav-item to="/admin/dashboard" class="mr-2">Admin</b-nav-item>

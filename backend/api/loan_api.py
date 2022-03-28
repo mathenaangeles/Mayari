@@ -51,6 +51,7 @@ def update_loan(user, id=id):
     loan.outstanding_balance = data['outstanding_balance']
     loan.overdue_balance = data['overdue_balance']
     loan.total_amount = data['total_amount']
+    loan.installments = data['installments']
     loan.status = data['status']
     loan.collateral = data['collateral']
     db.session.commit()

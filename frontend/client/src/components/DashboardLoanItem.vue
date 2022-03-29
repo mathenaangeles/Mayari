@@ -1,5 +1,5 @@
 <template>
-  <b-col md="5" class="m-2">
+  <b-col md="5" class="m-1">
     <b-card class="loan-card">
       <b class="loan-status-text">
         {{ loanInfo.status.charAt(0).toUpperCase() + loanInfo.status.slice(1) }}
@@ -15,7 +15,7 @@
       </div>
       <b-row>
         <b-col>
-          <b>Weekly Installment</b><br />
+          <b>Monthly Installment</b><br />
           <b class="value-text">{{
             loanInfo.installment
               ? "PHP " + loanInfo.installment.toFixed(2)

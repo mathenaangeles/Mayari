@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <b-row>
-      <b-col md="4" id="sidebar" class="p-5">
+      <b-col id="sidebar" md="4" class="p-5">
         <b-card class="user-card text-left">
           <b-row v-if="user.name" class="align-items-center ml-1">
             <img
@@ -43,11 +43,10 @@
           </b-card-text>
         </b-card>
       </b-col>
-      <b-col class="text-left px-5 py-4">
+      <b-col md="8" class="text-left px-5 py-4">
         <h1 class="dashboard-header my-3">Business Loans</h1>
         <b-row>
-          <b-card-group deck>
-            <b-col md="5" class="m-2">
+            <b-col md="5" class="m-1">
               <b-card class="apply-card">
                 <b-link href="/apply" class="apply-text pb-4"
                   >Apply for a business loan now
@@ -67,12 +66,6 @@
                   </svg>
                 </b-link>
               </b-card>
-              <!-- <h4 v-if="loans.length === 0">
-                You currently do not have any loans.
-              </h4>
-              <b-link href="/apply" class="text-light apply-text"
-                >Apply For a Business Loan now.</b-link
-              > -->
             </b-col>
             <DashboardLoanItem
               v-for="loan in loans"
@@ -80,7 +73,6 @@
               :loanInfo="loan"
             >
             </DashboardLoanItem>
-          </b-card-group>
         </b-row>
       </b-col>
     </b-row>
@@ -88,8 +80,8 @@
 </template>
 <style scoped>
 #sidebar {
-  min-width: 25%;
   background-color: #e5e5e5;
+  min-height: 100vh;
 }
 .user-card {
   border-top: 10px solid #000000;

@@ -1,27 +1,20 @@
 # Mayari
 
-## Get Started
-
-### Running on Docker
+## Docker
 Prerequisites: Have docker installed in system
 Recommended: Have Docker VSCode extension
 
-1. In the root of the folder, ```docker-compose up``` on terminal
-- Stop the containers from either the terminal or extension.
-2. Build/Rebuild images 
-- ```docker-compose build```
+1. To run the docker container, open to the terminal and type `docker-compose up` in the the root of the folder. You can stop the container from the terminal or by using the VSCode extension.
+2. To build or rebuild images, run `docker-compose build`. Rebuild in the following scenarios:
+  - adding of new libraries
+  - changing any of the Docker files
+  - changing the `docker-compose.yml` file
+3. To verify if the tables were created, run `docker-compose exec db psql --username=admin --dbname=mayaridb` then `\dt` in the terminal.
 
-3. If you'd like to verify the tables were created:
-- ```docker-compose exec db psql --username=admin --dbname=mayaridb```
-- Then run ```\dt``` in the terminal
-
-4. Rebuild in the following scenarios:
-- adding of new libraries
-- changes to any of the Dockerfiles
-- changes to docker-compose.yml
+## Get Started  
 
 ### Backend
-Prerequisites: Get .env file from other devs
+Prerequisites: Get `.env` file from other developers.
 1. Navigate to the backend directory.
 2. Run `source venv/bin/activate` to activate the virtual environment.
 3. Run `pip3 install -r requirements.txt`.

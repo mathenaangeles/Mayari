@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="d-flex flex-column">
     <div style="height: 100%">
-      <div id="nav">
+      <div id="nav" v-if="!$route.meta.hideNavbar">
         <b-navbar toggleable="lg">
           <b-navbar-brand v-if="!isAuthenticated" to="/"
             ><img src="/img/icons/mayari-white-shadow.png" style="height: 40px"
@@ -131,6 +131,7 @@ export default {
   margin: 0;
   min-height: 100vh;
   justify-content: space-between;
+  overflow-x: hidden;
 }
 #nav {
   padding: 1em;
@@ -183,6 +184,17 @@ footer.section-footer {
   font-size: 18px !important;
   border-radius: 5px !important;
   border: 0px;
+}
+.btn-outline-dark {
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color: black !important;
+  border-radius: 5px !important;
+  border: 1.5px solid black !important;
+}
+.btn-outline-dark:hover {
+  background-color: black !important;
+  color: white !important;
 }
 .bold {
   font-weight: 700;

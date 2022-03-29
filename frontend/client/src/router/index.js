@@ -81,6 +81,7 @@ const routes = [
     component: LoanForm,
     meta: {
       requiresAuthentication: true,
+      hideNavbar: true,
     },
   },
   {

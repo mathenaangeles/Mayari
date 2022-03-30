@@ -130,5 +130,8 @@ class Business(db.Model):
 
     def to_dict(self):
       return dict(id=self.id,
-                  loan_id=self.loan_id,
-                  name=self.name)
+                  name=self.name,
+                  industry=self.industry,
+                  street_address=self.street_address,
+                  city=self.city,
+                  zip_code=self.zip_code)

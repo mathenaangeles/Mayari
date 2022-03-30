@@ -38,7 +38,8 @@ def fetch_loans(user, id=id):
 @token_required
 def fetch_loan(user, id=id):
     loan = Loan.query.get(id)
-    return jsonify(loan.to_dict()), 201
+    business = Business.query.filter_by(loan_id=loan.id).first()
+    return jsonify(loan.to_dict(), business.to_dict()), 201
  
 @loans_api.route('/edit/<int:id>/', methods=('PUT',))
 @admin_token_required

@@ -20,6 +20,7 @@ const initialState = () => {
   return {
     loans: [],
     loan: {},
+    business: {},
     user: {},
     jwt: "",
   };
@@ -33,6 +34,9 @@ const store = new Vuex.Store({
     },
     setLoan(state, payload) {
       state.loan = payload.loan;
+    },
+    setBusiness(state, payload) {
+      state.business = payload.business;
     },
     setUser(state, payload) {
       state.user = payload.user;
@@ -63,7 +67,8 @@ const store = new Vuex.Store({
     },
     fetchLoan(context, { loanId }) {
       return fetchLoan(loanId, context.state.jwt).then((response) => {
-        context.commit("setLoan", { loan: response.data });
+        context.commit("setLoan", { loan: response.data[0] });
+        context.commit("setBusiness", { business: response.data[1] });
       });
     },
     fetchLoans(context) {
@@ -107,8 +112,8 @@ const store = new Vuex.Store({
       return register(user)
         .then((response) => {
           console.log(response);
+          context.dispatch("login", user);
         })
-        .then(context.dispatch("login", user))
         .catch((error) => {
           console.log("Registration Error: ", error);
           EventBus.$emit("failedRegister: ", error);

@@ -1,5 +1,8 @@
 <template>
-  <div class="d-flex flex-column loan-multistep-form" style="justify-content: space-between">
+  <div
+    class="d-flex flex-column loan-multistep-form"
+    style="justify-content: space-between"
+  >
     <b-row class="text-center mt-2 mb-4">
       <b-col>
         <img src="img/mayari-icon-cropped.png" style="height: 6rem" />
@@ -150,7 +153,8 @@
                       @change="onCheck"
                     />
                     <label class="custom-control-label" for="checkbox"
-                      >&nbsp;Is your business address the same as your personal address?</label
+                      >&nbsp;Is your business address the same as your personal
+                      address?</label
                     >
                   </div>
                   <b-row>
@@ -277,7 +281,10 @@
                       ></b-form-select>
                     </b-form-group>
                     <b-form-group label="Documents">
-                      <p class="text-secondary document-subtext mt-0" style="font-size: 0.8rem">
+                      <p
+                        class="text-secondary document-subtext mt-0"
+                        style="font-size: 0.8rem"
+                      >
                         *Only PDFs or JPGs with a maximum size of 10MB can be
                         uploaded
                       </p>
@@ -289,8 +296,8 @@
                         drop-placeholder="Drop file here..."
                       ></b-form-file>
                       <p class="text-secondary mt-3 mb-1">
-                        Proof of Income (e.g. 1-Month Payslip, Tax Returns, or Bank
-                        Statements)
+                        Proof of Income (e.g. 1-Month Payslip, Tax Returns, or
+                        Bank Statements)
                       </p>
                       <b-form-file
                         v-model="v$.form3.proof_of_income.$model"
@@ -334,7 +341,7 @@
   </div>
 </template>
 <style scoped>
-.loan-form *:not(input):not(.custom-select):not(.document-subtext){
+.loan-form *:not(input):not(.custom-select):not(.document-subtext) {
   font-weight: 700;
 }
 .loan-form {
@@ -342,7 +349,7 @@
   border-radius: 10px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.loan-form-section{
+.loan-form-section {
   background-color: #e5e5e5;
   min-height: 100vh;
   margin-top: -50px;

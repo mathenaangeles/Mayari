@@ -11,6 +11,7 @@ import {
   fetchLoan,
   updateLoan,
   postLoan,
+  downloadFile,
 } from "@/api";
 import { isValidJwt, EventBus } from "@/utils";
 
@@ -89,6 +90,13 @@ const store = new Vuex.Store({
       ).then((response) => {
         context.commit("setUser", { user: response.data });
       });
+    },
+    downloadFile(context, file) {
+      return downloadFile(
+        file[0],
+        file[1],
+        context.state.jwt
+      );
     },
     updateUser(context, user) {
       return updateUser(user, context.state.user.id, context.state.jwt).then(

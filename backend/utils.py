@@ -76,3 +76,13 @@ def upload_file(file, bucket, key):
     s3_client.upload_fileobj(file, bucket, key)
     file_url = 'https://%s.s3.amazonaws.com/%s' % (bucket, key)
     return file_url
+
+def download_file(file, bucket, folder):
+    s3 = boto3.resource('s3', 
+        aws_access_key_id=current_app.config['AWS_ACCESS_KEY'],
+        aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY'],
+        region_name = current_app.config['REGION_NAME'])
+    output = f"/{folder}/{file}"
+    key = f"{folder}/{file}"
+    s3.meta.client.download_file(bucket, key, file)
+    return output

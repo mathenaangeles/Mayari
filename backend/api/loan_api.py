@@ -1,11 +1,11 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, send_file
 import uuid
 
 import sys
 sys.path.append("..") 
 
 from models import db, Loan, Business
-from utils import token_required, admin_token_required, upload_file
+from utils import token_required, admin_token_required, upload_file, download_file
 
 loans_api = Blueprint('loans', __name__)
 
@@ -40,6 +40,12 @@ def fetch_loan(user, id=id):
     loan = Loan.query.get(id)
     business = Business.query.filter_by(loan_id=loan.id).first()
     return jsonify(loan.to_dict(), business.to_dict()), 201
+
+@loans_api.route('/download/<folder>/<filename>/', methods=('GET',))
+@token_required
+def download_loan_file(user, filename, folder):
+    file = download_file(filename, BUCKET, folder)
+    return send_file(file, as_attachment=True)
  
 @loans_api.route('/edit/<int:id>/', methods=('PUT',))
 @admin_token_required

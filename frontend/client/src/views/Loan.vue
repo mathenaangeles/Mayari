@@ -22,10 +22,10 @@
                 />
               </svg>
             </button>
-            <h2>Loan Information</h2>
+            <h2 class="ml-3">Loan Information</h2>
           </b-row>
         </b-col>
-        <b-col class="text-right" md="4">
+        <b-col class="status-text" md="4">
           <h4 v-bind:class="getClass(loan.status)">
             {{ loan.status.toUpperCase() }}
           </h4>
@@ -55,13 +55,13 @@
         </b-col>
       </b-row>
       <b-row class="my-2">
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Principal</div>
           <div class="more-info-value">
             {{ !loan.principal ? "NA" : "PHP " + loan.principal.toFixed(2) }}
           </div>
         </b-col>
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Total Paid</div>
           <div class="more-info-value">
             {{
@@ -74,7 +74,7 @@
             }}
           </div>
         </b-col>
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Monthly Installments</div>
           <div class="more-info-value">
             {{ loan.installment ? "PHP " + loan.installment.toFixed(2) : "NA" }}
@@ -82,13 +82,13 @@
         </b-col>
       </b-row>
       <b-row class="my-2">
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Payment Term</div>
           <div class="more-info-value">
             {{ !loan.payment_term ? "NA" : loan.payment_term + " Months" }}
           </div>
         </b-col>
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Interest Rate</div>
           <div class="more-info-value">
             {{
@@ -96,7 +96,7 @@
             }}
           </div>
         </b-col>
-        <b-col>
+        <b-col md="4">
           <div class="more-info-text">Collateral</div>
           <div class="more-info-value">
             {{
@@ -131,18 +131,15 @@
       </div>
       <hr />
       <h3>Documents</h3>
-      <div>
-        <h5 class="photo-text">Primary Valid ID</h5>
-        <a :href="loan.primary_id" class="btn btn-outline-secondary" download
-          >Download File</a
+      <div class="my-3">
+        <h5 class="text-secondary">Primary Valid ID</h5>
+        <b-button variant="outline-dark" @click="onDownloadFile(loan.primary_id, 'primary-ids')"
+          >Download File</b-button
         >
       </div>
-      <div>
-        <h5 class="photo-text">Proof of Income</h5>
-        <a
-          :href="loan.proof_of_income"
-          class="btn btn-outline-secondary"
-          download
+      <div class="my-3">
+        <h5 class="text-secondary mb-2">Proof of Income</h5>
+        <a :href="loan.proof_of_income" class="btn btn-outline-dark" download
           >Download File</a
         >
       </div>
@@ -153,6 +150,9 @@
 .loan-card * {
   font-weight: 700;
 }
+p {
+  font-weight: normal !important;
+}
 .loan-container {
   background-color: #e5e5e5;
   min-height: 100vh;
@@ -161,6 +161,14 @@
   border: 0px;
   border-radius: 10px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.status-text {
+  text-align: right;
+}
+@media only screen and (max-width: 768px) {
+  .status-text {
+    text-align: left !important;
+  }
 }
 .custom-text-success {
   color: #f14f8c;
@@ -181,9 +189,6 @@
   color: #ca4de5;
   font-size: 1.8rem;
 }
-.photo-text {
-  color: #707070;
-}
 </style>
 <script>
 import { mapState } from "vuex";
@@ -196,11 +201,17 @@ export default {
     },
     getClass(status) {
       return {
-        "text-warning": status === "pending",
+        "text-secondary": status === "pending",
         "custom-text-success": status === "approved",
         "text-danger": status === "denied",
       };
     },
+    onDownloadFile(filename, folder) {
+      let splitFilename = filename.split("/");
+      this.$store.dispatch("downloadFile", [splitFilename[splitFilename.length-1], folder]).catch((error) => {
+        console.log("ERROR: File could not be updated.", error);
+      });
+     }
   },
   beforeMount() {
     this.$store.dispatch("fetchLoan", {

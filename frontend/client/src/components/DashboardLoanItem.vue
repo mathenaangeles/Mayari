@@ -106,7 +106,7 @@ export default {
   methods: {
     getClass(status) {
       return {
-        "text-warning": status === "pending",
+        "text-secondary": status === "pending",
         "custom-text-success": status === "approved",
         "text-danger": status === "denied",
       };

@@ -133,8 +133,8 @@
       <h3>Documents</h3>
       <div class="my-3">
         <h5 class="text-secondary">Primary Valid ID</h5>
-        <b-button variant="outline-dark" @click="onDownloadFile(loan.primary_id, 'primary-ids')"
-          >Download File</b-button
+        <a :href="loan.primary_id" class="btn btn-outline-dark" download
+          >Download File</a
         >
       </div>
       <div class="my-3">
@@ -206,12 +206,6 @@ export default {
         "text-danger": status === "denied",
       };
     },
-    onDownloadFile(filename, folder) {
-      let splitFilename = filename.split("/");
-      this.$store.dispatch("downloadFile", [splitFilename[splitFilename.length-1], folder]).catch((error) => {
-        console.log("ERROR: File could not be updated.", error);
-      });
-     }
   },
   beforeMount() {
     this.$store.dispatch("fetchLoan", {

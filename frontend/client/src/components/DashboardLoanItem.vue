@@ -1,5 +1,5 @@
 <template>
-  <b-col md="5" class="m-1">
+  <b-col md="5" class="mx-1 mb-4">
     <b-card class="loan-card">
       <b class="loan-status-text">
         {{ loanInfo.status.charAt(0).toUpperCase() + loanInfo.status.slice(1) }}

@@ -20,12 +20,6 @@ export function fetchLoan(loanId, jwt) {
   });
 }
 
-export function downloadFile(filename, folder, jwt) {
-  return axios.get(`${API_URL}/loans/download/${folder}/${filename}/`, {
-    headers: { Authorization: `Bearer: ${jwt}` },
-  });
-}
-
 export function fetchLoans(userId, jwt) {
   return axios.get(`${API_URL}/loans/user/${userId}/`, {
     headers: { Authorization: `Bearer: ${jwt}` },

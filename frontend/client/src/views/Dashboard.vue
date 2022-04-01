@@ -46,7 +46,7 @@
       <b-col md="8" class="text-left px-5 py-4">
         <h1 class="dashboard-header my-3">Business Loans</h1>
         <b-row>
-          <b-col md="5" class="m-1">
+          <b-col md="5" class="mx-1 mb-4">
             <b-card class="apply-card">
               <b-link href="/apply" class="apply-text pb-4"
                 >Apply for a business loan now
@@ -95,6 +95,9 @@
 }
 .edit-profile-link {
   color: #f14f8c;
+}
+.edit-profile-link:hover {
+  text-decoration: none !important;
 }
 .dashboard-header {
   font-weight: 700;

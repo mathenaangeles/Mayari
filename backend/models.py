@@ -135,3 +135,43 @@ class Business(db.Model):
                   street_address=self.street_address,
                   city=self.city,
                   zip_code=self.zip_code)
+
+class Article(db.Model):
+    __tablename__ = 'articles'
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    preview = db.Column(db.String(255), nullable=False)
+    body = db.Column(db.UnicodeText(), nullable=False)
+    category = db.Column(db.String(255), nullable=False)
+    is_published = db.Column(db.Boolean,  default=False)
+    is_featured = db.Column(db.Boolean,  default=False)
+    preview_image = db.Column(db.String(255), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, author, title, preview, body, category, is_published, is_featured):
+        self.author = author
+        self.title = title
+        self.preview = preview
+        self.body = body
+        self.is_published = is_published
+        self.is_featured = is_featured
+        self.category = category
+
+    def to_dict(self):
+      return dict(id=self.id,
+                  author=self.author,
+                  title=self.title,
+                  preview=self.preview,
+                  body=self.body,
+                  category=self.category,
+                  preview_image=self.preview_image,
+                  is_published=self.is_published,
+                  is_featured=self.is_featured,
+                  created_at=self.created_at,
+                  updated_at=self.updated_at)
+
+@db.event.listens_for(Article, 'before_update')
+def article_updated_listener(mapper, connection, target):
+  target.updated_at = datetime.utcnow()

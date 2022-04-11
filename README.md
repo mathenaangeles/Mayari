@@ -20,6 +20,10 @@ Prerequisites: Get `.env` file from other developers.
 3. Run `pip3 install -r requirements.txt`.
 4. Run `python3 server.py`.
 
+#### Database Migrations
+1. Every time the database models change, run `python3 -m flask db migrate`.
+2. Run `python3 -m flask db upgrade`. 
+
 ### Frontend
 1. Navigate to the client folder inside the frontend directory.
 2. Run `npm install`.

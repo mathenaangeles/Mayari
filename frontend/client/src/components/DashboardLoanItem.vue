@@ -1,6 +1,6 @@
 <template>
   <b-col md="5" class="mx-1 mb-4">
-    <b-card class="loan-card">
+    <b-card v-bind:class="getClass(loanInfo.status)">
       <b class="loan-status-text">
         {{ loanInfo.status.charAt(0).toUpperCase() + loanInfo.status.slice(1) }}
       </b>
@@ -71,10 +71,16 @@
   </b-col>
 </template>
 <style scoped>
-.loan-card {
+.loan-card,
+.loan-card-approved {
   border-radius: 10px;
-  border: 0px;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
+}
+.loan-card {
+  border: 0px;
+}
+.loan-card-approved {
+  border: 2px solid #fe6f8e;
 }
 .loan-status-text {
   color: #fe6f8e;
@@ -106,9 +112,8 @@ export default {
   methods: {
     getClass(status) {
       return {
-        "text-secondary": status === "pending",
-        "custom-text-success": status === "approved",
-        "text-danger": status === "denied",
+        "loan-card-approved": status === "approved",
+        "loan-card": status != "approved",
       };
     },
   },

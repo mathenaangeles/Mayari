@@ -20,7 +20,7 @@ services:
     ports:
         - 5000:5000
     volumes:
-        - ./backend:/app
+        - ./backend:/backend
   db:
     image: postgres:13-alpine
     volumes:

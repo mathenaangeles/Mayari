@@ -7,9 +7,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
-    volumes:
-      - ./frontend/client:/app
-      - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
   flask_app:
@@ -19,8 +16,6 @@ services:
       - ./backend/.env
     ports:
         - 5000:5000
-    volumes:
-        - ./backend:/backend
   db:
     image: postgres:13-alpine
     volumes:

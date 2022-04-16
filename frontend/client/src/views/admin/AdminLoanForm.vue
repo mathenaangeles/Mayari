@@ -2,37 +2,37 @@
   <div class="admin-loan-form">
     <h1>
       <button
-      @click="hasHistory() ? $router.go(-1) : $router.push('/')"
-      class="btn btn-link text-dark"
+        @click="hasHistory() ? $router.go(-1) : $router.push('/')"
+        class="btn btn-link text-dark"
       >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32.709"
-        height="23.069"
-        viewBox="0 0 32.709 23.069"
-      >
-        <path
-          id="Icon_ionic-ios-arrow-round-forward"
-          data-name="Icon ionic-ios-arrow-round-forward"
-          d="M28.734,11.693a1.635,1.635,0,0,0-.011,2.211l6.908,7.317H9.341a1.565,1.565,0,0,0,0,3.124H35.619l-6.908,7.317a1.647,1.647,0,0,0,.011,2.211A1.415,1.415,0,0,0,30.8,33.86l9.362-9.972h0a1.766,1.766,0,0,0,.307-.493,1.565,1.565,0,0,0,.114-.6,1.614,1.614,0,0,0-.42-1.093L30.8,11.729A1.393,1.393,0,0,0,28.734,11.693Z"
-          transform="translate(40.584 34.321) rotate(180)"
-        />
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32.709"
+          height="23.069"
+          viewBox="0 0 32.709 23.069"
+        >
+          <path
+            id="Icon_ionic-ios-arrow-round-forward"
+            data-name="Icon ionic-ios-arrow-round-forward"
+            d="M28.734,11.693a1.635,1.635,0,0,0-.011,2.211l6.908,7.317H9.341a1.565,1.565,0,0,0,0,3.124H35.619l-6.908,7.317a1.647,1.647,0,0,0,.011,2.211A1.415,1.415,0,0,0,30.8,33.86l9.362-9.972h0a1.766,1.766,0,0,0,.307-.493,1.565,1.565,0,0,0,.114-.6,1.614,1.614,0,0,0-.42-1.093L30.8,11.729A1.393,1.393,0,0,0,28.734,11.693Z"
+            transform="translate(40.584 34.321) rotate(180)"
+          />
+        </svg>
       </button>
       Loan
     </h1>
     <b-row>
       <b-col>
         <h3>Primary Id</h3>
-        <img :src="loan.primary_id" class="loan-id"/>
+        <img :src="loan.primary_id" class="loan-id" />
       </b-col>
       <b-col>
         <h3>Proof of Income</h3>
-        <img :src="loan.proof_of_income" class="loan-id"/>
+        <img :src="loan.proof_of_income" class="loan-id" />
       </b-col>
     </b-row>
     <h2>{{ loan.id }}</h2>
-    
+
     <b-form @submit="onSubmitLoan">
       <b-form-group label="Status">
         <b-form-select

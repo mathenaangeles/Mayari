@@ -11,6 +11,12 @@ import {
   fetchLoan,
   updateLoan,
   postLoan,
+  postArticle,
+  fetchArticles,
+  fetchArticle,
+  fetchAllArticles,
+  updateArticle,
+  deleteArticle,
 } from "@/api";
 import { isValidJwt, EventBus } from "@/utils";
 
@@ -23,12 +29,20 @@ const initialState = () => {
     business: {},
     user: {},
     jwt: "",
+    articles: [],
+    article: {},
   };
 };
 
 const store = new Vuex.Store({
   state: initialState(),
   mutations: {
+    setArticles(state, payload) {
+      state.articles = payload.articles;
+    },
+    setArticle(state, payload) {
+      state.article = payload.article;
+    },
     setLoans(state, payload) {
       state.loans = payload.loans;
     },
@@ -57,6 +71,32 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+    deleteArticle(context, article) {
+      return deleteArticle(article, context.state.jwt).then(() => {
+        context.commit("setArticle", { article: {} });
+      });
+    },
+    updateArticle(context, article) {
+      return updateArticle(article, context.state.jwt);
+    },
+    fetchAllArticles(context) {
+      return fetchAllArticles(context.state.jwt).then((response) => {
+        context.commit("setArticles", { articles: response.data });
+      });
+    },
+    fetchArticle(context, { articleId }) {
+      return fetchArticle(articleId).then((response) => {
+        context.commit("setArticle", { article: response.data });
+      });
+    },
+    fetchArticles(context) {
+      return fetchArticles().then((response) => {
+        context.commit("setArticles", { articles: response.data });
+      });
+    },
+    postArticle(context, article) {
+      return postArticle(article, context.state.jwt);
+    },
     updateLoan(context, loan) {
       return updateLoan(loan, context.state.jwt);
     },

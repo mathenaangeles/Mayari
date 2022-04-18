@@ -31,7 +31,8 @@
               <b-nav-item to="/faq">FAQ</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav v-if="isAdminAuthenticated">
-              <b-nav-item to="/admin/dashboard" class="mr-2">Admin</b-nav-item>
+              <b-nav-item to="/admin/dashboard" class="mr-2">Loans</b-nav-item>
+              <b-nav-item to="/admin/blog" class="mr-2">Articles</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav v-if="isAuthenticated" class="ml-auto">
               <b-button class="white-outline-button mt-1" @click="logout"

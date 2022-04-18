@@ -15,7 +15,11 @@ BUCKET = "mayari-uploads"
 @admin_token_required
 def create_article(user):
     data = request.form
-    article = Article(data['author'],data['title'],data['preview'],data['body'],data['category'],data['is_published'],data['is_featured'])
+    article = Article(data['author'],data['title'],data['preview'],data['body'],data['category'])
+    if data['is_published']=='true':
+        article.is_published=True
+    if data['is_featured']=='true':
+        article.is_featured=True
     if 'preview_image' in request.files:
         preview_image = request.files['preview_image']
         preview_image_url = upload_file(preview_image, BUCKET, "preview-images/{}".format(preview_image.filename))
@@ -25,14 +29,12 @@ def create_article(user):
     return jsonify(article.to_dict()), 201
 
 @articles_api.route('/published/', methods=('GET',))
-@token_required
-def fetch_articles(user, id=id):
+def fetch_articles():
     articles = Article.query.filter_by(is_published=True).all()
     return jsonify([article.to_dict() for article in articles]), 201
 
 @articles_api.route('/<int:id>/', methods=('GET',))
-@token_required
-def fetch_article(user, id=id):
+def fetch_article(id=id):
     article = Article.query.get(id)
     return jsonify(article.to_dict()), 201
  
@@ -60,3 +62,11 @@ def update_article(user, id=id):
 def fetch_all_articles(user):
     articles = Article.query.all()
     return jsonify([article.to_dict() for article in articles]), 201
+
+@articles_api.route('/delete/<int:id>/', methods=('DELETE',))
+@admin_token_required
+def delete_article(user, id=id):
+    article = Article.query.get(id)
+    db.session.delete(article)
+    db.session.commit()
+    return 201

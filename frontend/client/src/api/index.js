@@ -2,6 +2,38 @@ import axios from "axios";
 
 const API_URL = process.env.VUE_APP_API_URL;
 
+export function deleteArticle(article, jwt) {
+  return axios.put(`${API_URL}/articles/delete/${article.id}/`, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
+export function updateArticle(article, jwt) {
+  return axios.put(`${API_URL}/articles/edit/${article.id}/`, article, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
+export function fetchAllArticles(jwt) {
+  return axios.get(`${API_URL}/articles/`, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
+export function fetchArticle(articleId) {
+  return axios.get(`${API_URL}/articles/${articleId}/`);
+}
+
+export function fetchArticles() {
+  return axios.get(`${API_URL}/articles/published/`);
+}
+
+export function postArticle(article, jwt) {
+  return axios.post(`${API_URL}/articles/`, article, {
+    headers: { Authorization: `Bearer: ${jwt}` },
+  });
+}
+
 export function updateLoan(loan, jwt) {
   return axios.put(`${API_URL}/loans/edit/${loan.id}/`, loan, {
     headers: { Authorization: `Bearer: ${jwt}` },

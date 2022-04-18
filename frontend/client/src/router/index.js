@@ -12,6 +12,10 @@ import AdminLoanForm from "../views/admin/AdminLoanForm";
 import LoanForm from "../views/LoanForm.vue";
 import Loan from "../views/Loan.vue";
 import EditProfile from "../views/EditProfile.vue";
+import Blog from "../views/Blog.vue";
+import Article from "../views/Article.vue";
+import AdminBlog from "../views/admin/AdminBlog.vue";
+import AdminArticleForm from "../views/admin/AdminArticleForm.vue";
 
 import store from "../store/index.js";
 
@@ -36,7 +40,12 @@ const routes = [
   {
     path: "/blog",
     name: "blog",
-    component: NotFound,
+    component: Blog,
+  },
+  {
+    path: "/article",
+    name: "article",
+    component: Article,
   },
   {
     path: "/faq/:amount?/:term?",
@@ -71,6 +80,22 @@ const routes = [
     path: "/admin/dashboard",
     name: "admin_dashboard",
     component: AdminDashboard,
+    meta: {
+      requiresAdminAuthentication: true,
+    },
+  },
+  {
+    path: "/admin/blog",
+    name: "admin_blog",
+    component: AdminBlog,
+    meta: {
+      requiresAdminAuthentication: true,
+    },
+  },
+  {
+    path: "/admin/article/:id?",
+    name: "admin_article",
+    component: AdminArticleForm,
     meta: {
       requiresAdminAuthentication: true,
     },

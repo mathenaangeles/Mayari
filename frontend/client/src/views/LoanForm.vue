@@ -135,15 +135,6 @@
                     <h2>02. Business Information</h2>
                     <hr class="border-dark" style="border-width: 3px" />
                   </div>
-                  <!-- <b-form-group>
-                    <b-form-checkbox           
-                      id="checkbox"
-                      v-model="v$.form2.isHomeAddress.$model"
-                      @change="onCheck"
-                    >
-                      Is your business address the same as your personal address?
-                    </b-form-checkbox>
-                  </b-form-group> -->
                   <div class="custom-checkbox ml-4 mb-4">
                     <input
                       type="checkbox"

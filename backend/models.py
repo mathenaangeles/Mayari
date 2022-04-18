@@ -150,13 +150,11 @@ class Article(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, author, title, preview, body, category, is_published, is_featured):
+    def __init__(self, author, title, preview, body, category):
         self.author = author
         self.title = title
         self.preview = preview
         self.body = body
-        self.is_published = is_published
-        self.is_featured = is_featured
         self.category = category
 
     def to_dict(self):

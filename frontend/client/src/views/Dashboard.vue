@@ -10,11 +10,11 @@
               :src="user.profile_photo"
             />
             <b-col class="p-2">
-              <h4 class="bold mb-0" v-if="user.name.length < 16">
+              <h4 class="bold mb-0" v-if="user.name.length < 20">
                 {{ user.name }}
               </h4>
               <h4 class="bold mb-0" v-else>
-                {{ user.name.substring(0, 16) + "..." }}
+                {{ user.name.substring(0, 20) + "..." }}
               </h4>
               <router-link :to="`/profile/${user.id}`"
                 ><p class="mb-0 edit-profile-link">Edit Profile</p></router-link

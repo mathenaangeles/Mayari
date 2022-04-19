@@ -71,13 +71,13 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    deleteArticle(context, article) {
-      return deleteArticle(article, context.state.jwt).then(() => {
+    deleteArticle(context, articleId) {
+      return deleteArticle(articleId, context.state.jwt).then(() => {
         context.commit("setArticle", { article: {} });
       });
     },
-    updateArticle(context, article) {
-      return updateArticle(article, context.state.jwt);
+    updateArticle(context, { article, articleId }) {
+      return updateArticle(article, articleId, context.state.jwt);
     },
     fetchAllArticles(context) {
       return fetchAllArticles(context.state.jwt).then((response) => {

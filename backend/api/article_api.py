@@ -48,8 +48,14 @@ def update_article(user, id=id):
     article.preview = data['preview']
     article.body = data['body']
     article.category = data['category']
-    article.is_published = data['is_published']
-    article.is_featured = data['is_featured']
+    if data['is_published']=='true':
+        article.is_published=True
+    else:
+        article.is_published=False
+    if data['is_featured']=='true':
+        article.is_featured=True
+    else:
+        article.is_featured=False
     if 'preview_image' in request.files:
         preview_image = request.files['preview_image']
         preview_image_url = upload_file(preview_image, BUCKET, "preview-images/{}".format(preview_image.filename))
@@ -69,4 +75,4 @@ def delete_article(user, id=id):
     article = Article.query.get(id)
     db.session.delete(article)
     db.session.commit()
-    return 201
+    return 'OK', 201

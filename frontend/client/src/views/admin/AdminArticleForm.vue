@@ -37,24 +37,24 @@
       <b-form-group label="Category">
         <b-form-input v-model="form.category"></b-form-input>
       </b-form-group>
-      <b-form-group>
-        <b-form-checkbox
-          id="checkbox"
+      <div>
+        <input
+          type="checkbox"
+          id="publish-checkbox"
+          :value="form.is_published"
           v-model="form.is_published"
-          @change="onPublish"
-        >
-          Publish
-        </b-form-checkbox>
-      </b-form-group>
-      <b-form-group>
-        <b-form-checkbox
-          id="checkbox"
+        />
+        <label for="publish-checkbox">&nbsp;Publish?</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="feature-checkbox"
+          :value="form.is_featured"
           v-model="form.is_featured"
-          @change="onFeature"
-        >
-          Feature
-        </b-form-checkbox>
-      </b-form-group>
+        />
+        <label for="feature-checkbox">&nbsp;Feature?</label>
+      </div>
       <b-form-file
         v-model="form.preview_image"
         placeholder="Choose a file or drop it here..."
@@ -94,24 +94,20 @@ export default {
   },
   beforeMount() {
     if (this.$route.params.id) {
+      this.isNew = false;
       this.$store.dispatch("fetchArticle", {
         articleId: parseInt(this.$route.params.id),
       });
-      this.isNew = false;
     }
   },
   computed: {
     article() {
-      if (this.isNew) {
-        return this.$store.state.article;
-      } else {
-        return null;
-      }
+      return this.$store.state.article;
     },
   },
   created: function () {
     let user = this.$store.state.user;
-    if (user && !this.isNew) {
+    if (user && this.$route.params.id) {
       try {
         this.form.author = this.article.author;
         this.form.title = this.article.title;
@@ -120,7 +116,6 @@ export default {
         this.form.category = this.article.category;
         this.form.is_published = this.article.is_published;
         this.form.is_featured = this.article.is_featured;
-        this.form.preview_image = this.article.preview_image;
       } catch (error) {
         console.log("ERROR: User could not be found.", error);
       }
@@ -129,12 +124,6 @@ export default {
   methods: {
     hasHistory() {
       return window.history.length > 2;
-    },
-    onFeature() {
-      this.form.is_featured = !this.form.is_featured;
-    },
-    onPublish() {
-      this.form.is_published = !this.form.is_published;
     },
     onCreateArticle(event) {
       event.preventDefault();
@@ -156,17 +145,21 @@ export default {
     },
     onUpdateArticle(event) {
       event.preventDefault();
+      let article = new FormData();
+      article.append("author", this.form.author);
+      article.append("title", this.form.title);
+      article.append("preview", this.form.preview);
+      article.append("body", this.form.body);
+      article.append("category", this.form.category);
+      console.log(this.form.is_published);
+      console.log(this.form.is_featured);
+      article.append("is_published", this.form.is_published);
+      article.append("is_featured", this.form.is_featured);
+      article.append("preview_image", this.form.preview_image);
       this.$store
         .dispatch("updateArticle", {
-          id: this.article.id,
-          author: this.form.author,
-          title: this.form.title,
-          preview: this.form.preview,
-          body: this.form.body,
-          category: this.form.category,
-          is_published: this.form.is_published,
-          is_featured: this.form.is_featured,
-          preview_image: this.form.preview_image,
+          article: article,
+          articleId: this.article.id,
         })
         .then(() => this.$router.push("/admin/blog"))
         .catch((error) => {
@@ -176,7 +169,7 @@ export default {
     onDeleteArticle(event) {
       event.preventDefault();
       this.$store
-        .dispatch("deleteArticle")
+        .dispatch("deleteArticle", this.article.id)
         .then(() => this.$router.push("/admin/blog"))
         .catch((error) => {
           console.log("ERROR: Article could not be deleted.", error);

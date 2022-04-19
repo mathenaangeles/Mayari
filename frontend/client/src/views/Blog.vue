@@ -1,5 +1,12 @@
 <template>
-  <div class="blog"></div>
+  <div class="blog">
+    <ul>
+      <li v-for="article in articles" :key="article.id">
+        {{ article.title }}
+        <router-link :to="`article/${article.id}`"> View Article </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 <style scoped></style>
 <script>

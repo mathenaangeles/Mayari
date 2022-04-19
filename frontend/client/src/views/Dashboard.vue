@@ -16,8 +16,10 @@
               <h4 class="bold mb-0" v-else>
                 {{ user.name.substring(0, 20) + "..." }}
               </h4>
-              <router-link :to="`/profile/${user.id}`"
-                ><p class="mb-0 edit-profile-link">Edit Profile</p></router-link
+              <router-link
+                :to="`/profile/${user.id}`"
+                class="mb-0 edit-profile-link"
+                ><p>Edit Profile</p></router-link
               >
             </b-col>
           </b-row>
@@ -94,7 +96,7 @@
 .edit-profile-link {
   color: #f14f8c;
 }
-.edit-profile-link:hover {
+.edit-profile-link a:link {
   text-decoration: none !important;
 }
 .dashboard-header {

@@ -2,14 +2,14 @@ import axios from "axios";
 
 const API_URL = process.env.VUE_APP_API_URL;
 
-export function deleteArticle(article, jwt) {
-  return axios.put(`${API_URL}/articles/delete/${article.id}/`, {
+export function deleteArticle(articleId, jwt) {
+  return axios.delete(`${API_URL}/articles/delete/${articleId}/`, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }
 
-export function updateArticle(article, jwt) {
-  return axios.put(`${API_URL}/articles/edit/${article.id}/`, article, {
+export function updateArticle(article, articleId, jwt) {
+  return axios.put(`${API_URL}/articles/edit/${articleId}/`, article, {
     headers: { Authorization: `Bearer: ${jwt}` },
   });
 }

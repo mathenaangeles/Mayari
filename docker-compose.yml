@@ -16,6 +16,8 @@ services:
       - ./backend/.env
     ports:
         - 5000:5000
+    depends_on:
+      - db
   db:
     image: postgres:13-alpine
     volumes:
@@ -24,5 +26,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=whorunthehelloworld
       - POSTGRES_DB=mayaridb
+    ports:
+      - 5432:5432
 volumes:
   postgres_data:

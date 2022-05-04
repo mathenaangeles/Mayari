@@ -17,6 +17,8 @@ from api import loan_api, user_api, article_api
 app.register_blueprint(loan_api.loans_api, url_prefix="/loans")
 app.register_blueprint(user_api.users_api, url_prefix="/users")
 app.register_blueprint(article_api.articles_api, url_prefix="/articles")
-
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 if __name__ == "__main__":
     app.run()

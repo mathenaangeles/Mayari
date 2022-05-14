@@ -1,8 +1,7 @@
 # Mayari
 
 ## Docker
-Prerequisites: Have docker installed in system
-Recommended: Have Docker VSCode extension
+<b>Prerequisites</b>: Install Docker in your system. It is recommended that you install the Docker VSCode extension.
 
 1. To run the docker container, open to the terminal and type `docker-compose up` in the the root of the folder. You can stop the container from the terminal or by using the VSCode extension.
 2. To build or rebuild images, run `docker-compose build`. Rebuild in the following scenarios:

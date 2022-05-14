@@ -1,15 +1,15 @@
 <template>
   <div class="dashboard-container">
     <b-row>
-      <b-col id="sidebar" md="4" class="p-5">
+      <b-col id="sidebar" md="4" class="p-4">
         <b-card class="user-card text-left">
-          <b-row v-if="user.name" class="align-items-center ml-1">
+          <b-row v-if="user.name" align-v="center" class="ml-1">
             <img
               id="profile-photo"
               v-if="user.profile_photo"
               :src="user.profile_photo"
             />
-            <b-col class="p-2">
+            <b-col>
               <h4 class="bold mb-0" v-if="user.name.length < 20">
                 {{ user.name }}
               </h4>
@@ -18,7 +18,7 @@
               </h4>
               <router-link
                 :to="`/profile/${user.id}`"
-                class="mb-0 edit-profile-link"
+                class="edit-profile-link"
                 ><p>Edit Profile</p></router-link
               >
             </b-col>
@@ -66,6 +66,7 @@
       </b-col>
       <b-col md="8" class="text-left px-5 py-4">
         <h1 class="dashboard-header my-3">Business Loans</h1>
+        <h4 class="no-loans-text" v-if="loans.length===0">Oh no! You have no loans yet. <b-link href="/apply">Click here to apply now.</b-link></h4>
         <b-row>
           <DashboardLoanItem
             v-for="loan in loans"
@@ -93,7 +94,7 @@
   width: 60px;
   height: 60px;
 }
-.edit-profile-link {
+.edit-profile-link, .no-loans-text a {
   color: #f14f8c;
 }
 .edit-profile-link a:link {
@@ -125,6 +126,9 @@
     rgba(175, 163, 240, 1) 0%,
     rgba(180, 86, 222, 1) 100%
   );
+}
+.no-loans-text{
+  color:#707070;
 }
 </style>
 <script>

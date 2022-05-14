@@ -144,7 +144,6 @@ const store = new Vuex.Store({
           context.commit("setUser", { user: response.data.user });
         })
         .catch((error) => {
-          console.log("Authentication Error: ", error);
           EventBus.$emit("failedLogin", error);
         });
     },
@@ -155,7 +154,6 @@ const store = new Vuex.Store({
           context.dispatch("login", user);
         })
         .catch((error) => {
-          console.log("Registration Error: ", error);
           EventBus.$emit("failedRegister: ", error);
         });
     },

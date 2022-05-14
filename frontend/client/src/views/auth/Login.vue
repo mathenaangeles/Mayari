@@ -8,6 +8,9 @@
         <b-col md="6" sm="12" class="custom-column">
           <div class="form-container">
             <b-form class="sign-in-form" @submit="onSubmit">
+              <b-card v-if="error" class="mt-4 error-alert">
+                {{ error }}
+              </b-card>
               <h1 class="my-3"><b>Sign In</b></h1>
               <b-form-group
                 class="bold"
@@ -85,8 +88,8 @@ export default {
       form: {
         email: "",
         password: "",
-        error: "",
       },
+      error: null,
       authContent: {
         linkRoute: "register",
         message: "Don't have an account yet?",
@@ -119,12 +122,12 @@ export default {
           email: this.form.email,
           password: this.form.password,
         })
-        .then(() => window.location.reload());
+        .then(() => {this.router.push('/dashboard')}).catch();    
     },
   },
   mounted() {
-    EventBus.$on("failedLogin", (msg) => {
-      this.form.error = msg;
+    EventBus.$on("failedLogin", (error) => {
+      this.error = "Sorry, an unexpected error occurred. Please check the credentials you entered.";
     });
   },
   beforeDestroy() {

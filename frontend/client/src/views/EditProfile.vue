@@ -1,7 +1,28 @@
 <template>
   <b-container fluid class="edit-profile p-5">
     <b-card class="text-left p-4 edit-profile-card">
-      <h1 class="bold">Edit Profile</h1>
+      <b-row>
+        <button
+          @click="hasHistory() ? $router.go(-1) : $router.push('/')"
+          class="btn btn-link text-dark"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32.709"
+            height="23.069"
+            viewBox="0 0 32.709 23.069"
+          >
+            <path
+              id="Icon_ionic-ios-arrow-round-forward"
+              data-name="Icon ionic-ios-arrow-round-forward"
+              d="M28.734,11.693a1.635,1.635,0,0,0-.011,2.211l6.908,7.317H9.341a1.565,1.565,0,0,0,0,3.124H35.619l-6.908,7.317a1.647,1.647,0,0,0,.011,2.211A1.415,1.415,0,0,0,30.8,33.86l9.362-9.972h0a1.766,1.766,0,0,0,.307-.493,1.565,1.565,0,0,0,.114-.6,1.614,1.614,0,0,0-.42-1.093L30.8,11.729A1.393,1.393,0,0,0,28.734,11.693Z"
+              transform="translate(40.584 34.321) rotate(180)"
+            />
+          </svg>
+        </button>
+        <h1 class="bold ml-2">Edit Profile</h1>
+      </b-row>
+      <hr class="border-dark mb-4" style="border-width: 3px" />
       <div>
         <div class="mt-4">
           <b-form @submit="onSubmit">
@@ -130,6 +151,9 @@ export default {
     };
   },
   methods: {
+    hasHistory() {
+      return window.history.length > 2;
+    },
     onSubmit(event) {
       event.preventDefault();
       this.$store

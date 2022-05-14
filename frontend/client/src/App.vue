@@ -66,7 +66,7 @@
           </b-col>
           <b-col xs="6">
             <h5><b>BORROW</b></h5>
-            <b-link class="footer-link" to="/404">Business Loans</b-link>
+            <b-link class="footer-link" to="/faq">Business Loans</b-link>
             <b-link class="footer-link" to="/404"
               >Personal Loans (Coming Soon)</b-link
             >
@@ -199,5 +199,13 @@ footer.section-footer {
 }
 .bold {
   font-weight: 700;
+}
+.error-alert {
+  background-color:#ffe3e6 !important;
+  border-left: 2px solid #de404e !important;
+  border-right: 0px !important; 
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+  color: #de404e;
 }
 </style>

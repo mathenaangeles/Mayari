@@ -8,6 +8,9 @@
         <b-col md="6" sm="12">
           <div class="form-container">
             <b-form class="sign-up-form" @submit="onSubmit">
+              <b-card v-if="error" class="mt-4 error-alert">
+                {{ error }}
+              </b-card>
               <h1 class="my-3 bold">Sign Up</h1>
               <b-form-group
                 id="email"
@@ -141,6 +144,7 @@ export default {
         password: "",
         error: "",
       },
+      error: null,
       authContent: {
         linkRoute: "login",
         message: "Already have an account?",
@@ -185,8 +189,8 @@ export default {
     },
   },
   mounted() {
-    EventBus.$on("failedRegister", (msg) => {
-      this.form.error = msg;
+    EventBus.$on("failedRegister", (error) => {
+      this.error = "Sorry, an unexpected error occurred. Please check the credentials you entered.";
     });
   },
   beforeDestroy() {

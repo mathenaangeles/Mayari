@@ -1,9 +1,9 @@
 <template>
   <b-container fluid class="loan-container p-5">
     <b-card class="loan-card p-4 text-left">
-      <b-row>
+      <b-row align-v="center">
         <b-col md="8">
-          <b-row>
+          <b-row align-v="center">
             <button
               @click="hasHistory() ? $router.go(-1) : $router.push('/')"
               class="btn btn-link text-dark"
@@ -22,7 +22,7 @@
                 />
               </svg>
             </button>
-            <h2 class="ml-3">Loan Information</h2>
+            <h1 class="ml-2">Loan Information</h1>
           </b-row>
         </b-col>
         <b-col class="status-text" md="4">

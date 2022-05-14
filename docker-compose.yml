@@ -10,12 +10,14 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
   flask_app:
-    build: 
+    build:
       context: ./backend
+      dockerfile: Dockerfile-prod
     env_file:
-      - ./backend/.env
+      - ./backend/.env.prod
     ports:
         - 5000:5000
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
     depends_on:
       - db
   db:

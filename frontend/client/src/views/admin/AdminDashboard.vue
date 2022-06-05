@@ -1,19 +1,20 @@
 <template>
   <div class="admin-dashboard">
-    <h1>Admin</h1>
-    <b-table striped hover :fields="fields" :items="loans">
-      <template #cell(id)="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        {{ data.item.id }}
-        <router-link
-          :to="`loan/${data.item.id}`"
-          v-b-tooltip.hover
-          title="Edit Loan Info"
-        >
-          <Pencil />
-        </router-link>
-      </template>
-    </b-table>
+    <b-container class="my-4">
+      <h1 class="float-left mb-2">Loans</h1>
+      <b-table striped bordered hover small :fields="fields" :items="loans">
+        <template #cell(id)="data">
+          {{ data.item.id }}
+          <router-link
+            :to="`loan/${data.item.id}`"
+            v-b-tooltip.hover
+            title="Edit Loan Info"
+          >
+            <Pencil />
+          </router-link>
+        </template>
+      </b-table>
+    </b-container>
   </div>
 </template>
 <style scoped>

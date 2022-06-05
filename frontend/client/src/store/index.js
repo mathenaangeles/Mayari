@@ -138,14 +138,18 @@ const store = new Vuex.Store({
       );
     },
     login(context, user) {
-      return login(user)
+      return  new Promise ((resolve, reject) => {
+        login(user)
         .then((response) => {
           context.commit("setJwtToken", { jwt: response.data.token });
           context.commit("setUser", { user: response.data.user });
+          resolve(response);
         })
         .catch((error) => {
           EventBus.$emit("failedLogin", error);
+          reject(error);
         });
+      }) 
     },
     register(context, user) {
       return register(user)

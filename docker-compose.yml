@@ -14,7 +14,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile-prod
     env_file:
-      - ./backend/.env.prod
+      - ./backend/.env
     ports:
         - 5000:5000
     command: gunicorn --bind 0.0.0.0:5000 wsgi:app

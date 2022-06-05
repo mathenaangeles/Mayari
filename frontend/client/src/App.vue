@@ -201,9 +201,9 @@ footer.section-footer {
   font-weight: 700;
 }
 .error-alert {
-  background-color:#ffe3e6 !important;
+  background-color: #ffe3e6 !important;
   border-left: 2px solid #de404e !important;
-  border-right: 0px !important; 
+  border-right: 0px !important;
   border-top: 0px !important;
   border-bottom: 0px !important;
   color: #de404e;

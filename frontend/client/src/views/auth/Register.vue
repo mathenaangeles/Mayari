@@ -132,6 +132,7 @@ import AuthSideContainer from "@/components/AuthSideContainer.vue";
 import { EventBus } from "@/utils";
 import { email, required, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import router from "../../router"
 export default {
   name: "Register",
   data() {
@@ -142,7 +143,6 @@ export default {
         last_name: "",
         mobile_number: this.$route.params.mobile ?? "",
         password: "",
-        error: "",
       },
       error: null,
       authContent: {
@@ -184,13 +184,16 @@ export default {
           last_name: this.form.last_name,
           mobile_number: rawMobileNumber,
           password: this.form.password,
+        }).then(response => {
+          console.log(response)
+          router.go()
         })
-        .then(() => window.location.reload());
     },
   },
   mounted() {
-    EventBus.$on("failedRegister", (error) => {
-      this.error = "Sorry, an unexpected error occurred. Please check the credentials you entered.";
+    EventBus.$on("failedRegister", () => {
+      this.error =
+        "Sorry, an unexpected error occurred. Please check the credentials you entered.";
     });
   },
   beforeDestroy() {

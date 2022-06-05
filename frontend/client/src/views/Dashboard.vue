@@ -16,9 +16,7 @@
               <h4 class="bold mb-0" v-else>
                 {{ user.name.substring(0, 20) + "..." }}
               </h4>
-              <router-link
-                :to="`/profile/${user.id}`"
-                class="edit-profile-link"
+              <router-link :to="`/profile/${user.id}`" class="edit-profile-link"
                 ><p>Edit Profile</p></router-link
               >
             </b-col>
@@ -66,7 +64,10 @@
       </b-col>
       <b-col md="8" class="text-left px-5 py-4">
         <h1 class="dashboard-header my-3">Business Loans</h1>
-        <h4 class="no-loans-text" v-if="loans.length===0">Oh no! You have no loans yet. <b-link href="/apply">Click here to apply now.</b-link></h4>
+        <h4 class="no-loans-text" v-if="loans.length === 0">
+          Oh no! You have no loans yet.
+          <b-link href="/apply">Click here to apply now.</b-link>
+        </h4>
         <b-row>
           <DashboardLoanItem
             v-for="loan in loans"
@@ -94,7 +95,8 @@
   width: 60px;
   height: 60px;
 }
-.edit-profile-link, .no-loans-text a {
+.edit-profile-link,
+.no-loans-text a {
   color: #f14f8c;
 }
 .edit-profile-link a:link {
@@ -127,8 +129,8 @@
     rgba(180, 86, 222, 1) 100%
   );
 }
-.no-loans-text{
-  color:#707070;
+.no-loans-text {
+  color: #707070;
 }
 </style>
 <script>

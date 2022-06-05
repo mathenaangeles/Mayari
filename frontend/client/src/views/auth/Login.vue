@@ -78,6 +78,7 @@ import AuthSideContainer from "@/components/AuthSideContainer.vue";
 import { EventBus } from "@/utils";
 import { email, required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import router from "../../router"
 export default {
   name: "Login",
   components: {
@@ -121,13 +122,16 @@ export default {
         .dispatch("login", {
           email: this.form.email,
           password: this.form.password,
+        }).then(response => {
+          console.log(response)
+          router.go()
         })
-        .then(() => {this.router.push('/dashboard')}).catch();    
     },
   },
   mounted() {
-    EventBus.$on("failedLogin", (error) => {
-      this.error = "Sorry, an unexpected error occurred. Please check the credentials you entered.";
+    EventBus.$on("failedLogin", () => {
+      this.error =
+        "Sorry, an unexpected error occurred. Please check the credentials you entered.";
     });
   },
   beforeDestroy() {

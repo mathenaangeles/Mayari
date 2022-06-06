@@ -8,7 +8,7 @@
           <router-link
             :to="`loan/${data.item.id}`"
             v-b-tooltip.hover
-            title="Edit Loan Info"
+            title="Edit Loan"
           >
             <Pencil />
           </router-link>
@@ -20,6 +20,9 @@
 <style scoped>
 .admin-dashboard {
   overflow: scroll;
+}
+svg {
+  color: #f14f8c;
 }
 </style>
 <script>
@@ -36,20 +39,18 @@ export default {
   data() {
     return {
       fields: [
-        "id",
-        "borrower_id",
-        "collateral",
-        "collateral_type",
-        "created_at",
-        "installments",
-        "interest_rate",
-        "outstanding_balance",
-        "overdue_balance",
-        "payment_term",
-        "principal",
-        "requested_amount",
-        "status",
-        "total_amount",
+        { key: "id", label: "ID"},
+        { key: "borrower_id", label: "Borrower ID"},
+        { key: "collateral", label: "Collateral"},
+        { key: "created_at", label: "Created At"},
+        { key: "total_amount", label: "Total Amount", formatter: (value) => {return Number((value)?.toFixed(2))}},
+        { key: "installments", label: "Installments", formatter: (value) => {return Number((value)?.toFixed(2))}},
+        { key: "interest_rate", label: "Interest Rate"},
+        { key: "outstanding_balance", label: "Outstanding Balance", formatter: (value) => {return Number((value)?.toFixed(2))}},
+        { key: "overdue_balance", label: "Overdue Balance", formatter: (value) => {return Number((value)?.toFixed(2))}},
+        { key: "payment_term", label: "Payment Term"},
+        { key: "principal", label: "Principal", formatter: (value) => {return Number((value)?.toFixed(2))}},
+        { key: "status", label: "Status"},
       ],
     };
   },

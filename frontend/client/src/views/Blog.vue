@@ -1,5 +1,46 @@
 <template>
   <div class="blog">
+	<b-carousel
+    v-if="featuredArticles.length > 0"
+    v-model="slide"
+    :interval="4000"
+    indicators
+    background="#ababab"
+    img-width="1024"
+    img-height="500"
+    style="text-shadow: 1px 1px 2px #333;"
+    @sliding-start="onSlideStart"
+    @sliding-end="onSlideEnd"
+  >
+    <b-carousel-slide
+      v-for="fArticle in featuredArticles"
+			:key="fArticle.id"
+			class="custom-carousel-slide">
+      <template #img>
+          <img
+            class="d-block img-fluid w-100"
+						style="height:40vh; object-fit:cover; object-position: right 20%"
+            :src="fArticle.preview_image"
+            alt="image slot"
+          >
+        </template>
+					<div class="text-xs">
+						{{fArticle.created_at}} | {{fArticle.author}}
+					</div>
+					<h1>{{ fArticle.title }}</h1>
+					<div>
+						{{fArticle.preview}} <br/> {{fArticle.category}}
+					</div>
+    </b-carousel-slide>
+  </b-carousel>
+  <!--<div v-for="fArticle in featuredArticles"
+    :key="fArticle.id">
+    {{fArticle.created_at}}
+    {{fArticle.author}}
+    {{fArticle.title}}
+    {{fArticle.preview}}
+    {{fArticle.preview_image}}
+  </div>-->
   <b-row class="px-5">
     <b-col md="9" class="d-flex justify-content-around">
       <b-button
@@ -68,6 +109,10 @@
 .search-button {
   background-color: white;
 }
+
+.custom-carousel-slide img {
+	object-fit: cover !important; 
+}
 </style>
 <script>
 import Magnify from "vue-material-design-icons/Magnify";
@@ -81,6 +126,7 @@ export default {
   },
   computed: mapState({
     articles: (state) => state.articles,
+    featuredArticles: (state) => (state.articles.filter((x) => x.is_featured))
   }),
   beforeMount() {
     this.$store.dispatch("fetchArticles");

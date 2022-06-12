@@ -85,7 +85,7 @@
         <b-col md="4">
           <div class="more-info-text">Payment Term</div>
           <div class="more-info-value">
-            {{ !loan.payment_term ? "NA" : loan.payment_term + " Months" }}
+            {{ !loan.payment_term ? "NA" : loan.payment_term + " Weeks" }}
           </div>
         </b-col>
         <b-col md="4">

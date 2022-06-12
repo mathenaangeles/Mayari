@@ -87,12 +87,16 @@ const store = new Vuex.Store({
     fetchArticle(context, { articleId }) {
       return fetchArticle(articleId).then((response) => {
         context.commit("setArticle", { article: response.data });
+        return response
       });
     },
     fetchArticles(context) {
       return fetchArticles().then((response) => {
         context.commit("setArticles", { articles: response.data });
       });
+    },
+    resetArticle(context) {
+      return context.commit("setArticle",{ article: {}});
     },
     postArticle(context, article) {
       return postArticle(article, context.state.jwt);

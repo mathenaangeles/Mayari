@@ -148,31 +148,58 @@ export default {
       );
     },
   },
-  created: function () {
-    let user = this.$store.state.user;
-    if (user) {
-      try {
-        this.form.status = this.loan.status;
-        this.form.payment_term = this.loan.payment_term ?? 0;
-        this.form.interest_rate = this.loan.interest_rate ?? 0;
-        this.form.principal = this.loan.principal ?? 0;
-        if (this.loan.status == "approved" && this.loan.outstanding_balance) {
-          this.form.outstanding_balance = this.loan.outstanding_balance;
-        }
-        if (this.loan.status == "approved" && this.loan.overdue_balance) {
-          this.form.outstanding_balance = this.loan.overdue_balance;
-        }
-        if (this.loan.type == "with collateral" && this.loan.collateral) {
-          this.form.collateral = this.loan.collateral;
-        }
-      } catch (error) {
-        console.log("ERROR: User could not be found.", error);
+  watch: {
+      loan: function () {
+        this.initializeForm()
       }
-    }
   },
+  // created: function () {
+  //   let user = this.$store.state.user;
+  //   if (user) {
+  //     try {
+  //       this.form.status = this.loan.status;
+  //       this.form.payment_term = this.loan.payment_term ?? 0;
+  //       this.form.interest_rate = this.loan.interest_rate ?? 0;
+  //       this.form.principal = this.loan.principal ?? 0;
+  //       if (this.loan.status == "approved" && this.loan.outstanding_balance) {
+  //         this.form.outstanding_balance = this.loan.outstanding_balance;
+  //       }
+  //       if (this.loan.status == "approved" && this.loan.overdue_balance) {
+  //         this.form.outstanding_balance = this.loan.overdue_balance;
+  //       }
+  //       if (this.loan.type == "with collateral" && this.loan.collateral) {
+  //         this.form.collateral = this.loan.collateral;
+  //       }
+  //     } catch (error) {
+  //       console.log("ERROR: User could not be found.", error);
+  //     }
+  //   }
+  // },
   methods: {
     hasHistory() {
       return window.history.length > 2;
+    },
+    initializeForm(){
+      let user = this.$store.state.user;
+      if (user) {
+        try {
+          this.form.status = this.loan.status;
+          this.form.payment_term = this.loan.payment_term ?? 0;
+          this.form.interest_rate = this.loan.interest_rate ?? 0;
+          this.form.principal = this.loan.principal ?? 0;
+          if (this.loan.status == "approved" && this.loan.outstanding_balance) {
+            this.form.outstanding_balance = this.loan.outstanding_balance;
+          }
+          if (this.loan.status == "approved" && this.loan.overdue_balance) {
+            this.form.outstanding_balance = this.loan.overdue_balance;
+          }
+          if (this.loan.type == "with collateral" && this.loan.collateral) {
+            this.form.collateral = this.loan.collateral;
+          }
+        } catch (error) {
+          console.log("ERROR: User could not be found.", error);
+        }
+      }
     },
     onSubmitLoan(event) {
       event.preventDefault();

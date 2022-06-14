@@ -22,7 +22,9 @@
                 />
               </svg>
             </button>
-            <h1 class="ml-3 bold">Article {{article.id && !isNew ? article.id : ""}} </h1>
+            <h1 class="ml-3 bold">
+              Article {{ article.id && !isNew ? article.id : "" }}
+            </h1>
           </b-row>
         </b-col>
       </b-row>
@@ -30,20 +32,38 @@
       <div class="mt-4">
         <b-form>
           <b-form-group label="Author">
-            <b-form-input v-model="form.author" placeholder="Enter author" required></b-form-input>
+            <b-form-input
+              v-model="form.author"
+              placeholder="Enter author"
+              required
+            ></b-form-input>
           </b-form-group>
           <b-form-group label="Title">
-            <b-form-input v-model="form.title" placeholder="Enter title" required></b-form-input>
+            <b-form-input
+              v-model="form.title"
+              placeholder="Enter title"
+              required
+            ></b-form-input>
           </b-form-group>
           <b-form-group label="Preview">
-            <b-form-input v-model="form.preview" placeholder="Enter preview"></b-form-input>
+            <b-form-input
+              v-model="form.preview"
+              placeholder="Enter preview"
+            ></b-form-input>
           </b-form-group>
           <b-form-group label="Body">
-            <b-form-textarea v-model="form.body" placeholder="Enter body" rows=10></b-form-textarea>
+            <b-form-textarea
+              v-model="form.body"
+              placeholder="Enter body"
+              rows="10"
+            ></b-form-textarea>
           </b-form-group>
           <b-form-group label="Category">
-            <b-form-input v-model="form.category" placeholder="Enter category"></b-form-input>
-          </b-form-group>  
+            <b-form-input
+              v-model="form.category"
+              placeholder="Enter category"
+            ></b-form-input>
+          </b-form-group>
           <b-form-file
             class="mb-3"
             v-model="form.preview_image"
@@ -76,7 +96,9 @@
             <b-button @click="onCreateArticle" variant="dark">Create</b-button>
           </b-form-group>
           <b-form-group v-else>
-            <b-button @click="onUpdateArticle" variant="dark" class="mr-2">Save</b-button>
+            <b-button @click="onUpdateArticle" variant="dark" class="mr-2"
+              >Save</b-button
+            >
             <b-button @click="onDeleteArticle" variant="outline-dark"
               >Delete</b-button
             >
@@ -133,7 +155,7 @@ export default {
         articleId: parseInt(this.$route.params.id),
       });
     } else {
-      this.$store.dispatch("resetArticle")
+      this.$store.dispatch("resetArticle");
     }
   },
   computed: {
@@ -142,15 +164,15 @@ export default {
     },
   },
   watch: {
-      article: function () {
-        this.initializeForm()
-      }
+    article: function () {
+      this.initializeForm();
+    },
   },
   methods: {
     hasHistory() {
       return window.history.length > 2;
     },
-    initializeForm(){
+    initializeForm() {
       let user = this.$store.state.user;
       if (user && this.$route.params.id == this.article.id) {
         try {

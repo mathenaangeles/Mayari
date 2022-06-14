@@ -132,7 +132,7 @@ import AuthSideContainer from "@/components/AuthSideContainer.vue";
 import { EventBus } from "@/utils";
 import { email, required, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import router from "../../router"
+import router from "../../router";
 export default {
   name: "Register",
   data() {
@@ -184,10 +184,11 @@ export default {
           last_name: this.form.last_name,
           mobile_number: rawMobileNumber,
           password: this.form.password,
-        }).then(response => {
-          console.log(response)
-          router.go()
         })
+        .then((response) => {
+          console.log(response);
+          router.go();
+        });
     },
   },
   mounted() {

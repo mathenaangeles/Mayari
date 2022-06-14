@@ -87,7 +87,7 @@ const store = new Vuex.Store({
     fetchArticle(context, { articleId }) {
       return fetchArticle(articleId).then((response) => {
         context.commit("setArticle", { article: response.data });
-        return response
+        return response;
       });
     },
     fetchArticles(context) {
@@ -96,7 +96,7 @@ const store = new Vuex.Store({
       });
     },
     resetArticle(context) {
-      return context.commit("setArticle",{ article: {}});
+      return context.commit("setArticle", { article: {} });
     },
     postArticle(context, article) {
       return postArticle(article, context.state.jwt);
@@ -142,18 +142,18 @@ const store = new Vuex.Store({
       );
     },
     login(context, user) {
-      return  new Promise ((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         login(user)
-        .then((response) => {
-          context.commit("setJwtToken", { jwt: response.data.token });
-          context.commit("setUser", { user: response.data.user });
-          resolve(response);
-        })
-        .catch((error) => {
-          EventBus.$emit("failedLogin", error);
-          reject(error);
-        });
-      }) 
+          .then((response) => {
+            context.commit("setJwtToken", { jwt: response.data.token });
+            context.commit("setUser", { user: response.data.user });
+            resolve(response);
+          })
+          .catch((error) => {
+            EventBus.$emit("failedLogin", error);
+            reject(error);
+          });
+      });
     },
     register(context, user) {
       return register(user)

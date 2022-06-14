@@ -7,11 +7,11 @@
         </b-col>
         <b-col class="new-text">
           <b-button variant="dark"
-          ><b-link to="/admin/article">Create New Article</b-link></b-button
+            ><b-link to="/admin/article">Create New Article</b-link></b-button
           >
         </b-col>
       </b-row>
-      <b-table  striped bordered hover small :fields="fields" :items="articles">
+      <b-table striped bordered hover small :fields="fields" :items="articles">
         <template #cell(id)="data">
           {{ data.item.id }}
           <router-link
@@ -41,7 +41,8 @@ svg {
     text-align: left !important;
   }
 }
-a, a:hover {
+a,
+a:hover {
   color: white;
   text-decoration: none;
 }
@@ -60,12 +61,12 @@ export default {
   data() {
     return {
       fields: [
-        { key: "id", label: "ID"},
-        { key: "title", label: "Title"},
-        { key: "author", label: "Author"},
-        { key: "category", label: "Category"},
-        { key: "is_published", label: "Published"},
-        { key: "is_featured", label: "Featured"},
+        { key: "id", label: "ID" },
+        { key: "title", label: "Title" },
+        { key: "author", label: "Author" },
+        { key: "category", label: "Category" },
+        { key: "is_published", label: "Published" },
+        { key: "is_featured", label: "Featured" },
       ],
     };
   },

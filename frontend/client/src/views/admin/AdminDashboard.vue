@@ -39,18 +39,48 @@ export default {
   data() {
     return {
       fields: [
-        { key: "id", label: "ID"},
-        { key: "borrower_id", label: "Borrower ID"},
-        { key: "collateral", label: "Collateral"},
-        { key: "created_at", label: "Created At"},
-        { key: "total_amount", label: "Total Amount", formatter: (value) => {return Number((value)?.toFixed(2))}},
-        { key: "installments", label: "Installments", formatter: (value) => {return Number((value)?.toFixed(2))}},
-        { key: "interest_rate", label: "Interest Rate"},
-        { key: "outstanding_balance", label: "Outstanding Balance", formatter: (value) => {return Number((value)?.toFixed(2))}},
-        { key: "overdue_balance", label: "Overdue Balance", formatter: (value) => {return Number((value)?.toFixed(2))}},
-        { key: "payment_term", label: "Payment Term"},
-        { key: "principal", label: "Principal", formatter: (value) => {return Number((value)?.toFixed(2))}},
-        { key: "status", label: "Status"},
+        { key: "id", label: "ID" },
+        { key: "borrower_id", label: "Borrower ID" },
+        { key: "collateral", label: "Collateral" },
+        { key: "created_at", label: "Created At" },
+        {
+          key: "total_amount",
+          label: "Total Amount",
+          formatter: (value) => {
+            return Number(value?.toFixed(2));
+          },
+        },
+        {
+          key: "installments",
+          label: "Installments",
+          formatter: (value) => {
+            return Number(value?.toFixed(2));
+          },
+        },
+        { key: "interest_rate", label: "Interest Rate" },
+        {
+          key: "outstanding_balance",
+          label: "Outstanding Balance",
+          formatter: (value) => {
+            return Number(value?.toFixed(2));
+          },
+        },
+        {
+          key: "overdue_balance",
+          label: "Overdue Balance",
+          formatter: (value) => {
+            return Number(value?.toFixed(2));
+          },
+        },
+        { key: "payment_term", label: "Payment Term" },
+        {
+          key: "principal",
+          label: "Principal",
+          formatter: (value) => {
+            return Number(value?.toFixed(2));
+          },
+        },
+        { key: "status", label: "Status" },
       ],
     };
   },

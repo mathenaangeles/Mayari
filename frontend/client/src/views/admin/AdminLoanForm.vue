@@ -22,12 +22,12 @@
                 />
               </svg>
             </button>
-            <h1 class="ml-3 bold">Edit Loan #{{loan.id}}</h1>
+            <h1 class="ml-3 bold">Edit Loan #{{ loan.id }}</h1>
           </b-row>
         </b-col>
-        <b-col md="4" class="amount-text" >
+        <b-col md="4" class="amount-text">
           <b-badge class="amount-badge">
-              {{ total_amount.toFixed(2) }} PHP
+            {{ total_amount.toFixed(2) }} PHP
           </b-badge>
         </b-col>
       </b-row>
@@ -37,14 +37,17 @@
           <b>Documents</b>
           <b-row align-h="between" class="my-1 mb-3">
             <b-col>
-              <b class="text-secondary">Primary Valid ID</b><br/>
+              <b class="text-secondary">Primary Valid ID</b><br />
               <a :href="loan.primary_id" class="btn btn-outline-dark" download
                 >Download File</a
               >
             </b-col>
             <b-col>
-              <b class="text-secondary mb-2">Proof of Income</b><br/>
-              <a :href="loan.proof_of_income" class="btn btn-outline-dark" download
+              <b class="text-secondary mb-2">Proof of Income</b><br />
+              <a
+                :href="loan.proof_of_income"
+                class="btn btn-outline-dark"
+                download
                 >Download File</a
               >
             </b-col>
@@ -60,10 +63,16 @@
             <b-form-input v-model="form.principal" type="number"></b-form-input>
           </b-form-group>
           <b-form-group class="bold" label="Interest Rate">
-            <b-form-input v-model="form.interest_rate" type="number"></b-form-input>
+            <b-form-input
+              v-model="form.interest_rate"
+              type="number"
+            ></b-form-input>
           </b-form-group>
           <b-form-group class="bold" label="Payment Term">
-            <b-form-input v-model="form.payment_term" type="number"></b-form-input>
+            <b-form-input
+              v-model="form.payment_term"
+              type="number"
+            ></b-form-input>
           </b-form-group>
           <b-form-group class="bold" label="Outstanding Balance">
             <b-form-input
@@ -80,7 +89,7 @@
           <b-form-group class="bold" label="Collateral">
             <b-form-input v-model="form.collateral"></b-form-input>
           </b-form-group>
-          
+
           <b-button type="submit" variant="dark">Save</b-button>
         </b-form>
       </div>
@@ -149,9 +158,9 @@ export default {
     },
   },
   watch: {
-      loan: function () {
-        this.initializeForm()
-      }
+    loan: function () {
+      this.initializeForm();
+    },
   },
   // created: function () {
   //   let user = this.$store.state.user;
@@ -179,7 +188,7 @@ export default {
     hasHistory() {
       return window.history.length > 2;
     },
-    initializeForm(){
+    initializeForm() {
       let user = this.$store.state.user;
       if (user) {
         try {

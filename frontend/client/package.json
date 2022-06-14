@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "lint-fix": "vue-cli-service lint --fix",
     "deploy-static": "aws --region ap-southeast-1 --profile mayari-yseali s3 sync ./dist s3://mayari-yseali-seeds --delete"
   },
   "dependencies": {
@@ -14,6 +15,7 @@
     "axios": "^0.24.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "moment": "^2.29.3",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-material-design-icons": "^4.13.0",
@@ -29,7 +31,7 @@
     "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "^4.5.17",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vuelidate/core": "^2.0.0-alpha.33",
     "@vuelidate/validators": "^2.0.0-alpha.26",

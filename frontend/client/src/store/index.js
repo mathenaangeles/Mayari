@@ -31,6 +31,7 @@ const initialState = () => {
     jwt: "",
     articles: [],
     article: {},
+    featured_article: {},
   };
 };
 
@@ -42,6 +43,9 @@ const store = new Vuex.Store({
     },
     setArticle(state, payload) {
       state.article = payload.article;
+    },
+    setFeaturedArticle(state, payload) {
+      state.featured_article = payload.featured_article;
     },
     setLoans(state, payload) {
       state.loans = payload.loans;
@@ -92,7 +96,10 @@ const store = new Vuex.Store({
     },
     fetchArticles(context) {
       return fetchArticles().then((response) => {
-        context.commit("setArticles", { articles: response.data });
+        context.commit("setArticles", { articles: response.data[0] });
+        context.commit("setFeaturedArticle", {
+          featured_article: response.data[1],
+        });
       });
     },
     resetArticle(context) {

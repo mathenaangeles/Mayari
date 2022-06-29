@@ -73,7 +73,7 @@
     <div class="section mt-4">
       <b-container>
         <div>
-          <h2 class="how-to-header">How it works</h2>
+          <h2 class="section-header">How it works</h2>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="84"
@@ -91,7 +91,7 @@
               opacity="0.709"
             />
           </svg>
-          <p class="how-to-subtitle">
+          <p class="section-subtitle">
             Secure your loan in just three easy steps. Start and scale your
             business today in the most convenient and cost-effective way
             possible.
@@ -134,13 +134,80 @@
         </div>
       </b-container>
     </div>
+    <div class="blog-section my-4">
+      <b-container>
+        <div class="text-left">
+          <h2 class="section-header">Financial freedom starts here</h2>
+          <b-row class="section-subtitle">
+            <b-col md="9">
+              <p>
+                Read the articles below to find out how you can achieve all your
+                financial goals.
+              </p>
+            </b-col>
+            <b-col md="3" class="text-right">
+              <a href="/blog">
+                <span class="blog-link mr-2">See More</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22.099"
+                  height="13.501"
+                  viewBox="0 0 22.099 13.501"
+                >
+                  <path
+                    id="Icon_ionic-ios-arrow-round-forward"
+                    data-name="Icon ionic-ios-arrow-round-forward"
+                    d="M21.968,11.51A.865.865,0,0,0,21.96,12.8l4.667,4.282H8.865a.917.917,0,1,0,0,1.828H26.619L21.952,23.2a.871.871,0,0,0,.008,1.294,1.059,1.059,0,0,0,1.4-.007l6.325-5.836h0a1.024,1.024,0,0,0,.207-.288.809.809,0,0,0,.077-.352.878.878,0,0,0-.284-.64l-6.325-5.836A1.042,1.042,0,0,0,21.968,11.51Z"
+                    transform="translate(-7.875 -11.252)"
+                    fill="#000"
+                  />
+                </svg>
+              </a>
+            </b-col>
+          </b-row>
+          <h4 v-if="articles.length === 0">
+            <b>No articles were found.</b>
+          </h4>
+          <b-row>
+            <b-col md="4">
+              <b-card
+                class="featured-card"
+                body-class="d-flex flex-column"
+                @click="goToFeatured()"
+              >
+                <div class="feature-category-text">Featured</div>
+                <div>{{ featuredArticle.category }}</div>
+                <div class="mt-auto">
+                  <div class="feature-title-text">
+                    {{ featuredArticle.title }}
+                  </div>
+                  <span>{{
+                    featuredArticle.body.substring(0, 100) + "..."
+                  }}</span>
+                  <b>Read More</b>
+                </div>
+              </b-card>
+            </b-col>
+            <b-col md="8">
+              <b-card-group deck>
+                <HomeBlogItem
+                  v-for="article in articles.slice(0, 4)"
+                  :key="article.id"
+                  :article="article"
+                >
+                </HomeBlogItem>
+              </b-card-group>
+            </b-col>
+          </b-row>
+        </div>
+      </b-container>
+    </div>
   </div>
 </template>
 <style scoped>
 a,
 a:hover {
   text-decoration: none;
-  color: white;
 }
 @media (min-width: 800px) {
   .home-hero {
@@ -176,13 +243,12 @@ a:hover {
 }
 .home-card-text {
   font-size: 20px;
-  font-weight: 500;
 }
 .home-card-subtext {
   border-bottom: 1px solid #fff;
   padding-bottom: 2px;
   font-size: 20px;
-  font-weight: 500;
+  color: #fff;
 }
 .section-grey {
   background-color: #e5e5e5;
@@ -196,11 +262,11 @@ a:hover {
   display: flex;
   align-items: center;
 }
-.how-to-header {
+.section-header {
   font-weight: 700;
   font-size: 40px;
 }
-.how-to-subtitle {
+.section-subtitle {
   font-size: 20px;
 }
 .card-container {
@@ -223,12 +289,41 @@ a:hover {
     border-radius: 10px;
   }
 }
+.blog-link {
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1px;
+}
+.featured-card {
+  color: #fff;
+  height: 100%;
+  border-radius: 10px;
+  border: 0px;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
+  background: rgb(241, 79, 140);
+  background: linear-gradient(
+    183deg,
+    rgba(241, 79, 140, 1) 0%,
+    rgba(202, 77, 229, 1) 100%
+  );
+  cursor: pointer;
+}
+.feature-category-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.feature-title-text {
+  font-size: 25px;
+  font-weight: bold;
+}
 </style>
 <script>
 import HomeCalculator from "@/components/HomeCalculator.vue";
 import HomeCity from "vue-material-design-icons/HomeCity.vue";
 import Account from "vue-material-design-icons/Account.vue";
 import BriefcaseVariant from "vue-material-design-icons/BriefcaseVariant.vue";
+import HomeBlogItem from "../components/HomeBlogItem.vue";
+import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -236,6 +331,19 @@ export default {
     HomeCity,
     Account,
     BriefcaseVariant,
+    HomeBlogItem,
+  },
+  computed: mapState({
+    articles: (state) => state.articles,
+    featuredArticle: (state) => state.featured_article,
+  }),
+  beforeMount() {
+    this.$store.dispatch("fetchArticles");
+  },
+  methods: {
+    goToFeatured() {
+      this.$router.push(`/article/${this.featuredArticle.id}`);
+    },
   },
 };
 </script>

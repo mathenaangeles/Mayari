@@ -3,10 +3,7 @@
     <div style="height: 100%">
       <div id="nav" v-if="!$route.meta.hideNavbar">
         <b-navbar toggleable="lg">
-          <b-navbar-brand v-if="!isAuthenticated" to="/"
-            ><img src="/img/icons/mayari-white-shadow.png" style="height: 40px"
-          /></b-navbar-brand>
-          <b-navbar-brand v-if="isAuthenticated" to="/dashboard"
+          <b-navbar-brand to="/"
             ><img src="/img/icons/mayari-white-shadow.png" style="height: 40px"
           /></b-navbar-brand>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

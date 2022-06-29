@@ -30,8 +30,9 @@ def create_article(user):
 
 @articles_api.route('/published/', methods=('GET',))
 def fetch_articles():
-    articles = Article.query.filter_by(is_published=True).all()
-    return jsonify([article.to_dict() for article in articles]), 201
+    articles = Article.query.filter_by(is_published=True, is_featured=False).all()
+    featured_article = Article.query.filter_by(is_published=True, is_featured=True).first()  
+    return jsonify([article.to_dict() for article in articles], featured_article.to_dict()), 201
 
 @articles_api.route('/<int:id>/', methods=('GET',))
 def fetch_article(id=id):

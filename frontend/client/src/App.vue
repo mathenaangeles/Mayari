@@ -194,6 +194,17 @@ footer.section-footer {
   background-color: black !important;
   color: white !important;
 }
+.btn-outline-secondary {
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color: #707070 !important;
+  border-radius: 5px !important;
+  border: 1.5px solid #707070 !important;
+}
+.btn-outline-secondary:hover {
+  background-color:#707070 !important;
+  color: white !important;
+}
 .bold {
   font-weight: 700;
 }

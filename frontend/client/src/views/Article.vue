@@ -2,12 +2,17 @@
   <b-container class="article my-5 px-4">
     <b-row>
       <b-col lg="4" class="image-col px-0">
-        <b-img class="article-image" fluid alt="article image" :src="article.preview_image"/>
+        <b-img
+          class="article-image"
+          fluid
+          alt="article image"
+          :src="article.preview_image"
+        />
       </b-col>
       <b-col lg="6" class="details-col px-0">
         <h5 class="purple-text">{{ article.category }}</h5>
-        <h1 class="article-title">{{ article.title }}</h1>  
-        <p class="article-preview">{{ article.preview }}</p>  
+        <h1 class="article-title">{{ article.title }}</h1>
+        <p class="article-preview">{{ article.preview }}</p>
         <b-row>
           <b-col>
             <div class="purple-text">Written by</div>
@@ -18,7 +23,7 @@
             <p>{{ article.updated_at | dateOnly }}</p>
           </b-col>
           <b-col>
-             <b-row align-v="center">
+            <b-row align-v="center">
               <ShareNetwork
                 network="facebook"
                 :url="link"
@@ -26,22 +31,28 @@
                 :description="article.preview"
                 hashtags="mayari"
               >
-                <b-button class="p-2 mt-1" variant="outline-secondary"><facebook :size="30" /></b-button>
-              </ShareNetwork>    
+                <b-button class="p-2 mt-1" variant="outline-secondary"
+                  ><facebook :size="30"
+                /></b-button>
+              </ShareNetwork>
               <ShareNetwork
                 network="twitter"
                 :url="link"
                 :title="article.title"
                 hashtags="mayari"
               >
-                <b-button class="mx-2 p-2 mt-1" variant="outline-secondary"><twitter :size="30" /></b-button>
+                <b-button class="mx-2 p-2 mt-1" variant="outline-secondary"
+                  ><twitter :size="30"
+                /></b-button>
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
                 :url="link"
                 :title="article.title"
               >
-                <b-button class="p-2 mt-1" variant="outline-secondary"><linkedin :size="30" /></b-button>
+                <b-button class="p-2 mt-1" variant="outline-secondary"
+                  ><linkedin :size="30"
+                /></b-button>
               </ShareNetwork>
             </b-row>
           </b-col>
@@ -94,7 +105,7 @@ export default {
   components: {
     Facebook,
     Twitter,
-    Linkedin
+    Linkedin,
   },
   beforeMount() {
     this.$store.dispatch("fetchArticle", {
@@ -103,11 +114,11 @@ export default {
   },
   computed: {
     ...mapState({
-      article: (state) => state.article
+      article: (state) => state.article,
     }),
     link() {
-      return "www.mayari.com/article/" + this.article.id; 
-    }
+      return "www.mayari.com/article/" + this.article.id;
+    },
   },
   filters: {
     dateOnly: function (value) {

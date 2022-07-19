@@ -202,7 +202,7 @@ footer.section-footer {
   border: 1.5px solid #707070 !important;
 }
 .btn-outline-secondary:hover {
-  background-color:#707070 !important;
+  background-color: #707070 !important;
   color: white !important;
 }
 .bold {

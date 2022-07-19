@@ -11,7 +11,7 @@ import "aos/dist/aos.css";
 import VuePageTransition from "vue-page-transition";
 import "vue2-animate/dist/vue2-animate.min.css";
 import VueTheMask from "vue-the-mask";
-import VueSocialSharing from 'vue-social-sharing'
+import VueSocialSharing from "vue-social-sharing";
 Vue.use(VueTheMask);
 Vue.use(VuePageTransition);
 Vue.config.productionTip = false;
